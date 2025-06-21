@@ -1,27 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyhutjaf1fcks"]
+[gd_scene load_steps=4 format=3 uid="uid://bhx5a75jglkyf"]
 
+[ext_resource type="Texture2D" uid="uid://j2jpwt8xmab0" path="res://icon.svg" id="1_1hpap"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ch04i"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e0bat"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_kiky0"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxbqd"]
-albedo_color = Color(0.94902, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2jpyq"]
-material = SubResource("StandardMaterial3D_qxbqd")
-
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(5, 5)
 script = ExtResource("1_ch04i")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_e0bat")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_1hpap")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_kiky0")
-skeleton = NodePath("../CollisionShape3D")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0.5)
-mesh = SubResource("BoxMesh_2jpyq")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bsyqu")

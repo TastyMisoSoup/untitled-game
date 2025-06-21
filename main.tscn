@@ -1,20 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkxidt1r0tsb0"]
+[gd_scene load_steps=2 format=3 uid="uid://bcqa16ne5gf6d"]
 
-[ext_resource type="PackedScene" uid="uid://q7yexemklcc4" path="res://scenes/maps/test_map.tscn" id="1_wojgc"]
-[ext_resource type="PackedScene" uid="uid://cyhutjaf1fcks" path="res://scenes/player/player.tscn" id="2_ljixv"]
+[ext_resource type="PackedScene" uid="uid://bhx5a75jglkyf" path="res://scenes/player/player.tscn" id="2_ljixv"]
 
-[node name="Main" type="Node3D"]
-
-[node name="TestMap" parent="." instance=ExtResource("1_wojgc")]
+[node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_ljixv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.93892, 0.344135, 0, -0.344135, 0.93892, 0, 7.3867, 8.70439)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.66279, 0)
-light_energy = 3.263
-light_specular = 0.0
-omni_range = 80.0
