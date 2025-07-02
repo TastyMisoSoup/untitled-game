@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://j2jpwt8xmab0" path="res://icon.svg" id="1_1hpap"]
 [ext_resource type="Script" uid="uid://b1bivm2b5rb5a" path="res://code/player.gd" id="1_ch04i"]
-[ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hurt_box.tscn" id="3_buj48"]
+[ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
 [ext_resource type="PackedScene" uid="uid://cgn3ni3cqgvhk" path="res://scenes/weapons/pistol.tscn" id="4_lvxji"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
@@ -18,6 +18,8 @@ texture = ExtResource("1_1hpap")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bsyqu")
 
-[node name="HurtBox" parent="." instance=ExtResource("3_buj48")]
+[node name="Hitbox" parent="." instance=ExtResource("3_buj48")]
 
 [node name="Pistol" parent="." instance=ExtResource("4_lvxji")]
+position = Vector2(8, 6)
+rotation = 1.46608
