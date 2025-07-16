@@ -1,19 +1,53 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=12 format=3 uid="uid://bhx5a75jglkyf"]
 
 [ext_resource type="Texture2D" uid="uid://j2jpwt8xmab0" path="res://icon.svg" id="1_1hpap"]
-[ext_resource type="Script" uid="uid://b1bivm2b5rb5a" path="res://code/player.gd" id="1_ch04i"]
+[ext_resource type="Script" path="res://code/player.gd" id="1_ch04i"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
+[ext_resource type="Texture2D" uid="uid://bvxpa76bbkrk1" path="res://sprites/characters/mech-legs/legs-idle.png" id="4_42fj0"]
 [ext_resource type="PackedScene" uid="uid://cgn3ni3cqgvhk" path="res://scenes/weapons/pistol.tscn" id="4_lvxji"]
+[ext_resource type="Texture2D" uid="uid://dnqs7j64rsd55" path="res://sprites/characters/mech-legs/legs-walk1.png" id="5_h7aal"]
+[ext_resource type="Texture2D" uid="uid://bofopvi7kael7" path="res://sprites/characters/mech-legs/legs-walk4.png" id="6_3xd51"]
+[ext_resource type="Texture2D" uid="uid://yim4nexq2b5n" path="res://sprites/characters/mech-legs/legs-walk2.png" id="7_ywxap"]
+[ext_resource type="Texture2D" uid="uid://bt3ly54wx6mjl" path="res://sprites/characters/mech-legs/legs-walk3.png" id="8_tys45"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_simx3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_42fj0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_h7aal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3xd51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_42fj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ywxap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tys45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_42fj0")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ch04i")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -1.5708
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_1hpap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bsyqu")
@@ -23,3 +57,13 @@ shape = SubResource("CircleShape2D_bsyqu")
 [node name="Pistol" parent="." instance=ExtResource("4_lvxji")]
 position = Vector2(8, 6)
 rotation = 1.46608
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_simx3")
+frame_progress = 0.156775
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.655, 0.655)
+texture = ExtResource("1_1hpap")
