@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=13 format=3 uid="uid://bhx5a75jglkyf"]
 
 [ext_resource type="Texture2D" uid="uid://j2jpwt8xmab0" path="res://icon.svg" id="1_1hpap"]
-[ext_resource type="Script" path="res://code/player.gd" id="1_ch04i"]
+[ext_resource type="Script" uid="uid://b1bivm2b5rb5a" path="res://code/player.gd" id="1_ch04i"]
+[ext_resource type="PackedScene" uid="uid://ddo73mvsc57jr" path="res://scenes/characters/legs/mech_legs.tscn" id="2_p47bc"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
 [ext_resource type="Texture2D" uid="uid://bvxpa76bbkrk1" path="res://sprites/characters/mech-legs/legs-idle.png" id="4_42fj0"]
 [ext_resource type="PackedScene" uid="uid://cgn3ni3cqgvhk" path="res://scenes/weapons/pistol.tscn" id="4_lvxji"]
@@ -67,3 +68,5 @@ frame_progress = 0.156775
 rotation = 3.14159
 scale = Vector2(0.655, 0.655)
 texture = ExtResource("1_1hpap")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_p47bc")]
