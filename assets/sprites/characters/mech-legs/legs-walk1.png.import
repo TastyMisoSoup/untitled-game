@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4c5mel4gwacq"
-path="res://.godot/imported/pistol layer1.png-a2868dd3cc3a0f96f75f0898ba7c0a0a.ctex"
+uid="uid://dnqs7j64rsd55"
+path="res://.godot/imported/legs-walk1.png-bb565150358d06a01a454d04776be788.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/pistol/pistol layer1.png"
-dest_files=["res://.godot/imported/pistol layer1.png-a2868dd3cc3a0f96f75f0898ba7c0a0a.ctex"]
+source_file="res://assets/sprites/characters/mech-legs/legs-walk1.png"
+dest_files=["res://.godot/imported/legs-walk1.png-bb565150358d06a01a454d04776be788.ctex"]
 
 [params]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://c3www0d1imvsy"]
 
-[ext_resource type="Script" uid="uid://ikhu0xdtljrr" path="res://code/default_legs.gd" id="1_p81qu"]
-[ext_resource type="Texture2D" uid="uid://bvxpa76bbkrk1" path="res://sprites/characters/mech-legs/legs-idle.png" id="2_mt7pk"]
-[ext_resource type="Texture2D" uid="uid://bt3ly54wx6mjl" path="res://sprites/characters/mech-legs/legs-walk3.png" id="3_qcsgs"]
-[ext_resource type="Texture2D" uid="uid://yim4nexq2b5n" path="res://sprites/characters/mech-legs/legs-walk2.png" id="4_vwt0m"]
-[ext_resource type="Texture2D" uid="uid://bofopvi7kael7" path="res://sprites/characters/mech-legs/legs-walk4.png" id="5_h0s12"]
-[ext_resource type="Texture2D" uid="uid://dnqs7j64rsd55" path="res://sprites/characters/mech-legs/legs-walk1.png" id="6_6dhld"]
+[ext_resource type="Script" path="res://code/default_legs.gd" id="1_p81qu"]
+[ext_resource type="Texture2D" uid="uid://bvxpa76bbkrk1" path="res://assets/sprites/characters/mech-legs/legs-idle.png" id="2_mt7pk"]
+[ext_resource type="Texture2D" uid="uid://bt3ly54wx6mjl" path="res://assets/sprites/characters/mech-legs/legs-walk3.png" id="3_qcsgs"]
+[ext_resource type="Texture2D" uid="uid://yim4nexq2b5n" path="res://assets/sprites/characters/mech-legs/legs-walk2.png" id="4_vwt0m"]
+[ext_resource type="Texture2D" uid="uid://bofopvi7kael7" path="res://assets/sprites/characters/mech-legs/legs-walk4.png" id="5_h0s12"]
+[ext_resource type="Texture2D" uid="uid://dnqs7j64rsd55" path="res://assets/sprites/characters/mech-legs/legs-walk1.png" id="6_6dhld"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cko2b"]
 animations = [{
@@ -51,7 +51,7 @@ animations = [{
 script = ExtResource("1_p81qu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 1.5708
+rotation = 4.71239
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cko2b")
 animation = &"move"

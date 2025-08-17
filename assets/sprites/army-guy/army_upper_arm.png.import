@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bofopvi7kael7"
-path="res://.godot/imported/legs-walk4.png-9b4f92dc4adfb8fd27a748859256b215.ctex"
+uid="uid://dm11tek875h8m"
+path="res://.godot/imported/army_upper_arm.png-b5574823563edba058920a47c88a3c32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/mech-legs/legs-walk4.png"
-dest_files=["res://.godot/imported/legs-walk4.png-9b4f92dc4adfb8fd27a748859256b215.ctex"]
+source_file="res://assets/sprites/army-guy/army_upper_arm.png"
+dest_files=["res://.godot/imported/army_upper_arm.png-b5574823563edba058920a47c88a3c32.ctex"]
 
 [params]
 

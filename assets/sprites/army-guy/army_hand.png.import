@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0yhae5acdoqr"
-path="res://.godot/imported/characterbody.png-3d49d8070b3c0528393e89d8d9dd2598.ctex"
+uid="uid://dlsyromqgktap"
+path="res://.godot/imported/army_hand.png-60bf9555bfe2b386d589030977d1d92f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/characterbody.png"
-dest_files=["res://.godot/imported/characterbody.png-3d49d8070b3c0528393e89d8d9dd2598.ctex"]
+source_file="res://assets/sprites/army-guy/army_hand.png"
+dest_files=["res://.godot/imported/army_hand.png-60bf9555bfe2b386d589030977d1d92f.ctex"]
 
 [params]
 

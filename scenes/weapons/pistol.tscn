@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgn3ni3cqgvhk"]
 
-[ext_resource type="Script" uid="uid://bumvqu71mvkqi" path="res://code/pistol.gd" id="1_4jni1"]
-[ext_resource type="Texture2D" uid="uid://d4c5mel4gwacq" path="res://sprites/pistol/pistol layer1.png" id="2_60a84"]
-[ext_resource type="Texture2D" uid="uid://dg54n75hjalgc" path="res://sprites/pistol/pistol layer2.png" id="3_ivc8v"]
+[ext_resource type="Script" path="res://code/pistol.gd" id="1_4jni1"]
+[ext_resource type="Texture2D" uid="uid://d4c5mel4gwacq" path="res://assets/sprites/pistol/pistol layer1.png" id="2_60a84"]
+[ext_resource type="Texture2D" uid="uid://dg54n75hjalgc" path="res://assets/sprites/pistol/pistol layer2.png" id="3_ivc8v"]
 
 [sub_resource type="Animation" id="Animation_60a84"]
 length = 0.001

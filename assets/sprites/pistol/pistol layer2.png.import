@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvntv6fcdxjhr"
-path="res://.godot/imported/army_body.png-ceb9090fbb9353d078af7de4c507ad04.ctex"
+uid="uid://dg54n75hjalgc"
+path="res://.godot/imported/pistol layer2.png-62cbe4b113f2441bcc47ea8b30c89548.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/army-guy/army_body.png"
-dest_files=["res://.godot/imported/army_body.png-ceb9090fbb9353d078af7de4c507ad04.ctex"]
+source_file="res://assets/sprites/pistol/pistol layer2.png"
+dest_files=["res://.godot/imported/pistol layer2.png-62cbe4b113f2441bcc47ea8b30c89548.ctex"]
 
 [params]
 

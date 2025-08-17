@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm11tek875h8m"
-path="res://.godot/imported/army_upper_arm.png-4de2d2905027438260259e83bc25dad5.ctex"
+uid="uid://bvxpa76bbkrk1"
+path="res://.godot/imported/legs-idle.png-7d1eb752f0bbb2a32de9874fcd350ed7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/army-guy/army_upper_arm.png"
-dest_files=["res://.godot/imported/army_upper_arm.png-4de2d2905027438260259e83bc25dad5.ctex"]
+source_file="res://assets/sprites/characters/mech-legs/legs-idle.png"
+dest_files=["res://.godot/imported/legs-idle.png-7d1eb752f0bbb2a32de9874fcd350ed7.ctex"]
 
 [params]
 
