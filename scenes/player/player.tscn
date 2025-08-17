@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=6 format=3 uid="uid://bhx5a75jglkyf"]
 
-[ext_resource type="Texture2D" uid="uid://j2jpwt8xmab0" path="res://icon.svg" id="1_1hpap"]
-[ext_resource type="Script" path="res://code/player.gd" id="1_ch04i"]
+[ext_resource type="Script" uid="uid://b1bivm2b5rb5a" path="res://code/player.gd" id="1_ch04i"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
-[ext_resource type="PackedScene" uid="uid://cgn3ni3cqgvhk" path="res://scenes/weapons/pistol.tscn" id="4_lvxji"]
 [ext_resource type="PackedScene" uid="uid://c3www0d1imvsy" path="res://scenes/characters/default_mech_legs.tscn" id="5_dlmw4"]
+[ext_resource type="PackedScene" uid="uid://cfybigipdafem" path="res://scenes/body.tscn" id="5_p47bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
 
@@ -18,14 +17,10 @@ shape = SubResource("CircleShape2D_bsyqu")
 [node name="Hitbox" parent="." instance=ExtResource("3_buj48")]
 position = Vector2(-13, 0)
 
-[node name="Pistol" parent="." instance=ExtResource("4_lvxji")]
-
 [node name="DefaultLegs" parent="." instance=ExtResource("5_dlmw4")]
 z_index = -1
 position = Vector2(-13, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-13, -2.38419e-07)
-rotation = 3.14159
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_1hpap")
+[node name="Body" parent="." instance=ExtResource("5_p47bc")]
+position = Vector2(-13, 0)
+scale = Vector2(0.2, 0.2)

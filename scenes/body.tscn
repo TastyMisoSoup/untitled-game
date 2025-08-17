@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfybigipdafem"]
+
+[ext_resource type="Script" uid="uid://dv0eg88173272" path="res://scenes/body.gd" id="1_f5bqu"]
+[ext_resource type="Texture2D" uid="uid://b1ep3uhysna75" path="res://assets/sprites/characters/bodies/body1.png" id="2_veluv"]
+[ext_resource type="PackedScene" uid="uid://cgn3ni3cqgvhk" path="res://scenes/weapons/pistol.tscn" id="3_veluv"]
+
+[node name="Body" type="Node2D"]
+script = ExtResource("1_f5bqu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_veluv")
+
+[node name="Minigun" parent="." instance=ExtResource("3_veluv")]
+position = Vector2(7, 51)
+rotation = 1.5708
+
+[node name="Minigun2" parent="." instance=ExtResource("3_veluv")]
+position = Vector2(7, -65)
+rotation = 1.5708
