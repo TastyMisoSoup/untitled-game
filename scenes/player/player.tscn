@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhx5a75jglkyf"]
 
-[ext_resource type="Script" uid="uid://b1bivm2b5rb5a" path="res://code/player.gd" id="1_ch04i"]
+[ext_resource type="Script" path="res://code/player.gd" id="1_ch04i"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
 [ext_resource type="PackedScene" uid="uid://c3www0d1imvsy" path="res://scenes/characters/default_mech_legs.tscn" id="5_dlmw4"]
 [ext_resource type="PackedScene" uid="uid://cfybigipdafem" path="res://scenes/body.tscn" id="5_p47bc"]

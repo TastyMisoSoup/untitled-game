@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgn3ni3cqgvhk"]
 
-[ext_resource type="Script" uid="uid://bumvqu71mvkqi" path="res://code/pistol.gd" id="1_4jni1"]
+[ext_resource type="Script" path="res://code/pistol.gd" id="1_4jni1"]
 [ext_resource type="Texture2D" uid="uid://c24ncxsneutkk" path="res://assets/sprites/characters/weapons/minigun.png" id="2_r3071"]
 
 [sub_resource type="Animation" id="Animation_60a84"]
@@ -36,8 +36,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_61dc8"]
 _data = {
-&"RESET": SubResource("Animation_60a84"),
-&"shoot": SubResource("Animation_t1ie7")
+"RESET": SubResource("Animation_60a84"),
+"shoot": SubResource("Animation_t1ie7")
 }
 
 [node name="Minigun" type="Node2D"]
@@ -45,7 +45,7 @@ script = ExtResource("1_4jni1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_61dc8")
+"": SubResource("AnimationLibrary_61dc8")
 }
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -56,10 +56,16 @@ collide_with_bodies = false
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
-points = PackedVector2Array(7, -36, 7, -36)
+position = Vector2(7, -36)
+points = PackedVector2Array(0, 0, 0, 0)
 width = 1.0
 default_color = Color(1, 1, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 0.0872665
 texture = ExtResource("2_r3071")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
