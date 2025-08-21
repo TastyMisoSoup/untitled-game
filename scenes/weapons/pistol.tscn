@@ -50,8 +50,9 @@ libraries = {
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(7, -36)
-enabled = false
 target_position = Vector2(0, -50)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
