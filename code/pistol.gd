@@ -19,8 +19,9 @@ func _on_timer_timeout() -> void:
 	position.y = position.y + (randi_range(-10,10))
 	$RayCast2D.set_target_position(position)
 	if $RayCast2D.is_colliding():
+		if $RayCast2D.get_collider().is_in_group("hurt_box"):
+			$RayCast2D.get_collider().raycast_hit($RayCast2D)
 		var collision_point: Vector2 = $RayCast2D.get_collision_point()
-		print(collision_point-$Line2D.global_position)
 		$Line2D.set_point_position(1,($Line2D.to_local(collision_point)))
 	else:
 		$Line2D.set_point_position(1,position)

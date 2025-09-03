@@ -4,7 +4,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pp501"]
 
-[node name="Hitbox" type="Area2D"]
+[node name="Hitbox" type="Area2D" groups=["hurt_box"]]
 script = ExtResource("1_gtb3h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

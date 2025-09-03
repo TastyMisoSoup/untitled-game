@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c3www0d1imvsy"]
 
-[ext_resource type="Script" path="res://code/default_legs.gd" id="1_p81qu"]
+[ext_resource type="Script" uid="uid://ikhu0xdtljrr" path="res://code/default_legs.gd" id="1_p81qu"]
 [ext_resource type="Texture2D" uid="uid://bvxpa76bbkrk1" path="res://assets/sprites/characters/mech-legs/legs-idle.png" id="2_mt7pk"]
 [ext_resource type="Texture2D" uid="uid://bt3ly54wx6mjl" path="res://assets/sprites/characters/mech-legs/legs-walk3.png" id="3_qcsgs"]
 [ext_resource type="Texture2D" uid="uid://yim4nexq2b5n" path="res://assets/sprites/characters/mech-legs/legs-walk2.png" id="4_vwt0m"]
