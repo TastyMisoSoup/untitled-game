@@ -1,6 +1,6 @@
 extends Area2D
 class_name HurtBox
-signal on_raycast_hit
+signal on_raycast_hit(damage)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,5 +16,5 @@ func _on_area_entered(area: Area2D) -> void:
 	if is_in_group("damage_type"):
 		print("hi")
 		
-func raycast_hit(raycast: RayCast2D) -> void:
-	on_raycast_hit.emit()
+func raycast_hit(damage: float) -> void:
+	on_raycast_hit.emit(damage)

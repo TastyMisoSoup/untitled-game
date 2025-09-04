@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dv0eg88173272" path="res://scenes/body.gd" id="1_f5bqu"]
 [ext_resource type="Texture2D" uid="uid://b1ep3uhysna75" path="res://assets/sprites/characters/bodies/body1.png" id="2_veluv"]
-[ext_resource type="PackedScene" uid="uid://cgn3ni3cqgvhk" path="res://scenes/weapons/pistol.tscn" id="3_veluv"]
+[ext_resource type="PackedScene" uid="uid://cgn3ni3cqgvhk" path="res://scenes/weapons/minigun.tscn" id="3_veluv"]
 
 [node name="Body" type="Node2D"]
 script = ExtResource("1_f5bqu")

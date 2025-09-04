@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgn3ni3cqgvhk"]
+[gd_scene load_steps=8 format=3 uid="uid://cgn3ni3cqgvhk"]
 
-[ext_resource type="Script" uid="uid://bumvqu71mvkqi" path="res://code/pistol.gd" id="1_4jni1"]
-[ext_resource type="Texture2D" uid="uid://c24ncxsneutkk" path="res://assets/sprites/characters/weapons/minigun.png" id="2_r3071"]
+[ext_resource type="Script" uid="uid://bumvqu71mvkqi" path="res://code/minigun.gd" id="1_lhdf3"]
+[ext_resource type="Script" uid="uid://bsgrh8hjy223b" path="res://code/weapon_stats.gd" id="2_gf721"]
+[ext_resource type="Texture2D" uid="uid://c24ncxsneutkk" path="res://assets/sprites/characters/weapons/minigun.png" id="2_oir7h"]
+
+[sub_resource type="Resource" id="Resource_6ybgm"]
+script = ExtResource("2_gf721")
+weapon_damage = 2.0
+weapon_speed = 0.05
+energy_consumption = 2.0
+metadata/_custom_type_script = "uid://bsgrh8hjy223b"
 
 [sub_resource type="Animation" id="Animation_60a84"]
 length = 0.001
@@ -41,7 +49,8 @@ _data = {
 }
 
 [node name="Minigun" type="Node2D"]
-script = ExtResource("1_4jni1")
+script = ExtResource("1_lhdf3")
+stats = SubResource("Resource_6ybgm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -63,9 +72,8 @@ default_color = Color(1, 1, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 0.0872665
-texture = ExtResource("2_r3071")
+texture = ExtResource("2_oir7h")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

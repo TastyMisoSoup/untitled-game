@@ -22,5 +22,8 @@ func _physics_process(delta: float) -> void:
 	
 
 
-func _on_hitbox_on_raycast_hit() -> void:
-	print("hello")
+func _on_hitbox_on_raycast_hit(damage) -> void:
+	$Health.take_damage(damage)
+	if $Health.health <= 0:
+		queue_free()
+	print($Health.health)

@@ -30,5 +30,7 @@ scale = Vector2(0.2, 0.2)
 position = Vector2(-13, 0)
 
 [node name="Health" parent="." instance=ExtResource("5_75vfm")]
+max_health = 100.0
+health = 100.0
 
 [connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]

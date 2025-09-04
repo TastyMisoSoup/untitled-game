@@ -1,5 +1,12 @@
 extends Weapon
 
+@export var stats: WeaponStats
+var damage: float
+
+func _ready() -> void:
+	$Timer.wait_time = stats.weapon_speed
+	damage = stats.weapon_damage
+
 func action():
 	$Timer.start()
 
@@ -20,7 +27,7 @@ func _on_timer_timeout() -> void:
 	$RayCast2D.set_target_position(position)
 	if $RayCast2D.is_colliding():
 		if $RayCast2D.get_collider().is_in_group("hurt_box"):
-			$RayCast2D.get_collider().raycast_hit($RayCast2D)
+			$RayCast2D.get_collider().raycast_hit(damage)
 		var collision_point: Vector2 = $RayCast2D.get_collision_point()
 		$Line2D.set_point_position(1,($Line2D.to_local(collision_point)))
 	else:
