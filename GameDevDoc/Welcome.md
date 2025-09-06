@@ -4,8 +4,8 @@ Untitled Game will be an online top down arena shooter featuring mechs
 
 Glossary:
 -  [[Gameplay]]
--  Server Management
+-  [[Server Management]]
 -  Stylization
 -  Map Design
--  Main Menu
+-  [[Main Menu]]
 -  

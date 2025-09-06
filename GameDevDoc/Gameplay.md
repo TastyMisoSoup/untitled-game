@@ -1,0 +1,1 @@
+After the player joins a game, they will start play as their Mech (if they didn't customize their Mech  in the [[Mech Bay]], they will be given the default Mech setup)
