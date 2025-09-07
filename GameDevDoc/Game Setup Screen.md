@@ -12,3 +12,5 @@ Server Listing - in case of Multi-player, the Host will select if the game will 
 
 Server Password - in case of Multi-player, the Host will be allowed to setup a Server Password.
 
+Spectator Mode - toggle on to host the game as a spectator - will be used just to record the video trailer
+
