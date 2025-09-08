@@ -1,0 +1,1 @@
+Servers will be listed on a Server Listing which will be held on a cloud-based client-server. The Server Listing will hold the IPs of hosted servers 
