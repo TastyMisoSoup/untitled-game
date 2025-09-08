@@ -13,13 +13,10 @@ func _physics_process(delta: float) -> void:
 	velocity = input_direction * SPEED
 	$DefaultLegs.move(input_direction)
 	if Input.is_action_just_pressed("attack"):
-		$Body.get_node("Minigun").action()
-		$Body.get_node("Minigun2").action()
+		$Body/Minigun.action()
 	if Input.is_action_just_released("attack"):
-		$Body.get_node("Minigun").stop_action()
-		$Body.get_node("Minigun2").stop_action()
+		$Body/Minigun.stop_action()
 	move_and_slide()
-	
 
 
 func _on_hitbox_on_raycast_hit(damage) -> void:

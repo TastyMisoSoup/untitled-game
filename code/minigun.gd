@@ -7,6 +7,7 @@ func _ready() -> void:
 	$Timer.wait_time = stats.weapon_speed
 	damage = stats.weapon_damage
 
+
 func action():
 	$Timer.start()
 
@@ -14,21 +15,19 @@ func stop_action():
 	$Timer.stop()
 
 func _on_timer_timeout() -> void:
-	var position: Vector2;
+	var target_position: Vector2;
 	$AnimationPlayer.play("shoot")
-	if(get_local_mouse_position().y>-100):
-		position = Vector2(get_local_mouse_position().x,-100);
-	#elif(get_local_mouse_position().y<-200):
-		#position = Vector2(get_local_mouse_position().x,-200);
+	if(get_local_mouse_position().y>-40):
+		target_position = Vector2(get_local_mouse_position().x,-40);
 	else:
-		position = get_local_mouse_position();
-	position.x = position.x + (randi_range(-40,40))
-	position.y = position.y + (randi_range(-10,10))
-	$RayCast2D.set_target_position(position)
+		target_position = get_local_mouse_position();
+	#position.y = position.y + (randi_range(0,0))
+	$RayCast2D.set_target_position(target_position)
 	if $RayCast2D.is_colliding():
-		if $RayCast2D.get_collider().is_in_group("hurt_box"):
-			$RayCast2D.get_collider().raycast_hit(damage)
+		var collider = $RayCast2D.get_collider()
+		if collider.is_in_group("hurt_box") && collider.is_in_group("enemy"):
+			collider.raycast_hit(damage)
 		var collision_point: Vector2 = $RayCast2D.get_collision_point()
 		$Line2D.set_point_position(1,($Line2D.to_local(collision_point)))
 	else:
-		$Line2D.set_point_position(1,position)
+		$Line2D.set_point_position(1,$Line2D.to_local(get_global_mouse_position()))

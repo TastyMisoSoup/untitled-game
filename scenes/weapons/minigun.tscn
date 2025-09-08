@@ -58,19 +58,20 @@ libraries = {
 }
 
 [node name="RayCast2D" type="RayCast2D" parent="." groups=["damage_type"]]
-position = Vector2(7, -36)
 target_position = Vector2(0, -50)
+collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
 position = Vector2(7, -36)
-points = PackedVector2Array(0, 0, 0, 0)
+points = PackedVector2Array(-7, 36, -7, 36)
 width = 1.0
 default_color = Color(1, 1, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7, 36)
 rotation = 0.0872665
 texture = ExtResource("2_oir7h")
 

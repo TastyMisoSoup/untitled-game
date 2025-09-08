@@ -6,7 +6,7 @@
       {
         "id": "fe33420ca4af8767",
         "type": "tabs",
-        "dimension": 61.548223350253814,
+        "dimension": 38.01324503311258,
         "children": [
           {
             "id": "5b2da16713c6dfbd",
@@ -56,12 +56,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Secondary Weapon.md",
+                "file": "Primary Weapon.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Secondary Weapon"
+              "title": "Primary Weapon"
             }
           },
           {
@@ -84,7 +84,7 @@
       {
         "id": "82bf1380957f7181",
         "type": "tabs",
-        "dimension": 38.45177664974619,
+        "dimension": 61.98675496688742,
         "children": [
           {
             "id": "362ec354a10adeba",
@@ -243,8 +243,12 @@
   },
   "active": "362ec354a10adeba",
   "lastOpenFiles": [
-    "Secondary Weapon.md",
     "Primary Weapon.md",
+    "Secondary Weapon.md",
+    "Rocket Salvo Cannon.md",
+    "Plasma Supercharger.md",
+    "Grenade Launcher.md",
+    "Thermal Energy Blade.md",
     "Minigun.md",
     "Bolt Revolver.md",
     "Rocket Launcher.md",
