@@ -4,7 +4,6 @@ Primary Weapon Stats:
 -  Energy Generation
 -  Weapon Damage
 -  Weapon Speed
--  
 
 Primary Weapons List:
 -  [[Minigun]]
