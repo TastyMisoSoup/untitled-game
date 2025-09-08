@@ -8,7 +8,7 @@
 script = ExtResource("2_gf721")
 weapon_damage = 2.0
 weapon_speed = 0.05
-energy_consumption = 2.0
+energy_generation = 0.0
 metadata/_custom_type_script = "uid://bsgrh8hjy223b"
 
 [sub_resource type="Animation" id="Animation_60a84"]
@@ -67,7 +67,7 @@ collide_with_bodies = false
 visible = false
 position = Vector2(7, -36)
 points = PackedVector2Array(-7, 36, -7, 36)
-width = 1.0
+width = 3.0
 default_color = Color(1, 1, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
