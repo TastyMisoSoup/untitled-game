@@ -9,6 +9,3 @@
 position = Vector2(-22, -35)
 
 [node name="Hitbox" parent="." instance=ExtResource("3_h2yge")]
-
-[node name="Player2" parent="." instance=ExtResource("2_ljixv")]
-position = Vector2(-17, 10)

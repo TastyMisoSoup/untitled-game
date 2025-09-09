@@ -12,5 +12,4 @@ rotation = 1.5708
 texture = ExtResource("2_veluv")
 
 [node name="Minigun" parent="." instance=ExtResource("3_veluv")]
-position = Vector2(53, 58)
-rotation = 1.5708
+position = Vector2(5, 58)

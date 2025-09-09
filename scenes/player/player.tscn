@@ -21,8 +21,6 @@ shape = SubResource("CircleShape2D_bsyqu")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_buj48")]
 position = Vector2(1, -10)
-collision_layer = 2
-collision_mask = 2
 
 [node name="DefaultLegs" parent="." instance=ExtResource("5_dlmw4")]
 z_index = -1
