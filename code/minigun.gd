@@ -19,12 +19,11 @@ func _on_timer_timeout() -> void:
 	var deadzone: bool
 	var spread_amount:int = 5
 	$AnimationPlayer.play("shoot")
-	target_position = get_global_mouse_position()
-	print($Line2D.get_local_mouse_position())
 	if(position.distance_to(get_local_mouse_position())<150): #checks if cursor is in the player deadzone - the minimum weapon range
 		target_position = Vector2(50,get_local_mouse_position().y);
 		deadzone = true
 	else:
+		target_position = get_global_mouse_position()
 		deadzone = false
 	var bullet_offset_x = (randi_range(-spread_amount,spread_amount)) #bullet spread
 	var bullet_offset_y = (randi_range(-spread_amount,spread_amount))

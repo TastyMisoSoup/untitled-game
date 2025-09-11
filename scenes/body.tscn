@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cgn3ni3cqgvhk" path="res://scenes/weapons/minigun.tscn" id="3_veluv"]
 
 [node name="Body" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_f5bqu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

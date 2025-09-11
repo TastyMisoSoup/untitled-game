@@ -48,6 +48,7 @@ animations = [{
 }]
 
 [node name="DefaultLegs" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_p81qu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

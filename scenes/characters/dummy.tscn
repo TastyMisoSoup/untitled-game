@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://yt6ejobvk4ox"]
+
+[ext_resource type="Texture2D" uid="uid://j2jpwt8xmab0" path="res://assets/icon.svg" id="1_48jjh"]
+[ext_resource type="Script" uid="uid://blltulex53y5n" path="res://scenes/characters/dummy.gd" id="1_y0810"]
+[ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="2_60gta"]
+[ext_resource type="PackedScene" uid="uid://cp3n5tes2gj7j" path="res://scenes/game-mechanics/health.tscn" id="3_60gta"]
+
+[node name="Dummy" type="Node2D"]
+script = ExtResource("1_y0810")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_48jjh")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_60gta")]
+
+[node name="Health" parent="." instance=ExtResource("3_60gta")]
+max_health = 100.0
+health = 100.0
+
+[connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
