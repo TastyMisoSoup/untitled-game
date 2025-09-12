@@ -17,7 +17,7 @@ func stop_action():
 func _on_timer_timeout() -> void:
 	var target_position: Vector2;
 	var deadzone: bool
-	var spread_amount:int = 5
+	var spread_amount:int = 0
 	$AnimationPlayer.play("shoot")
 	if(position.distance_to(get_local_mouse_position())<150): #checks if cursor is in the player deadzone - the minimum weapon range
 		target_position = Vector2(50,get_local_mouse_position().y);
@@ -31,7 +31,7 @@ func _on_timer_timeout() -> void:
 	target_position.x = target_position.x + bullet_offset_x
 	if(deadzone):
 		$RayCast2D.set_target_position(target_position)	
-		$Line2D.set_point_position(1,Vector2(30+bullet_offset_x,target_position.y))	
+		$Line2D.set_point_position(1,target_position)	
 		#deadzone line2d and raycast2d pos needs to be reworked, the spread isnt wide enough
 	else:
 		$RayCast2D.set_target_position($RayCast2D.to_local(target_position))
