@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmxonrsnn8k1b"]
+[gd_scene load_steps=6 format=3 uid="uid://bmxonrsnn8k1b"]
 
 [ext_resource type="Script" uid="uid://ds7awb4eifesq" path="res://scenes/weapons/projectiles/ray_cast_projectile.gd" id="1_yuotk"]
+[ext_resource type="AnimationLibrary" uid="uid://b7jj3tr2ng7hb" path="res://resources/animations/line-animations.res" id="2_wdvel"]
 
 [sub_resource type="Animation" id="Animation_60a84"]
 length = 0.001
@@ -39,27 +40,6 @@ _data = {
 &"shoot": SubResource("Animation_t1ie7")
 }
 
-[sub_resource type="Animation" id="Animation_yuotk"]
-resource_name = "shoot"
-length = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Line2D:default_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.979992, 0.729488, 0, 1), Color(0.933333, 0.592157, 0, 0.262745)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wdvel"]
-_data = {
-&"shoot": SubResource("Animation_yuotk")
-}
-
 [node name="RayCastProjectile" type="Node2D"]
 script = ExtResource("1_yuotk")
 
@@ -79,5 +59,5 @@ default_color = Color(0.905604, 0.661426, 0.0501241, 0.918627)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_61dc8"),
-&"line_animations": SubResource("AnimationLibrary_wdvel")
+&"line-animations": ExtResource("2_wdvel")
 }
