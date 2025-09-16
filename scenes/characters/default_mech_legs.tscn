@@ -47,12 +47,12 @@ animations = [{
 "speed": 16.0
 }]
 
-[node name="DefaultLegs" type="CharacterBody2D"]
+[node name="DefaultLegs" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_p81qu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 4.71239
+rotation = -1.5708
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_cko2b")
 animation = &"move"

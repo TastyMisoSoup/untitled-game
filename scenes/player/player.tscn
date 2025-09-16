@@ -1,33 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=3 format=3 uid="uid://c0ek8dkcbaern"]
 
 [ext_resource type="Script" uid="uid://b1bivm2b5rb5a" path="res://code/player.gd" id="1_ch04i"]
-[ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
-[ext_resource type="PackedScene" uid="uid://cp3n5tes2gj7j" path="res://scenes/game-mechanics/health.tscn" id="5_75vfm"]
-[ext_resource type="PackedScene" uid="uid://c3www0d1imvsy" path="res://scenes/characters/default_mech_legs.tscn" id="5_dlmw4"]
-[ext_resource type="PackedScene" uid="uid://cfybigipdafem" path="res://scenes/body.tscn" id="5_p47bc"]
+[ext_resource type="PackedScene" uid="uid://bhx5a75jglkyf" path="res://scenes/characters/mech.tscn" id="2_dovo2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
-
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="Node2D"]
 script = ExtResource("1_ch04i")
 
-[node name="Health" parent="." instance=ExtResource("5_75vfm")]
-max_health = 100.0
-health = 100.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_bsyqu")
-
-[node name="Hitbox" parent="." instance=ExtResource("3_buj48")]
-
-[node name="DefaultLegs" parent="." instance=ExtResource("5_dlmw4")]
-z_index = -1
-
-[node name="Body" parent="." instance=ExtResource("5_p47bc")]
-scale = Vector2(0.2, 0.2)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-process_callback = 0
-position_smoothing_enabled = true
-
-[connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
+[node name="Mech" parent="." instance=ExtResource("2_dovo2")]

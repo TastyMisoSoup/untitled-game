@@ -15,6 +15,10 @@ run/main_scene="uid://bcqa16ne5gf6d"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+ProjectileManager="*res://scenes/game-mechanics/projectile_manager.tscn"
+
 [display]
 
 window/stretch/scale=4.0
