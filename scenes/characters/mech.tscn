@@ -27,7 +27,15 @@ z_index = -1
 scale = Vector2(0.2, 0.2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_enabled = true
 
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Dash_Duration" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
+[connection signal="timeout" from="Dash_Duration" to="." method="_on_dash_duration_timeout"]

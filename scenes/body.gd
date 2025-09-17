@@ -1,4 +1,6 @@
 extends Node2D
+class_name Body
+const BODY_SCENE = preload("res://scenes/body.tscn")
 
 func primary_weapon_action(target_position) -> void:
 	$Minigun.action()

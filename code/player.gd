@@ -1,12 +1,13 @@
 extends Node2D
 
-
+@export var team_number: int;
+var team: String 
 const SPEED = 200.0
 
 func _ready() -> void:
-	$Mech/Health.max_health = 100
-	$Mech/Health.health = 100
-	$Mech/Hitbox.add_to_group("team"+str(1))
+	team = "team"+str(team_number);
+	var mech_instance = Mech.mech_construct(team, 1)
+	add_child(mech_instance)
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
@@ -17,6 +18,8 @@ func _physics_process(delta: float) -> void:
 			$Mech.primary_weapon_action(get_global_mouse_position())
 		if Input.is_action_just_released("attack"):
 			$Mech.primary_weapon_action_stop()
+		if Input.is_action_just_pressed("dash") && input_direction!=Vector2(0,0):
+			$Mech.dash()
 		$Mech.mech_look_at(get_global_mouse_position())
 		$Mech.move(input_direction)
 

@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0ek8dkcbaern"]
+[gd_scene load_steps=2 format=3 uid="uid://c0ek8dkcbaern"]
 
 [ext_resource type="Script" uid="uid://b1bivm2b5rb5a" path="res://code/player.gd" id="1_ch04i"]
-[ext_resource type="PackedScene" uid="uid://bhx5a75jglkyf" path="res://scenes/characters/mech.tscn" id="2_dovo2"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_ch04i")
-
-[node name="Mech" parent="." instance=ExtResource("2_dovo2")]

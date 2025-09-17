@@ -1,19 +1,22 @@
 extends Node2D
 class_name RayCastProjectile
+
 var deadzone: bool;
 var target_position: Vector2;
 var start_position: Vector2;
+var team: String;
+
 var one_shot: bool
 var resource: Resource;
 const PROJECTILE_SCENE = preload("res://scenes/weapons/projectiles/ray_cast_projectile.tscn")
 
 
-static func projectile_construct(deadzone: bool,start_position:Vector2, target_position:Vector2):
+static func projectile_construct(deadzone: bool,start_position:Vector2, target_position:Vector2, team: String):
 	var projectile_instance = PROJECTILE_SCENE.instantiate()
 	projectile_instance.deadzone = deadzone
 	projectile_instance.start_position = start_position
 	projectile_instance.target_position = target_position
-	#projectile_instance.resource = resource
+	projectile_instance.team = team
 	return projectile_instance
 
 
@@ -33,8 +36,8 @@ func _process(delta: float) -> void:
 	if $RayCast2D.is_colliding():	#checks if raycast hits, if so, deals damage
 		var collision_point: Vector2 = $RayCast2D.get_collision_point()
 		var collider = $RayCast2D.get_collider()
-		$RayCast2D.enabled = false
-		if collider.is_in_group("hurt_box") && !collider.is_in_group("team1"):
+		if collider.is_in_group("hurt_box") && !collider.is_in_group(team):
+			$RayCast2D.enabled = false
 			collider.raycast_hit(-5)
 		$Line2D.set_point_position(1,($Line2D.to_local(collision_point)))
 	self.reparent(ProjectileManager)
