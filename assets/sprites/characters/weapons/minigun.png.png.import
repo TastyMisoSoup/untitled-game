@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnqs7j64rsd55"
-path="res://.godot/imported/legs-walk1.png-bb565150358d06a01a454d04776be788.ctex"
+uid="uid://drvvxr401kr67"
+path="res://.godot/imported/minigun.png.png-3aca6dd3d80e1befd2ef79e16b10a12b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/mech-legs/legs-walk1.png"
-dest_files=["res://.godot/imported/legs-walk1.png-bb565150358d06a01a454d04776be788.ctex"]
+source_file="res://assets/sprites/characters/weapons/minigun.png.png"
+dest_files=["res://.godot/imported/minigun.png.png-3aca6dd3d80e1befd2ef79e16b10a12b.ctex"]
 
 [params]
 

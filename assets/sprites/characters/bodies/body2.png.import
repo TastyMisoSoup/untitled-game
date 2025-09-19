@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnqs7j64rsd55"
-path="res://.godot/imported/legs-walk1.png-bb565150358d06a01a454d04776be788.ctex"
+uid="uid://bsrodao5iacx5"
+path="res://.godot/imported/body2.png-1a818f3afbc50d9a0ab01fb4ed988b2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/mech-legs/legs-walk1.png"
-dest_files=["res://.godot/imported/legs-walk1.png-bb565150358d06a01a454d04776be788.ctex"]
+source_file="res://assets/sprites/characters/bodies/body2.png"
+dest_files=["res://.godot/imported/body2.png-1a818f3afbc50d9a0ab01fb4ed988b2f.ctex"]
 
 [params]
 

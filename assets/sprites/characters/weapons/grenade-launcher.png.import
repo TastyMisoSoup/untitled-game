@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnqs7j64rsd55"
-path="res://.godot/imported/legs-walk1.png-bb565150358d06a01a454d04776be788.ctex"
+uid="uid://rklj8mk7kg83"
+path="res://.godot/imported/grenade-launcher.png-a1fa5647ab12b0bca30631ae47b9c7f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/mech-legs/legs-walk1.png"
-dest_files=["res://.godot/imported/legs-walk1.png-bb565150358d06a01a454d04776be788.ctex"]
+source_file="res://assets/sprites/characters/weapons/grenade-launcher.png"
+dest_files=["res://.godot/imported/grenade-launcher.png-a1fa5647ab12b0bca30631ae47b9c7f4.ctex"]
 
 [params]
 

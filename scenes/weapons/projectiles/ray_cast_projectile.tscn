@@ -45,7 +45,7 @@ script = ExtResource("1_yuotk")
 
 [node name="RayCast2D" type="RayCast2D" parent="." groups=["damage_type"]]
 target_position = Vector2(52, 0)
-collision_mask = 2
+collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
 

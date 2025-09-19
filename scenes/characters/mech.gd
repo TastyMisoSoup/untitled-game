@@ -25,10 +25,11 @@ func move(input_direction) -> void:
 	move_and_slide()
 	
 func dash() -> void:
-	print("aba")
 	dashing = true
+	set_collision_mask_value(1,false)
 	$Dash_Duration.start()
-	
+
+
 
 func primary_weapon_action(target_position: Vector2) -> void:
 	$Body.primary_weapon_action(target_position)
@@ -47,4 +48,9 @@ func _on_hitbox_on_raycast_hit(amount) -> void:
 
 
 func _on_dash_duration_timeout() -> void:
+	set_collision_mask_value(1,true)
 	dashing = false
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fall":
+		queue_free()

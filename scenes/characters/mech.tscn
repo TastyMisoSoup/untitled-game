@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=10 format=3 uid="uid://bhx5a75jglkyf"]
 
 [ext_resource type="Script" uid="uid://den6bovono7qu" path="res://scenes/characters/mech.gd" id="1_xus5x"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
@@ -8,7 +8,45 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
 
+[sub_resource type="Animation" id="Animation_kaelg"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_d77dx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xwdg0"]
+_data = {
+&"RESET": SubResource("Animation_d77dx"),
+&"fall": SubResource("Animation_kaelg")
+}
+
 [node name="Mech" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_xus5x")
 
 [node name="Health" parent="." instance=ExtResource("5_75vfm")]
@@ -27,15 +65,21 @@ z_index = -1
 scale = Vector2(0.2, 0.2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(6, 6)
 process_callback = 0
 position_smoothing_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Dash_Duration" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xwdg0")
+}
 
 [connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
 [connection signal="timeout" from="Dash_Duration" to="." method="_on_dash_duration_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
