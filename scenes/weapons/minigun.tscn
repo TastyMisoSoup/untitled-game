@@ -1,27 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgn3ni3cqgvhk"]
+[gd_scene load_steps=3 format=3 uid="uid://cgn3ni3cqgvhk"]
 
 [ext_resource type="Script" uid="uid://bumvqu71mvkqi" path="res://code/minigun.gd" id="1_lhdf3"]
-[ext_resource type="Script" uid="uid://bsgrh8hjy223b" path="res://code/weapon_stats.gd" id="2_gf721"]
 [ext_resource type="Texture2D" uid="uid://c24ncxsneutkk" path="res://assets/sprites/characters/weapons/minigun.png" id="2_oir7h"]
-
-[sub_resource type="Resource" id="Resource_6ybgm"]
-script = ExtResource("2_gf721")
-weapon_damage = 2.0
-weapon_speed = 0.1
-weapon_spread = 5.0
-metadata/_custom_type_script = "uid://bsgrh8hjy223b"
 
 [node name="Minigun" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_lhdf3")
-stats = SubResource("Resource_6ybgm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(21, -7)
-rotation = 1.5707964
+rotation = 1.5708
 texture = ExtResource("2_oir7h")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.12
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(63, 8)

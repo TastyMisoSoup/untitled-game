@@ -2,25 +2,35 @@ extends CharacterBody2D
 class_name Mech
 
 const SPEED: int = 200
-var speed_modifier: float;
 const MECH_SCENE = preload("res://scenes/characters/mech.tscn")
+const MECH_CONFIG = preload("res://data/mech_config.tres")
+const VALID_MECH_BODIES: Array = ["daemon","artemis"]
+
+var speed_modifier: float;
+
 var team: String;
 var dashing: bool = false
 
 static func mech_construct(team: String,speed_modifier):
 	var mech_instance = MECH_SCENE.instantiate()
-	mech_instance.speed_modifier = speed_modifier
 	mech_instance.team = team
 	return mech_instance
 
 func _ready() -> void:
-	$Body/Minigun.team = team;
+	$Body.set_primary_weapon(MECH_CONFIG.primary_weapon)
+	$Body.set_secondary_weapon(MECH_CONFIG.secondary_weapon)
+	var mech_stats = set_mech_body(MECH_CONFIG.mech_body)
+	$Health.max_health = mech_stats.HEALTH
+	$Health.health = $Health.max_health
+	speed_modifier = mech_stats.SPEED_MODIFIER
+	$Body/Sprite2D.texture = mech_stats.TEXTURE
+	$Body.primary_weapon.team = team;
 	$Hitbox.add_to_group(team)
 
 func move(input_direction) -> void:
 	velocity = input_direction * SPEED * speed_modifier
 	if dashing:
-		velocity = velocity * 3
+		velocity = velocity * 2.5
 	$DefaultLegs.move_legs(input_direction)
 	move_and_slide()
 	
@@ -54,3 +64,9 @@ func _on_dash_duration_timeout() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fall":
 		queue_free()
+
+func set_mech_body(mech_body_str) -> Resource:
+	if VALID_MECH_BODIES.has(mech_body_str):
+		return load("res://resources/stats/mechs/"+mech_body_str+".tres")
+	else: 
+		return load("res://resources/stats/mechs/daemon.tres")

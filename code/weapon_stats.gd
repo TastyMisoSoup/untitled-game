@@ -1,7 +1,6 @@
 extends Resource
-class_name PrimaryWeaponStats
+class_name WeaponStats
 
-@export var weapon_damage: float
-@export var weapon_speed: float
-@export var energy_generation: float
-@export var weapon_spread: float
+const WEAPON_DAMAGE: int = 0
+const WEAPON_COOLDOWN: int = 0
+const WEAPON_SPREAD: int = 0

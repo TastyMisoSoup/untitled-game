@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1ep3uhysna75"
-path="res://.godot/imported/body1.png-c621627b2c4ee527ccb14e6cfe7f6754.ctex"
+path="res://.godot/imported/daemon.png-77c8c86155fd10406609b19de260977a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/bodies/body1.png"
-dest_files=["res://.godot/imported/body1.png-c621627b2c4ee527ccb14e6cfe7f6754.ctex"]
+source_file="res://assets/sprites/characters/bodies/daemon.png"
+dest_files=["res://.godot/imported/daemon.png-77c8c86155fd10406609b19de260977a.ctex"]
 
 [params]
 

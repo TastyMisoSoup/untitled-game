@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://yt6ejobvk4ox"]
+[gd_scene load_steps=5 format=3 uid="uid://yt6ejobvk4ox"]
 
 [ext_resource type="Texture2D" uid="uid://j2jpwt8xmab0" path="res://assets/icon.svg" id="1_48jjh"]
 [ext_resource type="Script" uid="uid://blltulex53y5n" path="res://scenes/characters/dummy.gd" id="1_y0810"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="2_60gta"]
 [ext_resource type="PackedScene" uid="uid://cp3n5tes2gj7j" path="res://scenes/game-mechanics/health.tscn" id="3_60gta"]
-[ext_resource type="Texture2D" uid="uid://bobksxjlayfdl" path="res://assets/sprites/map/pixil-frame-0.png" id="5_lxfyl"]
 
 [node name="Dummy" type="Node2D"]
 script = ExtResource("1_y0810")
@@ -20,36 +19,5 @@ visibility_layer = 4
 [node name="Health" parent="." instance=ExtResource("3_60gta")]
 max_health = 200.0
 health = 200.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 100.0
-offset_top = 100.0
-offset_right = 140.0
-offset_bottom = 140.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 20.425
-anchor_top = 12.15
-anchor_right = 20.425
-anchor_bottom = 12.15
-offset_right = 40.0
-offset_bottom = 49.0
-text = "hello
-"
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-value = 100.0
-texture_progress = ExtResource("5_lxfyl")
 
 [connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]

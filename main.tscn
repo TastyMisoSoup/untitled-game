@@ -10,7 +10,7 @@
 [node name="Map1" parent="." instance=ExtResource("1_h2yge")]
 
 [node name="Dummy" parent="Map1" instance=ExtResource("2_0xm2m")]
-position = Vector2(675, 496)
+position = Vector2(1064, 567)
 
 [node name="Player" parent="Map1" instance=ExtResource("2_ljixv")]
 position = Vector2(556, 422)

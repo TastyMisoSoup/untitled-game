@@ -1,18 +1,13 @@
-extends Weapon
+extends PrimaryWeapon
 
-@export var stats: PrimaryWeaponStats
-var damage: float
+const SPREAD_AMOUNT:int = 5;
+const DAMAGE: float = 4
+
 var weapon_ready: bool = false
-var spread_amount:int;
 var target_position: Vector2;
 var team: String;
 var projectile = preload("res://scenes/weapons/projectiles/ray_cast_projectile.tscn")
-
-func _ready() -> void:
-	$Timer.wait_time = stats.weapon_speed
-	damage = stats.weapon_damage
-	spread_amount = 5
-
+	
 func _process(delta: float) -> void:
 	var deadzone: bool
 	
@@ -24,8 +19,8 @@ func _process(delta: float) -> void:
 		else:
 			deadzone = false
 
-		var bullet_offset_x = (randi_range(-spread_amount,spread_amount)) #bullet spread
-		var bullet_offset_y = (randi_range(-spread_amount,spread_amount))
+		var bullet_offset_x = (randi_range(-SPREAD_AMOUNT,SPREAD_AMOUNT)) #bullet spread
+		var bullet_offset_y = (randi_range(-SPREAD_AMOUNT,SPREAD_AMOUNT))
 		target_position.y = target_position.y + bullet_offset_y
 		target_position.x = target_position.x + bullet_offset_x
 		var projectile_instance = RayCastProjectile.projectile_construct(deadzone, $Marker2D.position, target_position, team)

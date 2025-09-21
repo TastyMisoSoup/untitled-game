@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlxwpufodemyy"]
+
+[ext_resource type="Texture2D" uid="uid://rklj8mk7kg83" path="res://assets/sprites/characters/weapons/grenade-launcher.png" id="1_wch8v"]
+
+[node name="GrenadeLauncher" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("1_wch8v")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(41, -10)
+rotation = 1.5708

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://etoj0hcs0bo7"]
+
+[ext_resource type="Script" uid="uid://bllelh848aueo" path="res://resources/stats/mechs/artemis.gd" id="1_faf53"]
+
+[resource]
+script = ExtResource("1_faf53")
