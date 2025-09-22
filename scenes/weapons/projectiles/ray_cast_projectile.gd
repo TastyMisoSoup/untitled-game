@@ -5,18 +5,20 @@ var deadzone: bool;
 var target_position: Vector2;
 var start_position: Vector2;
 var team: String;
+var self_hitbox: HurtBox;
 
 var one_shot: bool
 var resource: Resource;
 const PROJECTILE_SCENE = preload("res://scenes/weapons/projectiles/ray_cast_projectile.tscn")
 
 
-static func projectile_construct(deadzone: bool,start_position:Vector2, target_position:Vector2, team: String):
+static func projectile_construct(deadzone: bool,start_position:Vector2, target_position:Vector2, team: String, self_hitbox:HurtBox):
 	var projectile_instance = PROJECTILE_SCENE.instantiate()
 	projectile_instance.deadzone = deadzone
 	projectile_instance.start_position = start_position
 	projectile_instance.target_position = target_position
 	projectile_instance.team = team
+	projectile_instance.self_hitbox = self_hitbox
 	return projectile_instance
 
 
@@ -24,6 +26,7 @@ func _ready() -> void:
 	one_shot = true
 	$Line2D.position = start_position
 	$RayCast2D.position = start_position
+	$RayCast2D.add_exception(self_hitbox)
 	if(deadzone):
 		$RayCast2D.set_target_position(target_position)
 		$Line2D.set_point_position(1,target_position)
@@ -39,10 +42,11 @@ func _process(delta: float) -> void:
 		if collider.is_in_group("hurt_box") && !collider.is_in_group(team):
 			$RayCast2D.enabled = false
 			collider.raycast_hit(-5)
+		$RayCast2D.target_position = $RayCast2D.to_local(collision_point)
 		$Line2D.set_point_position(1,($Line2D.to_local(collision_point)))
 	self.reparent(ProjectileManager)
-	$Line2D.visible = true
 	if one_shot:
+		$Line2D.visible = true
 		$AnimationPlayer.play("shoot")
 	if !$AnimationPlayer.is_playing():
 		queue_free()

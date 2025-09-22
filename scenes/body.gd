@@ -15,7 +15,7 @@ func primary_weapon_action(target_position) -> void:
 func primary_weapon_action_stop() -> void:
 	primary_weapon.stop_action()
 
-func set_primary_weapon(primary_weapon_str) -> void:
+func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox) -> void:
 	var weapon_scene;
 	if VALID_PRIMARY_WEAPONS.has(primary_weapon_str):
 		weapon_scene = load("res://scenes/weapons/" + primary_weapon_str + ".tscn")
@@ -23,10 +23,11 @@ func set_primary_weapon(primary_weapon_str) -> void:
 		weapon_scene = load("res://scenes/weapons/minigun.tscn")
 	var weapon_instance = weapon_scene.instantiate()
 	weapon_instance.position = $PrimaryWeaponPosMarker.position
+	weapon_instance.self_hitbox = self_hitbox
 	add_child(weapon_instance)
 	primary_weapon = weapon_instance
 
-func set_secondary_weapon(secondary_weapon_str) -> void:
+func set_secondary_weapon(secondary_weapon_str: String, self_hitbox:HurtBox) -> void:
 	var weapon_scene;
 	if VALID_SECONDARY_WEAPONS.has(secondary_weapon_str):
 		weapon_scene = load("res://scenes/weapons/" + secondary_weapon_str + ".tscn")

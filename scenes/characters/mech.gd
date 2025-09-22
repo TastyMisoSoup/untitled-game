@@ -17,8 +17,8 @@ static func mech_construct(team: String,speed_modifier):
 	return mech_instance
 
 func _ready() -> void:
-	$Body.set_primary_weapon(MECH_CONFIG.primary_weapon)
-	$Body.set_secondary_weapon(MECH_CONFIG.secondary_weapon)
+	$Body.set_primary_weapon(MECH_CONFIG.primary_weapon, $Hitbox)
+	$Body.set_secondary_weapon(MECH_CONFIG.secondary_weapon, $Hitbox)
 	var mech_stats = set_mech_body(MECH_CONFIG.mech_body)
 	$Health.max_health = mech_stats.HEALTH
 	$Health.health = $Health.max_health
