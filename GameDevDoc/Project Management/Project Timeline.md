@@ -1,0 +1,71 @@
+- Month 1 (Base Game):
+	- Week 1:
+		- Create Basic Character scene
+		- Add basic character controls
+		- Create Basic Primary Weapon scene
+		- Create Hitbox scene
+		- Create git repo
+		- Start documentation
+	- Week 2:
+		- Create basic tilemap and map scene
+		- Improve functionality of weapon and character
+		- Create Health System scene
+	- Week 3:
+		- Setup Mech Rigging to make it adaptable for custom Mechs
+	- Week 4:
+		- Create Title Menu
+		- Create Ingame Menu
+		- Create basic HUD
+- Month 2 (Multiplayer Compatibility):
+	- Week 1:
+		- Setup MultiplayerSpawner scene
+		- Setup Basic MultiplayerSync
+		- Setup Server Creation
+		- Create Join Game UI element
+	- Week 2:
+		- Setup Death respawn 
+		- Setup MultiplayerSync for most if not all relevant nodes
+		- Start working on a Create Server UI element
+		- Start Public Testing
+	- Week 3:
+		- Finish Create Server UI element
+		- Setup Score System
+		- Test, Bug Fix
+	- Week 4:
+		- Start Mech Customization
+		- Setup Energy System
+		- Add Basic Secondary Weapon
+		- Test, Bug Fix
+- Month 3 (Adding more features):
+	- Week 1:
+		- Setup Pitfalls and Hazards
+		- Create Power ups and their spawns
+		- Refine UI elements
+		- Test, Bug Fix
+	- Week 2:
+		- Create more Weapons
+		- Create healing scrap drops
+		- Add more maps
+		- Test, Bug Fix
+	- Week 3:
+		- Create more Weapons
+		- Refine, Test, Bug Fix
+		- Try deploying game to a dedicated server
+	- Week 4: 
+		- Create more Weapons
+		- Refine, Test, Bug Fix
+		- Try deploying game to a dedicated server
+- Month 4 (Refining)
+	- Week 1:
+		- Start proper documentation
+		- Add spectator mode just to record the game
+		- Refine, Test, Bug Fix
+	- Week 2:
+		- Create presentation
+		- Refine, Test, Bug Fix
+	- Week 3:
+		- Push to main
+		- Refine, Test, Bug Fix
+	- Week 4:
+		- Code Freeze (no more features)
+		- Refine, Test, Bug Fix
