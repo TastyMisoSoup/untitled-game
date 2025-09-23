@@ -1,15 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://diw44y0a4nm72"]
+[gd_scene load_steps=8 format=3 uid="uid://cxhh1j6q0k44y"]
 
-[ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_1kvwn"]
-[ext_resource type="Texture2D" uid="uid://bvg8w8r1v3lxv" path="res://assets/media/Screenshot 2025-09-22 202952.png" id="1_7sc1q"]
-[ext_resource type="Script" uid="uid://dqx8ct4qqb8ua" path="res://scenes/ui-elements/title_menu.gd" id="1_523r4"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_523r4"]
-texture = ExtResource("1_7sc1q")
-modulate_color = Color(0.262933, 0.262932, 0.262932, 1)
-
-[sub_resource type="Theme" id="Theme_gqhwi"]
-Panel/styles/panel = SubResource("StyleBoxTexture_523r4")
+[ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_miyc0"]
+[ext_resource type="Script" uid="uid://b0yokv1e2ijf4" path="res://scenes/ui-elements/game_menu.gd" id="1_ug53h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqhwi"]
 bg_color = Color(0.245667, 0.278862, 0.340845, 1)
@@ -47,12 +39,12 @@ border_color = Color(0.105882, 0.156863, 0.258824, 1)
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="Theme" id="Theme_578qx"]
+[sub_resource type="Theme" id="Theme_ug53h"]
 Button/colors/font_outline_color = Color(0.105882, 0.156863, 0.258824, 1)
 Button/colors/font_pressed_color = Color(0.716296, 0.716296, 0.716296, 1)
 Button/constants/outline_size = 20
 Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("1_1kvwn")
+Button/fonts/font = ExtResource("1_miyc0")
 Button/styles/disabled = SubResource("StyleBoxFlat_gqhwi")
 Button/styles/focus = SubResource("StyleBoxFlat_523r4")
 Button/styles/hover = SubResource("StyleBoxFlat_7sc1q")
@@ -60,20 +52,16 @@ Button/styles/hover_pressed = SubResource("StyleBoxFlat_7sc1q")
 Button/styles/normal = SubResource("StyleBoxFlat_7sc1q")
 Button/styles/pressed = SubResource("StyleBoxFlat_1kvwn")
 
-[sub_resource type="LabelSettings" id="LabelSettings_1kvwn"]
-font = ExtResource("1_1kvwn")
-font_size = 96
-outline_size = 32
-outline_color = Color(0, 0, 0, 1)
-
-[node name="TitleMenu" type="Control"]
+[node name="GameMenu" type="Control"]
+visible = false
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_523r4")
+script = ExtResource("1_ug53h")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -82,33 +70,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_gqhwi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.361111
-anchor_top = 0.265432
-anchor_right = 0.638889
-anchor_bottom = 0.959877
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -20.0
+offset_right = 160.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_578qx")
-theme_override_constants/separation = 25
-alignment = 1
-metadata/_edit_use_anchors_ = true
+theme = SubResource("Theme_ug53h")
+theme_override_constants/separation = 20
 
-[node name="CreateGame" type="Button" parent="VBoxContainer"]
+[node name="ResumeGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "Create Game"
-
-[node name="JoinGame" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-disabled = true
-text = "Join Game"
+text = "Resume"
 
 [node name="MechBay" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -122,24 +104,10 @@ focus_mode = 0
 disabled = true
 text = "Settings"
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="LeaveServer" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "Exit"
+text = "Leave Server"
 
-[node name="Label" type="Label" parent="."]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -278.0
-offset_top = 69.0
-offset_right = 278.0
-offset_bottom = 189.0
-grow_horizontal = 2
-text = "Untitled Game"
-label_settings = SubResource("LabelSettings_1kvwn")
-
-[connection signal="pressed" from="VBoxContainer/CreateGame" to="." method="_on_create_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResumeGame" to="." method="_on_resume_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/LeaveServer" to="." method="_on_leave_server_pressed"]

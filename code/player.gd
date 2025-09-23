@@ -2,6 +2,7 @@ extends Node2D
 
 @export var team_number: int;
 var team: String 
+var open_menu: bool = false
 const SPEED = 200.0
 
 func _ready() -> void:
@@ -10,8 +11,10 @@ func _ready() -> void:
 	add_child(mech_instance)
 
 func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	
+	if open_menu:
+		return
+	
 	if self.has_node("Mech"):
 		var input_direction := Input.get_vector("move_left", "move_right","move_up","move_down")
 		if Input.is_action_pressed("attack"):
@@ -29,3 +32,7 @@ func _on_hitbox_on_raycast_hit(amount) -> void:
 	if $Mech/Health.health <= 0:
 		queue_free()
 	print($Mech/Health.health)
+
+
+func _on_game_menu_menu_visibility_change(open: bool) -> void:
+	open_menu = open
