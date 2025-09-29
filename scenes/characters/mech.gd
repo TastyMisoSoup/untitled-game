@@ -4,7 +4,6 @@ class_name Mech
 const SPEED: int = 200
 const MECH_SCENE = preload("res://scenes/characters/mech.tscn")
 const MECH_CONFIG = preload("res://data/mech_config.tres")
-const VALID_MECH_BODIES: Array = ["daemon","artemis"]
 
 var speed_modifier: float;
 
@@ -22,6 +21,10 @@ func _ready() -> void:
 	var mech_stats = set_mech_body(MECH_CONFIG.mech_body)
 	$Health.max_health = mech_stats.HEALTH
 	$Health.health = $Health.max_health
+	$HealthBar.max_value = $Health.max_health
+	$HealthBar.value = $Health.max_health
+	$CanvasLayer/HealthBarHUD.max_health = $Health.max_health
+	$CanvasLayer/HealthBarHUD.health = $Health.max_health
 	speed_modifier = mech_stats.SPEED_MODIFIER
 	$Body/Sprite2D.texture = mech_stats.TEXTURE
 	$Body.primary_weapon.team = team;
@@ -52,9 +55,12 @@ func mech_look_at(target_position: Vector2) -> void:
 
 func _on_hitbox_on_raycast_hit(amount) -> void:
 	$Health.change_health(amount)
+	$HealthBar.value += amount
+	$CanvasLayer/HealthBarHUD.change_health(amount)
+	print($CanvasLayer/HealthBarHUD.has_node("HealthBarLarge"))
+	print($CanvasLayer/HealthBarHUD.get_node("HealthBarLarge").value)
 	if $Health.health <= 0:
 		queue_free()
-	print($Health.health)
 
 
 func _on_dash_duration_timeout() -> void:
@@ -66,7 +72,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		queue_free()
 
 func set_mech_body(mech_body_str) -> Resource:
-	if VALID_MECH_BODIES.has(mech_body_str):
+	if ValidScenePaths.MECH_BODIES.has(mech_body_str):
 		return load("res://resources/stats/mechs/"+mech_body_str+".tres")
 	else: 
 		return load("res://resources/stats/mechs/daemon.tres")

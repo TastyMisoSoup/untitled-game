@@ -1,12 +1,14 @@
 extends Node2D
 class_name Body
 
-const VALID_PRIMARY_WEAPONS: Array = ["minigun"]
-const VALID_SECONDARY_WEAPONS: Array = ["grenade-launcher"]
+const MECH_CONFIG = preload("res://data/mech_config.tres")
 
 var primary_weapon: PrimaryWeapon;
 var secondary_weapon: SecondaryWeapon;
 
+
+func _ready() -> void:
+	var energy
 
 func primary_weapon_action(target_position) -> void:
 	primary_weapon.action()
@@ -17,7 +19,7 @@ func primary_weapon_action_stop() -> void:
 
 func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox) -> void:
 	var weapon_scene;
-	if VALID_PRIMARY_WEAPONS.has(primary_weapon_str):
+	if ValidScenePaths.PRIMARY_WEAPONS.has(primary_weapon_str):
 		weapon_scene = load("res://scenes/weapons/" + primary_weapon_str + ".tscn")
 	else:
 		weapon_scene = load("res://scenes/weapons/minigun.tscn")
@@ -29,10 +31,16 @@ func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox) -> void
 
 func set_secondary_weapon(secondary_weapon_str: String, self_hitbox:HurtBox) -> void:
 	var weapon_scene;
-	if VALID_SECONDARY_WEAPONS.has(secondary_weapon_str):
+	if ValidScenePaths.SECONDARY_WEAPONS.has(secondary_weapon_str):
 		weapon_scene = load("res://scenes/weapons/" + secondary_weapon_str + ".tscn")
 	else:
 		weapon_scene = load("res://scenes/weapons/grenade-launcher.tscn")
 	var weapon_instance = weapon_scene.instantiate()
 	weapon_instance.position = $SecondaryWeaponPosMarker.position
 	add_child(weapon_instance)
+
+func set_mech_body(mech_body_str) -> Resource:
+	if ValidScenePaths.MECH_BODIES.has(mech_body_str):
+		return load("res://resources/stats/mechs/"+mech_body_str+".tres")
+	else: 
+		return load("res://resources/stats/mechs/daemon.tres")

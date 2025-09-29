@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=13 format=3 uid="uid://bhx5a75jglkyf"]
 
 [ext_resource type="Script" uid="uid://den6bovono7qu" path="res://scenes/characters/mech.gd" id="1_xus5x"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
 [ext_resource type="PackedScene" uid="uid://cp3n5tes2gj7j" path="res://scenes/game-mechanics/health.tscn" id="5_75vfm"]
 [ext_resource type="PackedScene" uid="uid://c3www0d1imvsy" path="res://scenes/characters/default_mech_legs.tscn" id="5_dlmw4"]
-[ext_resource type="PackedScene" uid="uid://cfybigipdafem" path="res://scenes/body.tscn" id="5_p47bc"]
+[ext_resource type="PackedScene" uid="uid://cfybigipdafem" path="res://scenes/characters/body.tscn" id="5_p47bc"]
+[ext_resource type="PackedScene" uid="uid://cb88ujjnogrjm" path="res://scenes/ui-elements/hud/healthbar_hud.tscn" id="6_kaelg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
 
@@ -44,14 +45,18 @@ _data = {
 &"fall": SubResource("Animation_kaelg")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xus5x"]
+bg_color = Color(0.187176, 0.187176, 0.187176, 0.529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kaelg"]
+bg_color = Color(0.318688, 0.689269, 0.447871, 1)
+
 [node name="Mech" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_xus5x")
 
 [node name="Health" parent="." instance=ExtResource("5_75vfm")]
-max_health = 100.0
-health = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bsyqu")
@@ -79,6 +84,26 @@ one_shot = true
 libraries = {
 &"": SubResource("AnimationLibrary_xwdg0")
 }
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -22.0
+offset_right = 11.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_xus5x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kaelg")
+show_percentage = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBarHUD" parent="CanvasLayer" instance=ExtResource("6_kaelg")]
 
 [connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
 [connection signal="timeout" from="Dash_Duration" to="." method="_on_dash_duration_timeout"]
