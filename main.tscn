@@ -16,4 +16,7 @@ position = Vector2(1064, 567)
 position = Vector2(556, 422)
 team_number = 1
 
+[node name="Player2" parent="Map1" instance=ExtResource("2_ljixv")]
+position = Vector2(600, 458)
+
 [node name="Projectile_Manager" parent="." instance=ExtResource("4_1bvp3")]

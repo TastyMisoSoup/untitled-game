@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfybigipdafem"]
 
-[ext_resource type="Script" uid="uid://dv0eg88173272" path="res://scenes/body.gd" id="1_f5bqu"]
+[ext_resource type="Script" uid="uid://dv0eg88173272" path="res://scenes/characters/body.gd" id="1_f5bqu"]
 [ext_resource type="Texture2D" uid="uid://b1ep3uhysna75" path="res://assets/sprites/characters/bodies/daemon.png" id="2_lgxe7"]
 
 [node name="Body" type="Node2D"]
