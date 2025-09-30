@@ -1,71 +1,75 @@
+**DEADLINE FIRST PRESENTATION:** 21.11.2025
+**DEADLINE FINAL PRESENTATION:** 24.1.2026
+
+
 - Month 1 (Base Game):
-	- Week 1:
+	- Week 1 **(04.09.2025)**:
 		- Create Basic Character scene
 		- Add basic character controls
 		- Create Basic Primary Weapon scene
 		- Create Hitbox scene
 		- Create git repo
 		- Start documentation
-	- Week 2:
+	- Week 2 **(08.09.2025)**:
 		- Create basic tilemap and map scene
 		- Improve functionality of weapon and character
 		- Create Health System scene
-	- Week 3:
+	- Week 3 **(15.09.2025)**:
 		- Setup Mech Rigging to make it adaptable for custom Mechs
-	- Week 4:
+	- Week 4 **(22.09.2025)**:
 		- Create Title Menu
 		- Create Ingame Menu
 		- Create basic HUD
 - Month 2 (Multiplayer Compatibility):
-	- Week 1:
+	- Week 1 **(29.09.2025)**:
 		- Setup MultiplayerSpawner scene
 		- Setup Basic MultiplayerSync
 		- Setup Server Creation
 		- Create Join Game UI element
-	- Week 2:
+	- Week 2 **(06.10.2025)**:
 		- Setup Death respawn 
 		- Setup MultiplayerSync for most if not all relevant nodes
 		- Start working on a Create Server UI element
 		- Start Public Testing
-	- Week 3:
+	- Week 3 **(13.10.2025)**:
 		- Finish Create Server UI element
 		- Setup Score System
 		- Test, Bug Fix
-	- Week 4:
+	- Week 4 **(20.10.2025)**:
 		- Start Mech Customization
 		- Setup Energy System
 		- Add Basic Secondary Weapon
 		- Test, Bug Fix
 - Month 3 (Adding more features):
-	- Week 1:
+	- Week 1 **(27.10.2025)**:
 		- Setup Pitfalls and Hazards
 		- Create Power ups and their spawns
 		- Refine UI elements
 		- Test, Bug Fix
-	- Week 2:
+	- Week 2 **(03.11.2025)**:
 		- Create more Weapons
 		- Create healing scrap drops
 		- Add more maps
 		- Test, Bug Fix
-	- Week 3:
+	- Week 3 **(10.11.2025)**:
 		- Create more Weapons
 		- Refine, Test, Bug Fix
 		- Try deploying game to a dedicated server
-	- Week 4: 
+	- Week 4 **(17.11.2025)**: 
 		- Create more Weapons
 		- Refine, Test, Bug Fix
 		- Try deploying game to a dedicated server
 - Month 4 (Refining)
-	- Week 1:
+	- Week 1 **(24.11.2025)**:
 		- Start proper documentation
 		- Add spectator mode just to record the game
 		- Refine, Test, Bug Fix
-	- Week 2:
+	- Week 2 **(01.12.2025)**:
 		- Create presentation
 		- Refine, Test, Bug Fix
-	- Week 3:
+	- Week 3 **(28.09.2025)**:
 		- Push to main
 		- Refine, Test, Bug Fix
-	- Week 4:
+	- Week 4 **(28.09.2025)**:
 		- Code Freeze (no more features)
 		- Refine, Test, Bug Fix
