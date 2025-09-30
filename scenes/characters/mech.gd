@@ -19,12 +19,9 @@ func _ready() -> void:
 	$Body.set_primary_weapon(MECH_CONFIG.primary_weapon, $Hitbox)
 	$Body.set_secondary_weapon(MECH_CONFIG.secondary_weapon, $Hitbox)
 	var mech_stats = set_mech_body(MECH_CONFIG.mech_body)
-	$Health.max_health = mech_stats.HEALTH
-	$Health.health = $Health.max_health
-	$HealthBar.max_value = $Health.max_health
-	$HealthBar.value = $Health.max_health
-	$CanvasLayer/HealthBarHUD.max_health = $Health.max_health
-	$CanvasLayer/HealthBarHUD.health = $Health.max_health
+	$HealthPlayer.max_health = mech_stats.HEALTH
+	$HealthPlayer.health = $HealthPlayer.max_health
+	$HealthPlayer.update()
 	speed_modifier = mech_stats.SPEED_MODIFIER
 	$Body/Sprite2D.texture = mech_stats.TEXTURE
 	$Body.primary_weapon.team = team;
@@ -54,12 +51,8 @@ func mech_look_at(target_position: Vector2) -> void:
 	$Body.look_at(target_position)
 
 func _on_hitbox_on_raycast_hit(amount) -> void:
-	$Health.change_health(amount)
-	$HealthBar.value += amount
-	$CanvasLayer/HealthBarHUD.change_health(amount)
-	print($CanvasLayer/HealthBarHUD.has_node("HealthBarLarge"))
-	print($CanvasLayer/HealthBarHUD.get_node("HealthBarLarge").value)
-	if $Health.health <= 0:
+	$HealthPlayer.change_health(amount)
+	if $HealthPlayer.health <= 0:
 		queue_free()
 
 

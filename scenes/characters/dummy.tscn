@@ -23,6 +23,8 @@ light_mask = 4
 visibility_layer = 4
 
 [node name="Health" parent="." instance=ExtResource("3_60gta")]
+max_health = 200.0
+health = 200.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 8

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpi6en614y70v"]
+
+[ext_resource type="Theme" uid="uid://c87lnnw1qt7hm" path="res://scenes/ui-elements/themes/health_bar.tres" id="1_2cun5"]
+[ext_resource type="Script" uid="uid://c1v56v4gj13vp" path="res://scenes/ui-elements/misc/health_bar.gd" id="1_401pk"]
+
+[node name="HealthBar" type="ProgressBar"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -22.0
+offset_right = 11.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2cun5")
+value = 100.0
+show_percentage = false
+script = ExtResource("1_401pk")

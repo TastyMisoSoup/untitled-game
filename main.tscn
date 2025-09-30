@@ -10,13 +10,13 @@
 [node name="Map1" parent="." instance=ExtResource("1_h2yge")]
 
 [node name="Dummy" parent="Map1" instance=ExtResource("2_0xm2m")]
-position = Vector2(1064, 567)
+position = Vector2(317, 278)
 
 [node name="Player" parent="Map1" instance=ExtResource("2_ljixv")]
-position = Vector2(556, 422)
+position = Vector2(122, 169)
 team_number = 1
 
 [node name="Player2" parent="Map1" instance=ExtResource("2_ljixv")]
-position = Vector2(600, 458)
+position = Vector2(164, 285)
 
 [node name="Projectile_Manager" parent="." instance=ExtResource("4_1bvp3")]
