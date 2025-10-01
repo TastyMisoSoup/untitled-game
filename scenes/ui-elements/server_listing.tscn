@@ -1,0 +1,176 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8dwsmvmrisea"]
+
+[ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_u5gfi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqhwi"]
+bg_color = Color(0.245667, 0.278862, 0.340845, 1)
+border_color = Color(0.247059, 0.278431, 0.341176, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_523r4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.52082, 0.644771, 0.863356, 1)
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sc1q"]
+bg_color = Color(0.243137, 0.368627, 0.596078, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.105882, 0.156863, 0.258824, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kvwn"]
+bg_color = Color(0.178263, 0.281201, 0.468215, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.105882, 0.156863, 0.258824, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7pj0"]
+bg_color = Color(0.243137, 0.368627, 0.596078, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.105882, 0.156863, 0.258824, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Theme" id="Theme_ddc58"]
+Button/colors/font_outline_color = Color(0.105882, 0.156863, 0.258824, 1)
+Button/colors/font_pressed_color = Color(0.716296, 0.716296, 0.716296, 1)
+Button/constants/outline_size = 20
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_u5gfi")
+Button/styles/disabled = SubResource("StyleBoxFlat_gqhwi")
+Button/styles/focus = SubResource("StyleBoxFlat_523r4")
+Button/styles/hover = SubResource("StyleBoxFlat_7sc1q")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_7sc1q")
+Button/styles/normal = SubResource("StyleBoxFlat_7sc1q")
+Button/styles/pressed = SubResource("StyleBoxFlat_1kvwn")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_h7pj0")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_right = -112.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_ddc58")
+
+[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_u5gfi")
+theme_override_font_sizes/font_size = 24
+text = "IP Address: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/PanelContainer/BoxContainer/Label"]
+texture_filter = 1
+layout_mode = 2
+offset_top = 34.0
+offset_right = 110.0
+offset_bottom = 65.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_u5gfi")
+theme_override_font_sizes/font_size = 24
+text = "IP Address: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/PanelContainer/BoxContainer/Label2"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 114.0
+offset_right = 182.562
+offset_bottom = 31.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/PanelContainer/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_u5gfi")
+theme_override_font_sizes/font_size = 24
+text = "IP Address: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/PanelContainer/BoxContainer/Label3"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 114.0
+offset_right = 182.562
+offset_bottom = 31.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="VBoxContainer/PanelContainer/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_u5gfi")
+theme_override_font_sizes/font_size = 24
+text = "IP Address: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/PanelContainer/BoxContainer/Label4"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.02727
+anchor_top = 0.5
+anchor_right = 1.02727
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 68.5625
+offset_bottom = 15.5
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
