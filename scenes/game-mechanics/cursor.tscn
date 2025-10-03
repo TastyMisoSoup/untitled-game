@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://deen3ednrcsc2"]
+
+[ext_resource type="Script" uid="uid://bk57dsejpptv7" path="res://scenes/game-mechanics/cursor.gd" id="1_a7sml"]
+[ext_resource type="Shader" uid="uid://ckkn7n2gien6f" path="res://shaders/cursor.gdshader" id="1_wnjpa"]
+[ext_resource type="Texture2D" uid="uid://xbvmdpi1srw3" path="res://assets/icons/cursor.png" id="2_a7sml"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l1v65"]
+shader = ExtResource("1_wnjpa")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_a7sml")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_l1v65")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_a7sml")

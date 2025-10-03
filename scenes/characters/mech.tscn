@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=10 format=3 uid="uid://bhx5a75jglkyf"]
 
 [ext_resource type="Script" uid="uid://den6bovono7qu" path="res://scenes/characters/mech.gd" id="1_xus5x"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
-[ext_resource type="PackedScene" uid="uid://cp3n5tes2gj7j" path="res://scenes/game-mechanics/health.tscn" id="5_75vfm"]
 [ext_resource type="PackedScene" uid="uid://c3www0d1imvsy" path="res://scenes/characters/default_mech_legs.tscn" id="5_dlmw4"]
 [ext_resource type="PackedScene" uid="uid://cfybigipdafem" path="res://scenes/characters/body.tscn" id="5_p47bc"]
 [ext_resource type="PackedScene" uid="uid://bsshhtnxfy1ln" path="res://scenes/game-mechanics/health_player.tscn" id="6_kaelg"]
@@ -50,8 +49,6 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_xus5x")
 
-[node name="Health" parent="." instance=ExtResource("5_75vfm")]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bsyqu")
 
@@ -71,7 +68,7 @@ position_smoothing_enabled = true
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Dash_Duration" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.22
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

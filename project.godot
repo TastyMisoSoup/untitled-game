@@ -24,8 +24,8 @@ ValidScenePaths="*res://resources/singletons/valid_scene_paths.gd"
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-mouse_cursor/custom_image="uid://cevdjrowchkh4"
-mouse_cursor/custom_image_hotspot=Vector2(24, 24)
+mouse_cursor/custom_image="uid://xbvmdpi1srw3"
+mouse_cursor/custom_image_hotspot=Vector2(32, 32)
 
 [dotnet]
 
@@ -43,7 +43,8 @@ folder_colors={
 "res://scenes/characters/": "green",
 "res://scenes/game-mechanics/": "pink",
 "res://scenes/ui-elements/": "teal",
-"res://scenes/weapons/": "orange"
+"res://scenes/weapons/": "orange",
+"res://shaders/": "pink"
 }
 
 [global_group]
