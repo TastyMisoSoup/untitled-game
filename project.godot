@@ -24,8 +24,6 @@ ValidScenePaths="*res://resources/singletons/valid_scene_paths.gd"
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-mouse_cursor/custom_image="uid://xbvmdpi1srw3"
-mouse_cursor/custom_image_hotspot=Vector2(32, 32)
 
 [dotnet]
 

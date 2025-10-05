@@ -30,7 +30,7 @@ func _ready() -> void:
 func move(input_direction) -> void:
 	velocity = input_direction * SPEED * speed_modifier
 	if dashing:
-		velocity = velocity * 2.5
+		velocity = velocity * 2.4
 	$DefaultLegs.move_legs(input_direction)
 	move_and_slide()
 	

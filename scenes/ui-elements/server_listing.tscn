@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b8dwsmvmrisea"]
+[gd_scene load_steps=35 format=3 uid="uid://b8dwsmvmrisea"]
 
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_u5gfi"]
 [ext_resource type="Texture2D" uid="uid://bvg8w8r1v3lxv" path="res://assets/media/Screenshot 2025-09-22 202952.png" id="2_ddc58"]
@@ -70,7 +70,19 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_h7pj0")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_smyrn"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5gfi"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j82ms"]
+bg_color = Color(0.723719, 0.278443, 0.283106, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.462745, 0.223529, 0.247059, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_right = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndx0u"]
 bg_color = Color(0.723719, 0.278443, 0.283106, 1)
@@ -114,8 +126,8 @@ corner_radius_bottom_left = 4
 expand_margin_left = 5.0
 expand_margin_right = 5.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j82ms"]
-bg_color = Color(0.723719, 0.278443, 0.283106, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t1b0"]
+bg_color = Color(0.927784, 0.549301, 0.534808, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -127,6 +139,45 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 expand_margin_left = 5.0
 expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ary1s"]
+bg_color = Color(0.382887, 0.572043, 0.456131, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.105882, 0.443137, 0.117647, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dveyf"]
+bg_color = Color(0.47451, 1, 0.494118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.105882, 0.443137, 0.117647, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbpxr"]
+bg_color = Color(0.733333, 0.988235, 0.713726, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.105882, 0.443137, 0.117647, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyvuw"]
 bg_color = Color(0.47451, 1, 0.494118, 1)
@@ -143,10 +194,18 @@ corner_detail = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k585w"]
 bg_color = Color(0.105882, 0.156863, 0.258824, 1)
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jfcap"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k585w"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oiwxx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j82ms"]
 
@@ -158,14 +217,18 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whfys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ary1s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbpxr"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyvuw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3t1b0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ddc58"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5gfi"]
-bg_color = Color(1, 0.807843, 0.501961, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiwxx"]
+bg_color = Color(1, 0.821291, 0.540029, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -178,8 +241,8 @@ corner_radius_bottom_left = 6
 corner_detail = 4
 shadow_color = Color(0.462745, 0.223529, 0.247059, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddc58"]
-bg_color = Color(0.780392, 0.623529, 0.372549, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5gfi"]
+bg_color = Color(0.895191, 0.679038, 0.31064, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -189,7 +252,7 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-corner_detail = 1
+corner_detail = 4
 shadow_color = Color(0.462745, 0.223529, 0.247059, 1)
 
 [node name="Control" type="Control"]
@@ -264,13 +327,13 @@ theme_override_colors/font_focus_color = Color(0.462745, 0.223529, 0.247059, 1)
 theme_override_colors/font_pressed_color = Color(0.462745, 0.223529, 0.247059, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 16
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u5gfi")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_j82ms")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ndx0u")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lvckw")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_smyrn")
-theme_override_styles/hover = SubResource("StyleBoxFlat_smyrn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3t1b0")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_j82ms")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_j82ms")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_smyrn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_smyrn")
 text = "Back to Menu"
 alignment = 2
@@ -288,6 +351,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 2
@@ -307,6 +371,8 @@ text = "Ip Address:"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 2
+emoji_menu_enabled = false
+clear_button_enabled = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
@@ -323,7 +389,14 @@ layout_mode = 2
 size_flags_vertical = 2
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_hover_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_pressed_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 10
 theme_override_font_sizes/font_size = 24
 text = "Custom IP"
@@ -361,12 +434,19 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_hover_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_pressed_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 10
 theme_override_font_sizes/font_size = 24
 text = "Spectator Mode"
@@ -376,6 +456,12 @@ flat = true
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_hover_pressed_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_hover_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_colors/font_pressed_color = Color(0.105882, 0.156863, 0.258824, 1)
+theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 10
 theme_override_font_sizes/font_size = 24
 text = "Power-Ups"
@@ -385,16 +471,24 @@ flat = true
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 10
+theme_override_colors/font_hover_pressed_color = Color(0.105882, 0.443137, 0.117647, 1)
+theme_override_colors/font_hover_color = Color(0.105882, 0.443137, 0.117647, 1)
 theme_override_colors/font_color = Color(0.105882, 0.443137, 0.117647, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 0.443137, 0.117647, 1)
+theme_override_colors/font_pressed_color = Color(0.105882, 0.443137, 0.117647, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 24
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ary1s")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_dveyf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wbpxr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dveyf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cyvuw")
 text = "Create Game"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2"]
@@ -427,9 +521,18 @@ theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/icon_hover_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.505344, 0.505344, 0.505344, 1)
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jfcap")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k585w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oiwxx")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_j82ms")
 icon = ExtResource("3_lvckw")
+icon_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
 self_modulate = Color(0.588235, 0.588235, 0.588235, 1)
@@ -456,11 +559,18 @@ expand_mode = 3
 stretch_mode = 6
 
 [node name="Button2" type="Button" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/icon_hover_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_colors/icon_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
 theme_override_icons/icon = ExtResource("4_ndx0u")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_whfys")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ary1s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wbpxr")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cyvuw")
 icon = ExtResource("4_ndx0u")
-icon_alignment = 2
+icon_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -551,8 +661,7 @@ theme_override_colors/font_focus_color = Color(0.462745, 0.223529, 0.247059, 1)
 theme_override_colors/font_pressed_color = Color(0.462745, 0.223529, 0.247059, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 24
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ddc58")
-theme_override_styles/hover = SubResource("StyleBoxFlat_u5gfi")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ddc58")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oiwxx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u5gfi")
 theme_override_styles/normal = SubResource("StyleBoxFlat_u5gfi")
 text = "Join"

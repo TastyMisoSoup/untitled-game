@@ -12,10 +12,13 @@ script = ExtResource("1_lquwl")
 [node name="Map1" parent="." instance=ExtResource("1_h2yge")]
 
 [node name="Dummy" parent="Map1" instance=ExtResource("2_0xm2m")]
-position = Vector2(317, 278)
+position = Vector2(387, 137)
 
 [node name="Player" parent="Map1" instance=ExtResource("2_ljixv")]
-position = Vector2(122, 169)
+position = Vector2(158, 66)
 team_number = 1
+
+[node name="Player2" parent="Map1" instance=ExtResource("2_ljixv")]
+position = Vector2(203, 78)
 
 [node name="Projectile_Manager" parent="." instance=ExtResource("4_1bvp3")]
