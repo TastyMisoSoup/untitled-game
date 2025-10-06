@@ -1,10 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://b8dwsmvmrisea"]
+[gd_scene load_steps=41 format=3 uid="uid://b8dwsmvmrisea"]
 
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_u5gfi"]
 [ext_resource type="Texture2D" uid="uid://bvg8w8r1v3lxv" path="res://assets/media/Screenshot 2025-09-22 202952.png" id="2_ddc58"]
+[ext_resource type="Texture2D" uid="uid://cl30tos2ptxq6" path="res://assets/media/map_1.png" id="2_jfcap"]
+[ext_resource type="Script" uid="uid://chptkudlk3lex" path="res://scenes/ui-elements/server_listing.gd" id="2_smyrn"]
 [ext_resource type="FontFile" uid="uid://dmhpiwycf2mnd" path="res://assets/fonts/Jersey10-Regular.ttf" id="3_j82ms"]
 [ext_resource type="Texture2D" uid="uid://uywu26qt2e1o" path="res://assets/icons/arrow.png" id="3_lvckw"]
 [ext_resource type="Texture2D" uid="uid://b1exx5exxlyw2" path="res://assets/icons/arrow_right.png" id="4_ndx0u"]
+[ext_resource type="Texture2D" uid="uid://drdqqfcha7uah" path="res://assets/media/map_2.png" id="5_k585w"]
+[ext_resource type="Texture2D" uid="uid://chgbwm7mkhpye" path="res://assets/media/map_3.png" id="6_smyrn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqhwi"]
 bg_color = Color(0.245667, 0.278862, 0.340845, 1)
@@ -67,6 +71,13 @@ Button/styles/normal = SubResource("StyleBoxFlat_7sc1q")
 Button/styles/pressed = SubResource("StyleBoxFlat_1kvwn")
 Label/colors/font_color = Color(0.105882, 0.156863, 0.258824, 1)
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_h7pj0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_523r4"]
+texture = ExtResource("2_ddc58")
+modulate_color = Color(0.262933, 0.262932, 0.262932, 1)
+
+[sub_resource type="Theme" id="Theme_k585w"]
+Panel/styles/panel = SubResource("StyleBoxTexture_523r4")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_smyrn"]
 
@@ -266,8 +277,18 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_ddc58")
+script = ExtResource("2_smyrn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_k585w")
+
+[node name="UI" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -279,32 +300,32 @@ grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="CreateGamePanel" type="VBoxContainer" parent="UI"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/CreateGamePanel"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_ddc58")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/CreateGamePanel/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 4
 
-[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="CreateGamePanelInner" type="BoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 vertical = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+[node name="CreateTopBar" type="HBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer"]
+[node name="CreateGame" type="Label" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/CreateTopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -315,7 +336,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_smyrn")
 text = "Create Game"
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer"]
+[node name="BackToMenuButton" type="Button" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/CreateTopBar"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_hover_pressed_color = Color(0.462745, 0.223529, 0.247059, 1)
@@ -338,57 +359,58 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_smyrn")
 text = "Back to Menu"
 alignment = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+[node name="Container" type="HBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2"]
+[node name="ServerOptions" type="VBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="ServerConfig" type="VBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2"]
-visible = false
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/ServerConfig"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="IpAddress" type="VBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/ServerConfig/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/ServerConfig/HBoxContainer/IpAddress"]
 layout_mode = 2
 text = "Ip Address:"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/ServerConfig/HBoxContainer/IpAddress"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 2
 emoji_menu_enabled = false
 clear_button_enabled = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="Port" type="VBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/ServerConfig/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2"]
+[node name="PortLabel" type="Label" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/ServerConfig/HBoxContainer/Port"]
 layout_mode = 2
 text = "Port:"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2"]
+[node name="PortInput" type="LineEdit" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/ServerConfig/HBoxContainer/Port"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 2
+text = "251001"
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer2"]
+[node name="CustomIP" type="CheckBox" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/ServerConfig"]
 visible = false
 layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.105882, 0.156863, 0.258824, 1)
@@ -403,40 +425,42 @@ text = "Custom IP"
 flat = true
 expand_icon = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="PlayerCapacity" type="HBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2"]
+[node name="PlayerMax" type="VBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/PlayerCapacity"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="PlayerMaxLabel" type="Label" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/PlayerCapacity/PlayerMax"]
 layout_mode = 2
-text = "Player Count:"
+text = "Player Max:"
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="PlayerCountSpinBox" type="SpinBox" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/PlayerCapacity/PlayerMax"]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2"]
+[node name="BotCount" type="VBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/PlayerCapacity"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Bot Count" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+[node name="BotCountLabel" type="Label" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/PlayerCapacity/BotCount"]
 layout_mode = 2
 text = "Bot Count:"
 
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+[node name="BotCountSpinBox" type="SpinBox" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/PlayerCapacity/BotCount"]
 layout_mode = 2
+editable = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="GameConfig" type="VBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
 
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/GameConfig"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 0
@@ -452,7 +476,7 @@ theme_override_font_sizes/font_size = 24
 text = "Spectator Mode"
 flat = true
 
-[node name="CheckButton2" type="CheckButton" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer/VBoxContainer"]
+[node name="CheckButton2" type="CheckButton" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/GameConfig"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 0
@@ -467,7 +491,7 @@ theme_override_font_sizes/font_size = 24
 text = "Power-Ups"
 flat = true
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="CreateGameButton" type="Button" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions"]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 10
@@ -485,26 +509,28 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_dveyf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cyvuw")
 text = "Create Game"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2"]
+[node name="MapOptions" type="VBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2"]
+[node name="MapShowcase" type="PanelContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_k585w")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/PanelContainer"]
+[node name="MapImage" type="TextureRect" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions/MapShowcase"]
+unique_name_in_owner = true
 self_modulate = Color(0.400698, 0.400698, 0.400698, 1)
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("2_ddc58")
+texture = ExtResource("2_jfcap")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/PanelContainer"]
+[node name="MapName" type="Label" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions/MapShowcase"]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.956888, 0.672618, 1.11663e-05, 1)
@@ -513,14 +539,14 @@ theme_override_font_sizes/font_size = 48
 text = "Space Station 13"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2"]
+[node name="MapNavigation" type="HBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="PrevMap" type="Button" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions/MapNavigation"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -534,31 +560,35 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_j82ms")
 icon = ExtResource("3_lvckw")
 icon_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="MapBefore" type="TextureRect" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions/MapNavigation"]
 self_modulate = Color(0.588235, 0.588235, 0.588235, 1)
 layout_mode = 2
-texture = ExtResource("2_ddc58")
+size_flags_horizontal = 3
+texture = ExtResource("5_k585w")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="SelectedMap" type="PanelContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions/MapNavigation"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_jfcap")
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer/PanelContainer"]
+[node name="SelectedMapImage" type="TextureRect" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions/MapNavigation/SelectedMap"]
+unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_ddc58")
+texture = ExtResource("2_jfcap")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="MapAfter" type="TextureRect" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions/MapNavigation"]
 self_modulate = Color(0.589096, 0.589096, 0.589096, 1)
 layout_mode = 2
-texture = ExtResource("2_ddc58")
+size_flags_horizontal = 3
+texture = ExtResource("6_smyrn")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Button2" type="Button" parent="VBoxContainer/VBoxContainer/PanelContainer/MarginContainer/BoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="NextMap" type="Button" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions/MapNavigation"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -572,24 +602,24 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_cyvuw")
 icon = ExtResource("4_ndx0u")
 icon_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+[node name="JoinGame" type="VBoxContainer" parent="UI"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/JoinGame"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_ddc58")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer2/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/JoinGame/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer"]
+[node name="JoinGameInner" type="VBoxContainer" parent="UI/JoinGame/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -599,19 +629,19 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3t1b0")
 text = "Join Game"
 
-[node name="BoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="BoxContainer" type="HBoxContainer" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="VBoxContainer" type="BoxContainer" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/BoxContainer"]
+[node name="IpAddress" type="BoxContainer" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label4" type="Label" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer/IpAddress"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 0
@@ -622,17 +652,17 @@ text = "IP Address: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer"]
+[node name="IpAddressInput" type="LineEdit" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer/IpAddress"]
 texture_filter = 1
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer2" type="BoxContainer" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/BoxContainer"]
+[node name="Port" type="BoxContainer" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Label4" type="Label" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer2"]
+[node name="Label4" type="Label" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer/Port"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 0
@@ -643,13 +673,13 @@ text = "Port: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer2"]
+[node name="PortInput" type="LineEdit" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer/Port"]
 texture_filter = 1
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="VBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/BoxContainer"]
+[node name="JoinButton" type="Button" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
@@ -665,3 +695,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_oiwxx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u5gfi")
 theme_override_styles/normal = SubResource("StyleBoxFlat_u5gfi")
 text = "Join"
+
+[connection signal="pressed" from="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/CreateTopBar/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/CreateGameButton" to="." method="_on_create_game_button_pressed"]
+[connection signal="pressed" from="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/MapOptions/MapNavigation/NextMap" to="." method="_on_next_map_pressed"]
+[connection signal="pressed" from="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

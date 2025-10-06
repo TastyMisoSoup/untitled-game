@@ -1,0 +1,132 @@
+[gd_scene load_steps=18 format=3 uid="uid://hkouhbbmwpyp"]
+
+[ext_resource type="Script" uid="uid://b01fgr10p4xqx" path="res://scenes/ui-elements/menus/server_listing/map_options.gd" id="1_5afl8"]
+[ext_resource type="Texture2D" uid="uid://cl30tos2ptxq6" path="res://assets/media/map_1.png" id="1_slqx7"]
+[ext_resource type="FontFile" uid="uid://dmhpiwycf2mnd" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_5afl8"]
+[ext_resource type="Texture2D" uid="uid://uywu26qt2e1o" path="res://assets/icons/arrow.png" id="3_vmmou"]
+[ext_resource type="Texture2D" uid="uid://drdqqfcha7uah" path="res://assets/media/map_2.png" id="4_pga7u"]
+[ext_resource type="Texture2D" uid="uid://chgbwm7mkhpye" path="res://assets/media/map_3.png" id="5_8a4f8"]
+[ext_resource type="Texture2D" uid="uid://b1exx5exxlyw2" path="res://assets/icons/arrow_right.png" id="6_puinx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k585w"]
+bg_color = Color(0.105882, 0.156863, 0.258824, 1)
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jfcap"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k585w"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oiwxx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j82ms"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfcap"]
+bg_color = Color(0.831373, 0.615686, 0, 1)
+border_color = Color(0.831333, 0.614159, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whfys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ary1s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbpxr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyvuw"]
+
+[node name="MapOptions" type="VBoxContainer"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("1_5afl8")
+
+[node name="MapShowcase" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k585w")
+
+[node name="Image" type="TextureRect" parent="MapShowcase"]
+self_modulate = Color(0.400698, 0.400698, 0.400698, 1)
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_slqx7")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="MapShowcase"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956888, 0.672618, 1.11663e-05, 1)
+theme_override_fonts/font = ExtResource("2_5afl8")
+theme_override_font_sizes/font_size = 48
+text = "Space Station 13"
+horizontal_alignment = 1
+
+[node name="MapNavigation" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PrevMap" type="Button" parent="MapNavigation"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/icon_hover_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.505344, 0.505344, 0.505344, 1)
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jfcap")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k585w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oiwxx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j82ms")
+icon = ExtResource("3_vmmou")
+icon_alignment = 1
+
+[node name="MapBefore" type="TextureRect" parent="MapNavigation"]
+self_modulate = Color(0.588235, 0.588235, 0.588235, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_pga7u")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="SelectedMap" type="PanelContainer" parent="MapNavigation"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_jfcap")
+
+[node name="TextureRect2" type="TextureRect" parent="MapNavigation/SelectedMap"]
+layout_mode = 2
+texture = ExtResource("1_slqx7")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="MapAfter" type="TextureRect" parent="MapNavigation"]
+self_modulate = Color(0.589096, 0.589096, 0.589096, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_8a4f8")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="NextMap" type="Button" parent="MapNavigation"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/icon_hover_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_colors/icon_pressed_color = Color(0.505882, 0.505882, 0.505882, 1)
+theme_override_icons/icon = ExtResource("6_puinx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_whfys")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ary1s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wbpxr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cyvuw")
+icon = ExtResource("6_puinx")
+icon_alignment = 1
