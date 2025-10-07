@@ -69,3 +69,7 @@ func set_mech_body(mech_body_str) -> Resource:
 		return load("res://resources/stats/mechs/"+mech_body_str+".tres")
 	else: 
 		return load("res://resources/stats/mechs/daemon.tres")
+
+
+func _on_dash_cooldown_timeout() -> void:
+	pass # Replace with function body.

@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://hkouhbbmwpyp"]
 
 [ext_resource type="Script" uid="uid://b01fgr10p4xqx" path="res://scenes/ui-elements/menus/server_listing/map_options.gd" id="1_5afl8"]
-[ext_resource type="Texture2D" uid="uid://cl30tos2ptxq6" path="res://assets/media/map_1.png" id="1_slqx7"]
+[ext_resource type="Texture2D" uid="uid://cl30tos2ptxq6" path="res://assets/media/map_images/map_1.png" id="1_slqx7"]
 [ext_resource type="FontFile" uid="uid://dmhpiwycf2mnd" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_5afl8"]
 [ext_resource type="Texture2D" uid="uid://uywu26qt2e1o" path="res://assets/icons/arrow.png" id="3_vmmou"]
-[ext_resource type="Texture2D" uid="uid://drdqqfcha7uah" path="res://assets/media/map_2.png" id="4_pga7u"]
-[ext_resource type="Texture2D" uid="uid://chgbwm7mkhpye" path="res://assets/media/map_3.png" id="5_8a4f8"]
+[ext_resource type="Texture2D" uid="uid://drdqqfcha7uah" path="res://assets/media/map_images/map_2.png" id="4_pga7u"]
+[ext_resource type="Texture2D" uid="uid://chgbwm7mkhpye" path="res://assets/media/map_images/map_3.png" id="5_8a4f8"]
 [ext_resource type="Texture2D" uid="uid://b1exx5exxlyw2" path="res://assets/icons/arrow_right.png" id="6_puinx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k585w"]

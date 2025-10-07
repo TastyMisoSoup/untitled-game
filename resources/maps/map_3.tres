@@ -1,3 +1,6 @@
-[gd_resource type="Resource" format=3 uid="uid://dxqx2s5y3biyn"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dxqx2s5y3biyn"]
+
+[ext_resource type="Script" uid="uid://bo4iithr3q7tj" path="res://resources/maps/map_3.gd" id="1_cyf1n"]
 
 [resource]
+script = ExtResource("1_cyf1n")
