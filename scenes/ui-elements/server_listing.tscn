@@ -775,6 +775,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="IpAddressInput" type="LineEdit" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer/IpAddress"]
+unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
@@ -796,6 +797,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PortInputJoin" type="SpinBox" parent="UI/JoinGame/PanelContainer/MarginContainer/JoinGameInner/BoxContainer/Port"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 2

@@ -10,7 +10,7 @@ var speed_modifier: float;
 var team: String;
 var dashing: bool = false
 
-static func mech_construct(team: String,speed_modifier):
+static func mech_construct(team: String):
 	var mech_instance = MECH_SCENE.instantiate()
 	mech_instance.team = team
 	return mech_instance

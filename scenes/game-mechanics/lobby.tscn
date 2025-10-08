@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cids42k57yl1g"]
+
+[ext_resource type="Script" uid="uid://bkp6m3rhtv44d" path="res://scenes/game-mechanics/lobby.gd" id="1_su31g"]
+
+[node name="Lobby" type="Node"]
+script = ExtResource("1_su31g")

@@ -24,6 +24,7 @@ static func projectile_construct(deadzone: bool,start_position:Vector2, target_p
 
 func _ready() -> void:
 	one_shot = true
+	print(team)
 	$Line2D.position = start_position
 	$RayCast2D.position = start_position
 	$RayCast2D.add_exception(self_hitbox)

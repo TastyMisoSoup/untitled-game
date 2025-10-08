@@ -1,16 +1,23 @@
 extends Node2D
+class_name Player
 
-@export var team_number: int;
+var team_number: int;
 var team: String 
 var open_menu: bool = false
 const SPEED = 200.0
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
+
 func _ready() -> void:
+	global_position = Vector2(150,50)
 	team = "team"+str(team_number);
-	var mech_instance = Mech.mech_construct(team, 1)
+	var mech_instance = Mech.mech_construct(team)
 	add_child(mech_instance)
 
 func _physics_process(delta: float) -> void:
+	
+	if !is_multiplayer_authority(): return
 	
 	if open_menu:
 		return

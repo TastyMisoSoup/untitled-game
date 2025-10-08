@@ -13,10 +13,17 @@ func _on_back_to_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui-elements/title_menu.tscn")
 
 func _on_create_game_button_pressed() -> void:
-	create_game()
+	var port: int = get_node("%PortInputCreate").value
+	var player_max: int = get_node("%PlayerCountSpinBox").value
+	Lobby.create_game(port, player_max)
+	Lobby.load_game()
+	
 
 func _on_join_button_pressed() -> void:
-	pass # Replace with function body.
+	var address: String = get_node("%IpAddressInput").text
+	var port: int = get_node("%PortInputJoin").value
+	Lobby.join_game(port, address)
+	Lobby.load_game()
 
 func update_map() -> void:
 	map = load("res://resources/maps/"+mapList[0]+".tres")
@@ -38,17 +45,6 @@ func prev_map() -> void:
 
 func _on_next_map_pressed() -> void:
 	next_map()
-
-func create_game():
-	var port: int = get_node("%PortInputCreate").value
-	var player_max: int = get_node("%PlayerCountSpinBox").value
-	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(port, player_max)
-	if error:
-		print(error)
-		return error
-	multiplayer.multiplayer_peer = peer
-
 
 func _on_prev_map_pressed() -> void:
 	prev_map()
