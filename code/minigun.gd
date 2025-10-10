@@ -9,7 +9,7 @@ var team: String;
 var projectile = preload("res://scenes/weapons/projectiles/ray_cast_projectile.tscn")
 var self_hitbox: HurtBox
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var deadzone: bool
 	
 	if(weapon_ready):		

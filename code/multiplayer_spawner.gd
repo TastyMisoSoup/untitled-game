@@ -12,4 +12,4 @@ func spawn_player(id:int) -> void:
 	player.name = str(id)
 	player.team_number = 5 
 	
-	get_node(spawn_path).call_deferred("add_child",player)
+	get_node(spawn_path).call_deferred("add_child",player, true)

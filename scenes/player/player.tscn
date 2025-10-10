@@ -1,13 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0ek8dkcbaern"]
+[gd_scene load_steps=5 format=3 uid="uid://c0ek8dkcbaern"]
 
 [ext_resource type="Script" uid="uid://b1bivm2b5rb5a" path="res://code/player.gd" id="1_ch04i"]
 [ext_resource type="PackedScene" uid="uid://cxhh1j6q0k44y" path="res://scenes/ui-elements/game_menu.tscn" id="2_dovo2"]
+[ext_resource type="PackedScene" uid="uid://bhx5a75jglkyf" path="res://scenes/characters/mech.tscn" id="2_gmlin"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gmlin"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_ch04i")
+
+[node name="Mech" parent="." instance=ExtResource("2_gmlin")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameMenu" parent="CanvasLayer" instance=ExtResource("2_dovo2")]
 
+[node name="Button" type="Button" parent="CanvasLayer"]
+visible = false
+offset_top = 73.0
+offset_right = 104.0
+offset_bottom = 104.0
+text = "print groups"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_gmlin")
+
 [connection signal="menu_visibility_change" from="CanvasLayer/GameMenu" to="." method="_on_game_menu_menu_visibility_change"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

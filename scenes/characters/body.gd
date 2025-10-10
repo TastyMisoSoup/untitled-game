@@ -8,7 +8,7 @@ var secondary_weapon: SecondaryWeapon;
 
 
 func _ready() -> void:
-	var energy
+	var _energy
 
 func primary_weapon_action(target_position) -> void:
 	primary_weapon.action()
@@ -29,7 +29,7 @@ func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox) -> void
 	add_child(weapon_instance)
 	primary_weapon = weapon_instance
 
-func set_secondary_weapon(secondary_weapon_str: String, self_hitbox:HurtBox) -> void:
+func set_secondary_weapon(secondary_weapon_str: String, _self_hitbox:HurtBox) -> void:
 	var weapon_scene;
 	if ValidScenePaths.SECONDARY_WEAPONS.has(secondary_weapon_str):
 		weapon_scene = load("res://scenes/weapons/" + secondary_weapon_str + ".tscn")

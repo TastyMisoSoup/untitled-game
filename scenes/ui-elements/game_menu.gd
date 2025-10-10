@@ -13,7 +13,7 @@ func _on_resume_game_pressed() -> void:
 func _on_leave_server_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/ui-elements/title_menu.tscn")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("menu") && !open:
 		show()
 		open=true

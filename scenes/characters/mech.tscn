@@ -46,7 +46,7 @@ _data = {
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xus5x"]
 properties/0/path = NodePath(".:position")
-properties/0/spawn = false
+properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [node name="Mech" type="CharacterBody2D"]
@@ -85,7 +85,6 @@ libraries = {
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_xus5x")
-visibility_update_mode = 1
 
 [connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]

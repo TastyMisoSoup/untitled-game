@@ -12,13 +12,13 @@ var resource: Resource;
 const PROJECTILE_SCENE = preload("res://scenes/weapons/projectiles/ray_cast_projectile.tscn")
 
 
-static func projectile_construct(deadzone: bool,start_position:Vector2, target_position:Vector2, team: String, self_hitbox:HurtBox):
+static func projectile_construct(deadzone_param: bool,start_position_param:Vector2, target_position_param:Vector2, team_param: String, self_hitbox_param:HurtBox):
 	var projectile_instance = PROJECTILE_SCENE.instantiate()
-	projectile_instance.deadzone = deadzone
-	projectile_instance.start_position = start_position
-	projectile_instance.target_position = target_position
-	projectile_instance.team = team
-	projectile_instance.self_hitbox = self_hitbox
+	projectile_instance.deadzone = deadzone_param
+	projectile_instance.start_position = start_position_param
+	projectile_instance.target_position = target_position_param
+	projectile_instance.team = team_param
+	projectile_instance.self_hitbox = self_hitbox_param
 	return projectile_instance
 
 
@@ -36,7 +36,7 @@ func _ready() -> void:
 		$RayCast2D.set_target_position($RayCast2D.to_local(target_position))
 		$Line2D.set_point_position(1,$Line2D.to_local(target_position))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if $RayCast2D.is_colliding():	#checks if raycast hits, if so, deals damage
 		var collision_point: Vector2 = $RayCast2D.get_collision_point()
 		var collider = $RayCast2D.get_collider()
