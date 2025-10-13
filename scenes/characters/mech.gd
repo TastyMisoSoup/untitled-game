@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Mech
 
+signal team_change(team_name:String);
+
 const SPEED: int = 200
 const MECH_SCENE = preload("res://scenes/characters/mech.tscn")
 const MECH_CONFIG = preload("res://data/mech_config.tres")
@@ -24,8 +26,8 @@ func _ready() -> void:
 	$HealthPlayer.update()
 	speed_modifier = mech_stats.SPEED_MODIFIER
 	$Body/Sprite2D.texture = mech_stats.TEXTURE
-	$Body.primary_weapon.team = team;
-	$Hitbox.add_to_group(team)
+	if is_multiplayer_authority():
+		$Camera2D.make_current()
 
 func move(input_direction) -> void:
 	velocity = input_direction * SPEED * speed_modifier
@@ -37,15 +39,14 @@ func move(input_direction) -> void:
 func dash() -> void:
 	dashing = true
 	set_collision_mask_value(1,false)
-	$Dash_Duration.start()
-
-
+	$DashDuration.start()
 
 func primary_weapon_action(target_position: Vector2) -> void:
-	$Body.primary_weapon_action(target_position)
+	$Body.primary_weapon.target_position = target_position
+	$Body.primary_weapon.action.rpc()
 
 func primary_weapon_action_stop() -> void:
-	$Body.primary_weapon_action_stop()
+	$Body.primary_weapon.stop_action.rpc()
 
 func mech_look_at(target_position: Vector2) -> void:
 	$Body.look_at(target_position)
@@ -73,3 +74,10 @@ func set_mech_body(mech_body_str) -> Resource:
 
 func _on_dash_cooldown_timeout() -> void:
 	pass # Replace with function body.
+
+func change_team(team_name:String):
+	team_change.emit(team_name)
+
+func _on_team_change(team_name: String) -> void:
+	$Body.primary_weapon.team = team_name;
+	$Hitbox.add_to_group(team_name)

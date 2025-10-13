@@ -4,12 +4,32 @@ const SPREAD_AMOUNT:int = 10;
 const DAMAGE: float = 4
 
 var weapon_ready: bool = false
-var target_position: Vector2;
+@export var target_position: Vector2;
 var team: String;
-var projectile = preload("res://scenes/weapons/projectiles/ray_cast_projectile.tscn")
+const projectile = preload("res://scenes/weapons/projectiles/ray_cast_projectile.tscn")
 var self_hitbox: HurtBox
+var shooting: bool
 	
 func _process(_delta: float) -> void:
+	if shooting:
+		shoot.rpc()
+
+@rpc("any_peer","call_local","reliable")
+func action():
+	shooting = true
+	if $Timer.is_stopped():
+		$Timer.start()
+		
+@rpc("any_peer","call_local","reliable")
+func stop_action():
+	shooting = false
+	$Timer.stop()
+
+func _on_timer_timeout() -> void:
+	weapon_ready = true;
+
+@rpc("any_peer","call_local","reliable")
+func shoot():
 	var deadzone: bool
 	
 	if(weapon_ready):		
@@ -25,15 +45,4 @@ func _process(_delta: float) -> void:
 		target_position.y = target_position.y + bullet_offset_y
 		target_position.x = target_position.x + bullet_offset_x
 		var projectile_instance = RayCastProjectile.projectile_construct(deadzone, $Marker2D.position, target_position, team, self_hitbox)
-		add_child(projectile_instance)
-
-
-func action():
-	if $Timer.is_stopped():
-		$Timer.start()
-		
-func stop_action():
-	$Timer.stop()
-
-func _on_timer_timeout() -> void:
-	weapon_ready = true;
+		$MultiplayerSpawner.get_node($MultiplayerSpawner.spawn_path).add_child(projectile_instance, true)

@@ -86,6 +86,7 @@ libraries = {
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_xus5x")
 
+[connection signal="team_change" from="." to="." method="_on_team_change"]
 [connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

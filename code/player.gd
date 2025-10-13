@@ -2,7 +2,7 @@ extends Node2D
 class_name Player
 
 var team_number: int = 5;
-var team: String 
+var team: String;
 var open_menu: bool = false
 const SPEED = 200.0
 @export var input_direction: Vector2
@@ -10,18 +10,12 @@ const SPEED = 200.0
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	
-func _init() -> void:
-	team = "team"+str(team_number);
-
 func _ready() -> void:
-	global_position = Vector2(150,50)
-	#$MultiplayerSpawner.spawn_mech(team_number)
+	position = Vector2(150, 50)
 	if !is_multiplayer_authority():
 		$CanvasLayer/Button.visible = true
-	if is_multiplayer_authority():
-		var mech_instance = Mech.mech_construct(team)
-		mech_instance.team = "team"+str(team_number)
-		#add_child(mech_instance,true)
+	$Mech.change_team("team"+name)
+	
 
 func _physics_process(_delta: float) -> void:
 	
@@ -31,6 +25,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if open_menu:
 		return
+	
 	
 	if self.has_node("Mech"):
 		input_direction = Input.get_vector("move_left", "move_right","move_up","move_down")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmxonrsnn8k1b"]
+[gd_scene load_steps=7 format=3 uid="uid://bmxonrsnn8k1b"]
 
 [ext_resource type="Script" uid="uid://ds7awb4eifesq" path="res://scenes/weapons/projectiles/ray_cast_projectile.gd" id="1_yuotk"]
 [ext_resource type="AnimationLibrary" uid="uid://b7jj3tr2ng7hb" path="res://resources/animations/line-animations.res" id="2_wdvel"]
@@ -40,6 +40,14 @@ _data = {
 &"shoot": SubResource("Animation_t1ie7")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wdvel"]
+properties/0/path = NodePath("RayCast2D:target_position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Line2D:points")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="RayCastProjectile" type="Node2D"]
 script = ExtResource("1_yuotk")
 
@@ -62,3 +70,6 @@ target_position = Vector2(52, 0)
 collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_wdvel")

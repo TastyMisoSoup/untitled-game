@@ -14,7 +14,7 @@ script = ExtResource("1_lquwl")
 [node name="Projectile_Manager" parent="." instance=ExtResource("4_1bvp3")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://c0ek8dkcbaern", "uid://bhx5a75jglkyf")
+_spawnable_scenes = PackedStringArray("uid://c0ek8dkcbaern")
 spawn_path = NodePath("..")
 script = ExtResource("5_lquwl")
 network_player = ExtResource("2_ljixv")

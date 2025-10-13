@@ -3,6 +3,7 @@ extends MultiplayerSpawner
 @export var network_player: PackedScene
 
 func _ready() -> void:
+	spawn_player(multiplayer.get_unique_id())
 	multiplayer.peer_connected.connect(spawn_player)
 	
 func spawn_player(id:int) -> void:
@@ -11,5 +12,6 @@ func spawn_player(id:int) -> void:
 	var player: Player = network_player.instantiate()
 	player.name = str(id)
 	player.team_number = 5 
+	player.position = Vector2(150,50)
 	
 	get_node(spawn_path).call_deferred("add_child",player, true)
