@@ -1,20 +1,22 @@
 extends Node2D
 class_name Player
 
+const MECH_SCENE = preload("res://scenes/characters/mech.tscn")
+
 var team_number: int = 5;
 var team: String;
 var open_menu: bool = false
+var mech: Mech;
 const SPEED = 200.0
 @export var input_direction: Vector2
-
-func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
 	
 func _ready() -> void:
 	position = Vector2(150, 50)
+	$MultiplayerSpawner.set_spawn_function(mech_construct)
+	$MultiplayerSpawner.spawn("team"+name)
 	if !is_multiplayer_authority():
 		$CanvasLayer/Button.visible = true
-	$Mech.change_team("team"+name)
+	#$Mech.change_team("team"+name)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -52,3 +54,10 @@ func _on_game_menu_menu_visibility_change(open: bool) -> void:
 
 func _on_button_pressed() -> void:
 	print($Mech/Hitbox.get_groups())
+
+func mech_construct(team_param):
+	var mech_instance = MECH_SCENE.instantiate()
+	mech_instance.team = team_param
+	mech_instance.set_multiplayer_authority(name.to_int())
+	return mech_instance
+	

@@ -12,12 +12,8 @@ var speed_modifier: float;
 var team: String;
 var dashing: bool = false
 
-static func mech_construct(team_param: String):
-	var mech_instance = MECH_SCENE.instantiate()
-	mech_instance.team = team_param
-	return mech_instance
-
 func _ready() -> void:
+	print(get_multiplayer_authority())
 	$Body.set_primary_weapon(MECH_CONFIG.primary_weapon, $Hitbox)
 	$Body.set_secondary_weapon(MECH_CONFIG.secondary_weapon, $Hitbox)
 	var mech_stats = set_mech_body(MECH_CONFIG.mech_body)
@@ -53,6 +49,7 @@ func mech_look_at(target_position: Vector2) -> void:
 
 func _on_hitbox_on_raycast_hit(amount) -> void:
 	$HealthPlayer.change_health(amount)
+	get_parent().print_tree_pretty()
 	if $HealthPlayer.health <= 0:
 		queue_free()
 
