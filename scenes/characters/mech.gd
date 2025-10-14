@@ -5,27 +5,32 @@ signal team_change(team_name:String);
 
 const SPEED: int = 200
 const MECH_SCENE = preload("res://scenes/characters/mech.tscn")
-const MECH_CONFIG = preload("res://data/mech_config.tres")
 
 var speed_modifier: float;
+var label_name: String;
 
 var team: String;
 var dashing: bool = false
 
 func _ready() -> void:
-	print(get_multiplayer_authority())
-	$Body.set_primary_weapon(MECH_CONFIG.primary_weapon, $Hitbox)
-	$Body.set_secondary_weapon(MECH_CONFIG.secondary_weapon, $Hitbox)
-	var mech_stats = set_mech_body(MECH_CONFIG.mech_body)
+	print("bababooey"+str(get_multiplayer_authority()))
+	$Body.set_primary_weapon(MechConfig.primary_weapon, $Hitbox)
+	$Body.set_secondary_weapon(MechConfig.secondary_weapon, $Hitbox)
+	var mech_stats = set_mech_body(MechConfig.mech_body)
 	$HealthPlayer.max_health = mech_stats.HEALTH
 	$HealthPlayer.health = $HealthPlayer.max_health
 	$HealthPlayer.update()
 	speed_modifier = mech_stats.SPEED_MODIFIER
 	$Body/Sprite2D.texture = mech_stats.TEXTURE
+	$Body.primary_weapon.team = team;
+	$Hitbox.add_to_group(team)
+	$Label.text = label_name
 	if is_multiplayer_authority():
 		$Camera2D.make_current()
 
+#@rpc("authority","call_remote","reliable")
 func move(input_direction) -> void:
+	if !is_multiplayer_authority(): return
 	velocity = input_direction * SPEED * speed_modifier
 	if dashing:
 		velocity = velocity * 2.4
@@ -44,7 +49,9 @@ func primary_weapon_action(target_position: Vector2) -> void:
 func primary_weapon_action_stop() -> void:
 	$Body.primary_weapon.stop_action.rpc()
 
+@rpc("authority","call_remote","reliable")
 func mech_look_at(target_position: Vector2) -> void:
+	if !is_multiplayer_authority(): return
 	$Body.look_at(target_position)
 
 func _on_hitbox_on_raycast_hit(amount) -> void:

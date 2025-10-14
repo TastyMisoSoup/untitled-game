@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://diw44y0a4nm72"]
+[gd_scene load_steps=15 format=3 uid="uid://diw44y0a4nm72"]
 
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_1kvwn"]
 [ext_resource type="Texture2D" uid="uid://bvg8w8r1v3lxv" path="res://assets/media/Screenshot 2025-09-22 202952.png" id="1_7sc1q"]
@@ -76,6 +76,12 @@ font = ExtResource("1_1kvwn")
 font_size = 96
 outline_size = 32
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpoh3"]
+bg_color = Color(0.0639728, 0.622742, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r87ng"]
+bg_color = Color(1, 0.344145, 0.268891, 1)
 
 [node name="TitleMenu" type="Control"]
 layout_mode = 3
@@ -173,5 +179,22 @@ grow_vertical = 2
 text = "Untitled Game"
 label_settings = SubResource("LabelSettings_1kvwn")
 
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_xpoh3")
+text = "daemon"
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+offset_top = 58.0
+offset_right = 68.0
+offset_bottom = 89.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_r87ng")
+text = "artemis"
+
 [connection signal="pressed" from="Control/VBoxContainer/CreateGame" to="." method="_on_create_game_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

@@ -9,11 +9,20 @@ var open_menu: bool = false
 var mech: Mech;
 const SPEED = 200.0
 @export var input_direction: Vector2
+
+func _enter_tree() -> void:
+	#set_multiplayer_authority(multiplayer.get_unique_id())
+	pass
 	
 func _ready() -> void:
-	position = Vector2(150, 50)
 	$MultiplayerSpawner.set_spawn_function(mech_construct)
-	$MultiplayerSpawner.spawn("team"+name)
+	position = Vector2(400,50)
+	if multiplayer.is_server():
+		#set_multiplayer_authority(multiplayer.get_unique_id())
+		$MultiplayerSpawner.spawn("team"+name)
+	print("wtf"+str(get_multiplayer_authority()))
+	
+	
 	if !is_multiplayer_authority():
 		$CanvasLayer/Button.visible = true
 	#$Mech.change_team("team"+name)
@@ -21,13 +30,12 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	
-	if !is_multiplayer_authority(): return
+	#if !is_multiplayer_authority(): return
 	
 	if !visible: return
 	
 	if open_menu:
 		return
-	
 	
 	if self.has_node("Mech"):
 		input_direction = Input.get_vector("move_left", "move_right","move_up","move_down")
@@ -58,6 +66,7 @@ func _on_button_pressed() -> void:
 func mech_construct(team_param):
 	var mech_instance = MECH_SCENE.instantiate()
 	mech_instance.team = team_param
+	mech_instance.label_name = self.name
 	mech_instance.set_multiplayer_authority(name.to_int())
 	return mech_instance
 	

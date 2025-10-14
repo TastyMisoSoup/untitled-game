@@ -1,6 +1,3 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://6don6oi27st4"]
-
-[ext_resource type="Script" uid="uid://60xk8bpbek8t" path="res://data/mech_config.gd" id="1_ollpf"]
+[gd_resource type="Resource" format=3 uid="uid://6don6oi27st4"]
 
 [resource]
-script = ExtResource("1_ollpf")

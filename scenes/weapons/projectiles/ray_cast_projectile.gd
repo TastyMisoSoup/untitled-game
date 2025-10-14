@@ -27,7 +27,6 @@ func _ready() -> void:
 	print(team)
 	$Line2D.position = start_position
 	$RayCast2D.position = start_position
-	$RayCast2D.add_exception(self_hitbox)
 	if(deadzone):
 		$RayCast2D.set_target_position(target_position)
 		$Line2D.set_point_position(1,target_position)

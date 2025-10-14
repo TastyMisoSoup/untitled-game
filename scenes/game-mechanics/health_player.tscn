@@ -8,6 +8,8 @@
 script = ExtResource("1_hmsuu")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_j1wy3")]
+offset_top = -21.0
+offset_bottom = -18.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

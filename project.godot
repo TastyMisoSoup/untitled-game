@@ -20,6 +20,7 @@ config/icon="res://assets/icon.svg"
 ProjectileManager="*res://scenes/game-mechanics/projectile_manager.tscn"
 ValidScenePaths="*res://resources/singletons/valid_scene_paths.gd"
 Lobby="*res://scenes/game-mechanics/lobby.tscn"
+MechConfig="*res://data/mech_config.tscn"
 
 [display]
 

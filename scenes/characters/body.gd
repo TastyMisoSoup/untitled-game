@@ -1,8 +1,6 @@
 extends Node2D
 class_name Body
 
-const MECH_CONFIG = preload("res://data/mech_config.tres")
-
 var primary_weapon: PrimaryWeapon;
 var secondary_weapon: SecondaryWeapon;
 
