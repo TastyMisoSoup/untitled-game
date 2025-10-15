@@ -9,12 +9,12 @@ const MECH_SCENE = preload("res://scenes/characters/mech.tscn")
 var speed_modifier: float;
 var label_name: String;
 
-var team: String;
+@export var team: String;
 var dashing: bool = false
 
 func _ready() -> void:
 	print("bababooey"+str(get_multiplayer_authority()))
-	$Body.set_primary_weapon(MechConfig.primary_weapon, $Hitbox)
+	$Body.set_primary_weapon(MechConfig.primary_weapon, $Hitbox, team)
 	$Body.set_secondary_weapon(MechConfig.secondary_weapon, $Hitbox)
 	var mech_stats = set_mech_body(MechConfig.mech_body)
 	$HealthPlayer.max_health = mech_stats.HEALTH
@@ -22,13 +22,12 @@ func _ready() -> void:
 	$HealthPlayer.update()
 	speed_modifier = mech_stats.SPEED_MODIFIER
 	$Body/Sprite2D.texture = mech_stats.TEXTURE
-	$Body.primary_weapon.team = team;
+	#$Body.team = team;
 	$Hitbox.add_to_group(team)
-	$Label.text = label_name
+	$Label.text = team
 	if is_multiplayer_authority():
 		$Camera2D.make_current()
 
-#@rpc("authority","call_remote","reliable")
 func move(input_direction) -> void:
 	if !is_multiplayer_authority(): return
 	velocity = input_direction * SPEED * speed_modifier
@@ -43,20 +42,21 @@ func dash() -> void:
 	$DashDuration.start()
 
 func primary_weapon_action(target_position: Vector2) -> void:
+	if !is_multiplayer_authority(): return
 	$Body.primary_weapon.target_position = target_position
-	$Body.primary_weapon.action.rpc()
+	$Body.primary_weapon.action()
 
 func primary_weapon_action_stop() -> void:
-	$Body.primary_weapon.stop_action.rpc()
+	if !is_multiplayer_authority(): return
+	$Body.primary_weapon.stop_action()
 
-@rpc("authority","call_remote","reliable")
 func mech_look_at(target_position: Vector2) -> void:
 	if !is_multiplayer_authority(): return
 	$Body.look_at(target_position)
 
 func _on_hitbox_on_raycast_hit(amount) -> void:
 	$HealthPlayer.change_health(amount)
-	get_parent().print_tree_pretty()
+	print($Hitbox.get_groups())
 	if $HealthPlayer.health <= 0:
 		queue_free()
 
@@ -85,3 +85,7 @@ func change_team(team_name:String):
 func _on_team_change(team_name: String) -> void:
 	$Body.primary_weapon.team = team_name;
 	$Hitbox.add_to_group(team_name)
+
+
+func _on_ready() -> void:
+	change_team(team)

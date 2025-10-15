@@ -15,7 +15,7 @@ func primary_weapon_action(target_position) -> void:
 func primary_weapon_action_stop() -> void:
 	primary_weapon.stop_action()
 
-func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox) -> void:
+func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox, team_param:String) -> void:
 	var weapon_scene;
 	if ValidScenePaths.PRIMARY_WEAPONS.has(primary_weapon_str):
 		weapon_scene = load("res://scenes/weapons/" + primary_weapon_str + ".tscn")
@@ -24,6 +24,7 @@ func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox) -> void
 	var weapon_instance = weapon_scene.instantiate()
 	weapon_instance.position = $PrimaryWeaponPosMarker.position
 	weapon_instance.self_hitbox = self_hitbox
+	weapon_instance.team = team_param
 	add_child(weapon_instance)
 	primary_weapon = weapon_instance
 
