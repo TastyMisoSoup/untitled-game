@@ -18,9 +18,8 @@ func _ready() -> void:
 	$MultiplayerSpawner.set_spawn_function(mech_construct)
 	position = Vector2(400,50)
 	if multiplayer.is_server():
-		#set_multiplayer_authority(multiplayer.get_unique_id())
+		set_multiplayer_authority(multiplayer.get_unique_id())
 		$MultiplayerSpawner.spawn("team"+name)
-	print("wtf"+str(get_multiplayer_authority()))
 	
 	
 	if !is_multiplayer_authority():

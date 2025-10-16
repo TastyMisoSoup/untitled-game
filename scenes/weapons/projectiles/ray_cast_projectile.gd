@@ -24,8 +24,6 @@ static func projectile_construct(deadzone_param: bool,start_position_param:Vecto
 
 func _ready() -> void:
 	one_shot = true
-	print(team)
-	print(target_position)
 	$Line2D.position = start_position
 	$RayCast2D.position = start_position
 	if(deadzone):

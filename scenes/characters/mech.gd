@@ -13,7 +13,6 @@ var label_name: String;
 var dashing: bool = false
 
 func _ready() -> void:
-	print("bababooey"+str(get_multiplayer_authority()))
 	$Body.set_primary_weapon(MechConfig.primary_weapon, $Hitbox, team)
 	$Body.set_secondary_weapon(MechConfig.secondary_weapon, $Hitbox)
 	var mech_stats = set_mech_body(MechConfig.mech_body)
@@ -24,9 +23,11 @@ func _ready() -> void:
 	$Body/Sprite2D.texture = mech_stats.TEXTURE
 	#$Body.team = team;
 	$Hitbox.add_to_group(team)
+	
 	$Label.text = team
 	if is_multiplayer_authority():
 		$Camera2D.make_current()
+		$CanvasLayer/Button.visible = true
 
 func move(input_direction) -> void:
 	if !is_multiplayer_authority(): return
@@ -41,14 +42,17 @@ func dash() -> void:
 	set_collision_mask_value(1,false)
 	$DashDuration.start()
 
+
 func primary_weapon_action(target_position: Vector2) -> void:
 	if !is_multiplayer_authority(): return
+	#print(target_position)
 	$Body.primary_weapon.target_position = target_position
-	$Body.primary_weapon.action()
+	#print($Body.primary_weapon.target_position)
+	$Body.primary_weapon.action.rpc_id(multiplayer.get_unique_id())
 
 func primary_weapon_action_stop() -> void:
 	if !is_multiplayer_authority(): return
-	$Body.primary_weapon.stop_action()
+	$Body.primary_weapon.stop_action.rpc_id(multiplayer.get_unique_id())
 
 func mech_look_at(target_position: Vector2) -> void:
 	if !is_multiplayer_authority(): return
@@ -56,7 +60,6 @@ func mech_look_at(target_position: Vector2) -> void:
 
 func _on_hitbox_on_raycast_hit(amount) -> void:
 	$HealthPlayer.change_health(amount)
-	print($Hitbox.get_groups())
 	if $HealthPlayer.health <= 0:
 		queue_free()
 
@@ -89,3 +92,7 @@ func _on_team_change(team_name: String) -> void:
 
 func _on_ready() -> void:
 	change_team(team)
+
+
+func _on_button_pressed() -> void:
+	print($HealthPlayer.health)
