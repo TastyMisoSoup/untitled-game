@@ -98,6 +98,7 @@ menu={
 2d_physics/layer_1="floor objects"
 2d_physics/layer_2="walls and high objects"
 2d_physics/layer_3="hitbox"
+2d_physics/layer_4="hazards"
 
 [rendering]
 

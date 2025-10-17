@@ -27,7 +27,8 @@ func _ready() -> void:
 	$Label.text = team
 	if is_multiplayer_authority():
 		$Camera2D.make_current()
-		$CanvasLayer/Button.visible = true
+		#$CanvasLayer/Button.visible = true
+		$HealthPlayer.HUD_visible()
 
 func move(input_direction) -> void:
 	if !is_multiplayer_authority(): return
@@ -37,6 +38,7 @@ func move(input_direction) -> void:
 	$DefaultLegs.move_legs(input_direction)
 	move_and_slide()
 	
+@rpc("any_peer","call_local")
 func dash() -> void:
 	dashing = true
 	set_collision_mask_value(1,false)
@@ -59,7 +61,7 @@ func mech_look_at(target_position: Vector2) -> void:
 	$Body.look_at(target_position)
 
 func _on_hitbox_on_raycast_hit(amount) -> void:
-	$HealthPlayer.change_health(amount)
+	$HealthPlayer.change_health.rpc(amount)
 	if $HealthPlayer.health <= 0:
 		queue_free()
 

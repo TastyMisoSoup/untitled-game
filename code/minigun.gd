@@ -34,18 +34,19 @@ func _on_timer_timeout() -> void:
 	weapon_ready = true;
 
 @rpc("any_peer","call_local","reliable")
-func shoot(target_position):
+func shoot(target_position_param):
 	weapon_ready = false;
-	if(to_local(target_position).x<100): #checks if cursor is in the player deadzone - the minimum weapon range
-		target_position = Vector2(50,-58);
+	if(to_local(target_position_param).x<100): #checks if cursor is in the player deadzone - the minimum weapon range
+		target_position_param = Vector2(50,-58);
 		deadzone = true
 	else:
 		deadzone = false
 
-	target_position = weapon_spread(target_position);
-	$MultiplayerSpawner.spawn([deadzone,$Marker2D.position,target_position,team,self_hitbox])
+	target_position_param = weapon_spread(target_position_param);
+	if multiplayer.is_server():
+		$MultiplayerSpawner.spawn([deadzone,$Marker2D.position,target_position_param,team,self_hitbox])
 
-func projectile_spawn(projectile_data):
+func projectile_spawn(projectile_data) -> RayCastProjectile:
 	var projectile_instance = PROJECTILE_SCENE.instantiate()
 	projectile_instance.deadzone = projectile_data[0]
 	projectile_instance.start_position = projectile_data[1]
@@ -54,9 +55,9 @@ func projectile_spawn(projectile_data):
 	#projectile_instance.self_hitbox = projectile_data[4]
 	return projectile_instance
 
-func weapon_spread(target_position:Vector2) -> Vector2:
+func weapon_spread(target_position_param:Vector2) -> Vector2:
 	var bullet_offset_x = (randi_range(-SPREAD_AMOUNT,SPREAD_AMOUNT)) #bullet spread
 	var bullet_offset_y = (randi_range(-SPREAD_AMOUNT,SPREAD_AMOUNT))
-	target_position.y = target_position.y + bullet_offset_y
-	target_position.x = target_position.x + bullet_offset_x
-	return target_position
+	target_position_param.y = target_position_param.y + bullet_offset_y
+	target_position_param.x = target_position_param.x + bullet_offset_x
+	return target_position_param

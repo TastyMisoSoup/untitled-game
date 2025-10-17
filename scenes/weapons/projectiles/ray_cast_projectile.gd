@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 		var collider = $RayCast2D.get_collider()
 		if collider.is_in_group("hurt_box") && !collider.is_in_group(team):
 			$RayCast2D.enabled = false
-			collider.raycast_hit(-5)
+			collider.raycast_hit.rpc_id(collider.get_multiplayer_authority(),-5)
 		self.reparent(ProjectileManager)
 		$RayCast2D.target_position = $RayCast2D.to_local(collision_point)
 		$Line2D.set_point_position(1,($Line2D.to_local(collision_point)))
