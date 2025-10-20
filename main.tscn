@@ -19,12 +19,4 @@ spawn_path = NodePath("..")
 script = ExtResource("5_lquwl")
 network_player = ExtResource("2_ljixv")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_right = 82.0
-offset_bottom = 31.0
-text = "print tree"
-
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

@@ -519,7 +519,7 @@ text = "Player Max:"
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 32.0
-value = 2.0
+value = 8.0
 rounded = true
 
 [node name="BotCount" type="VBoxContainer" parent="UI/CreateGamePanel/PanelContainer/MarginContainer/CreateGamePanelInner/Container/ServerOptions/PlayerCapacity"]

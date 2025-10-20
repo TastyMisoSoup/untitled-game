@@ -11,6 +11,6 @@ func spawn_player(id:int) -> void:
 	
 	var player: Player = network_player.instantiate()
 	player.name = str(id)
-	player.team_number = 5
+	player.position = get_node(spawn_path).get_random_spawn_point()
 	
 	get_node(spawn_path).call_deferred("add_child",player, true)

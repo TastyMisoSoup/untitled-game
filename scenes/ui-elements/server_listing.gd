@@ -14,7 +14,7 @@ func _on_back_to_menu_button_pressed() -> void:
 
 func _on_create_game_button_pressed() -> void:
 	var port: int = get_node("%PortInputCreate").value
-	var player_max: int = get_node("%PlayerCountSpinBox").value
+	var player_max: int = get_node("%PlayerCountSpinBox").value-1
 	Lobby.create_game(port, player_max)
 	Lobby.load_game()
 	

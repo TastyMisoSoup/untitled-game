@@ -27,7 +27,6 @@ func _ready() -> void:
 	$Label.text = team
 	if is_multiplayer_authority():
 		$Camera2D.make_current()
-		#$CanvasLayer/Button.visible = true
 		$HealthPlayer.HUD_visible()
 
 func move(input_direction) -> void:
@@ -94,7 +93,3 @@ func _on_team_change(team_name: String) -> void:
 
 func _on_ready() -> void:
 	change_team(team)
-
-
-func _on_button_pressed() -> void:
-	print($HealthPlayer.health)

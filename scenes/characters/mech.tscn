@@ -48,13 +48,13 @@ _data = {
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xus5x"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/replication_mode = 2
 properties/1/path = NodePath(".:team")
 properties/1/spawn = true
-properties/1/replication_mode = 1
+properties/1/replication_mode = 0
 properties/2/path = NodePath("HealthPlayer:health")
 properties/2/spawn = true
-properties/2/replication_mode = 1
+properties/2/replication_mode = 2
 
 [node name="Mech" type="CharacterBody2D"]
 collision_layer = 3
@@ -105,18 +105,7 @@ text = "name"
 horizontal_alignment = 1
 clip_text = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-visible = false
-offset_left = 219.0
-offset_top = 21.0
-offset_right = 319.0
-offset_bottom = 52.0
-text = "print health"
-
 [connection signal="team_change" from="." to="." method="_on_team_change"]
 [connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

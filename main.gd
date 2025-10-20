@@ -6,5 +6,6 @@ var map;
 func _process(delta: float) -> void:
 	pass
 
-func _on_button_pressed() -> void:
-	print_tree_pretty()
+func get_random_spawn_point() -> Vector2:
+	var spawn_point:Marker2D = $Map2/TileMapLayer/SpawnPoints.get_children().pick_random()
+	return spawn_point.position

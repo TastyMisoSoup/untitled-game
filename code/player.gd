@@ -16,15 +16,9 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	$MultiplayerSpawner.set_spawn_function(mech_construct)
-	position = Vector2(400,50)
 	if multiplayer.is_server():
 		set_multiplayer_authority(multiplayer.get_unique_id())
 		$MultiplayerSpawner.spawn("team"+name)
-	
-	
-	if !is_multiplayer_authority():
-		$CanvasLayer/Button.visible = true
-	#$Mech.change_team("team"+name)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -57,10 +51,6 @@ func _on_hitbox_on_raycast_hit(amount) -> void:
 
 func _on_game_menu_menu_visibility_change(open: bool) -> void:
 	open_menu = open
-
-
-func _on_button_pressed() -> void:
-	print($Mech/Hitbox.get_groups())
 
 func mech_construct(team_param):
 	var mech_instance = MECH_SCENE.instantiate()
