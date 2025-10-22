@@ -12,6 +12,7 @@ var self_hitbox: HurtBox
 var deadzone: bool
 	
 func _ready() -> void:
+	set_multiplayer_authority(multiplayer.get_unique_id())
 	#$MultiplayerSpawner.set_spawn_path(ProjectileManager.get_path())
 	$MultiplayerSpawner.set_spawn_function(projectile_spawn)
 	
@@ -43,15 +44,15 @@ func shoot(target_position_param):
 		deadzone = false
 
 	target_position_param = weapon_spread(target_position_param);
-	if multiplayer.is_server():
-		$MultiplayerSpawner.spawn([deadzone,$Marker2D.position,target_position_param,team,self_hitbox])
+	#if multiplayer.is_server():
+	$MultiplayerSpawner.spawn({"deadzone":deadzone,"start_position":$Marker2D.position,"target_position":target_position_param,"team":team})
 
-func projectile_spawn(projectile_data) -> RayCastProjectile:
+func projectile_spawn(projectile_data:Dictionary) -> RayCastProjectile:
 	var projectile_instance = PROJECTILE_SCENE.instantiate()
-	projectile_instance.deadzone = projectile_data[0]
-	projectile_instance.start_position = projectile_data[1]
-	projectile_instance.target_position = projectile_data[2]
-	projectile_instance.team = projectile_data[3]
+	projectile_instance.deadzone = projectile_data["deadzone"]
+	projectile_instance.start_position = projectile_data["start_position"]
+	projectile_instance.target_position = projectile_data["target_position"]
+	projectile_instance.team = projectile_data["team"]
 	#projectile_instance.self_hitbox = projectile_data[4]
 	return projectile_instance
 

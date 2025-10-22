@@ -1,6 +1,7 @@
 extends Health
 class_name HealthPlayer
 
+
 @rpc("any_peer","call_local")
 func change_health(amount:float) -> void:
 	super(amount)

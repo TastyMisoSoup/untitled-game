@@ -12,7 +12,11 @@ var label_name: String;
 @export var team: String;
 var dashing: bool = false
 
+
+
 func _ready() -> void:
+	print("tree of "+ str(multiplayer.get_unique_id()))
+	$"../../".print_tree_pretty()
 	$Body.set_primary_weapon(MechConfig.primary_weapon, $Hitbox, team)
 	$Body.set_secondary_weapon(MechConfig.secondary_weapon, $Hitbox)
 	var mech_stats = set_mech_body(MechConfig.mech_body)
@@ -60,6 +64,7 @@ func mech_look_at(target_position: Vector2) -> void:
 	$Body.look_at(target_position)
 
 func _on_hitbox_on_raycast_hit(amount) -> void:
+	#if !is_multiplayer_authority(): return
 	$HealthPlayer.change_health.rpc(amount)
 	if $HealthPlayer.health <= 0:
 		queue_free()
