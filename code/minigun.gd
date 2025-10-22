@@ -13,7 +13,7 @@ var deadzone: bool
 	
 func _ready() -> void:
 	set_multiplayer_authority(multiplayer.get_unique_id())
-	#$MultiplayerSpawner.set_spawn_path(ProjectileManager.get_path())
+	$MultiplayerSpawner.set_multiplayer_authority(1)
 	$MultiplayerSpawner.set_spawn_function(projectile_spawn)
 	
 func _process(_delta: float) -> void:
@@ -36,6 +36,7 @@ func _on_timer_timeout() -> void:
 
 @rpc("any_peer","call_local","reliable")
 func shoot(target_position_param):
+	#if !is_multiplayer_authority(): return
 	weapon_ready = false;
 	if(to_local(target_position_param).x<100): #checks if cursor is in the player deadzone - the minimum weapon range
 		target_position_param = Vector2(50,-58);
@@ -44,8 +45,8 @@ func shoot(target_position_param):
 		deadzone = false
 
 	target_position_param = weapon_spread(target_position_param);
-	#if multiplayer.is_server():
-	$MultiplayerSpawner.spawn({"deadzone":deadzone,"start_position":$Marker2D.position,"target_position":target_position_param,"team":team})
+	if multiplayer.is_server():
+		$MultiplayerSpawner.spawn({"deadzone":deadzone,"start_position":$Marker2D.position,"target_position":target_position_param,"team":team})
 
 func projectile_spawn(projectile_data:Dictionary) -> RayCastProjectile:
 	var projectile_instance = PROJECTILE_SCENE.instantiate()

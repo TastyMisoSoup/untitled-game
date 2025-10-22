@@ -15,8 +15,6 @@ var dashing: bool = false
 
 
 func _ready() -> void:
-	print("tree of "+ str(multiplayer.get_unique_id()))
-	$"../../".print_tree_pretty()
 	$Body.set_primary_weapon(MechConfig.primary_weapon, $Hitbox, team)
 	$Body.set_secondary_weapon(MechConfig.secondary_weapon, $Hitbox)
 	var mech_stats = set_mech_body(MechConfig.mech_body)
