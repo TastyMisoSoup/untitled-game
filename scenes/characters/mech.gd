@@ -62,7 +62,7 @@ func mech_look_at(target_position: Vector2) -> void:
 	$Body.look_at(target_position)
 
 func _on_hitbox_on_raycast_hit(amount) -> void:
-	#if !is_multiplayer_authority(): return
+	if !is_multiplayer_authority(): return
 	$HealthPlayer.change_health.rpc(amount)
 	if $HealthPlayer.health <= 0:
 		queue_free()

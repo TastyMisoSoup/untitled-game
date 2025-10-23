@@ -23,6 +23,7 @@ static func projectile_construct(deadzone_param: bool,start_position_param:Vecto
 
 
 func _ready() -> void:
+	print(multiplayer.get_unique_id())
 	one_shot = true
 	$Line2D.position = start_position
 	$RayCast2D.position = start_position
@@ -35,13 +36,13 @@ func _ready() -> void:
 		$Line2D.set_point_position(1,$Line2D.to_local(target_position))
 
 func _process(_delta: float) -> void:
+	self.reparent_projectile.rpc()
 	if $RayCast2D.is_colliding():	#checks if raycast hits, if so, deals damage
 		var collision_point: Vector2 = $RayCast2D.get_collision_point()
 		var collider = $RayCast2D.get_collider()
 		if collider.is_in_group("hurt_box") && !collider.is_in_group(team):
 			$RayCast2D.enabled = false
-			collider.raycast_hit.rpc_id(collider.get_multiplayer_authority(),-5)
-		self.reparent(ProjectileManager)
+			collider.raycast_hit.rpc(-5)
 		$RayCast2D.target_position = $RayCast2D.to_local(collision_point)
 		$Line2D.set_point_position(1,($Line2D.to_local(collision_point)))
 
@@ -56,6 +57,6 @@ func _process(_delta: float) -> void:
 func disappear():
 	queue_free()
 
-#@rpc("authority","call_local")
+@rpc("authority","call_local")
 func reparent_projectile():
 	self.reparent(ProjectileManager)

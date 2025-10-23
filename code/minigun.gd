@@ -44,7 +44,7 @@ func shoot(target_position_param):
 	else:
 		deadzone = false
 
-	target_position_param = weapon_spread(target_position_param);
+	#target_position_param = weapon_spread(target_position_param);
 	if multiplayer.is_server():
 		$MultiplayerSpawner.spawn({"deadzone":deadzone,"start_position":$Marker2D.position,"target_position":target_position_param,"team":team})
 
