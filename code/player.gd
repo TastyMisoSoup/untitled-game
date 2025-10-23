@@ -42,13 +42,6 @@ func _physics_process(_delta: float) -> void:
 		$Mech.move(input_direction)
 
 
-func _on_hitbox_on_raycast_hit(amount) -> void:
-	$Mech/Health.change_health(amount)
-	if $Mech/Health.health <= 0:
-		hide()
-	print($Mech/Health.health)
-
-
 func _on_game_menu_menu_visibility_change(open: bool) -> void:
 	open_menu = open
 

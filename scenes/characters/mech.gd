@@ -8,6 +8,7 @@ const MECH_SCENE = preload("res://scenes/characters/mech.tscn")
 
 var speed_modifier: float;
 var label_name: String;
+@export var alive: bool = true
 
 @export var team: String;
 var dashing: bool = false
@@ -32,7 +33,7 @@ func _ready() -> void:
 		$HealthPlayer.HUD_visible()
 
 func move(input_direction) -> void:
-	if !is_multiplayer_authority(): return
+	if !is_multiplayer_authority()||!alive: return
 	velocity = input_direction * SPEED * speed_modifier
 	if dashing:
 		velocity = velocity * 2.4
@@ -47,25 +48,25 @@ func dash() -> void:
 
 
 func primary_weapon_action(target_position: Vector2) -> void:
-	if !is_multiplayer_authority(): return
+	if !is_multiplayer_authority()||!alive: return
 	#print(target_position)
 	$Body.primary_weapon.target_position = target_position
 	#print($Body.primary_weapon.target_position)
 	$Body.primary_weapon.action.rpc_id(multiplayer.get_unique_id())
 
 func primary_weapon_action_stop() -> void:
-	if !is_multiplayer_authority(): return
+	if !is_multiplayer_authority()||!alive: return
 	$Body.primary_weapon.stop_action.rpc_id(multiplayer.get_unique_id())
 
 func mech_look_at(target_position: Vector2) -> void:
-	if !is_multiplayer_authority(): return
+	if !is_multiplayer_authority()||!alive: return
 	$Body.look_at(target_position)
 
 func _on_hitbox_on_raycast_hit(amount) -> void:
-	if !is_multiplayer_authority(): return
-	$HealthPlayer.change_health.rpc(amount)
+	if is_multiplayer_authority():
+		$HealthPlayer.change_health.rpc(amount)
 	if $HealthPlayer.health <= 0:
-		queue_free()
+		die()
 
 
 func _on_dash_duration_timeout() -> void:
@@ -93,6 +94,12 @@ func _on_team_change(team_name: String) -> void:
 	$Body.primary_weapon.team = team_name;
 	$Hitbox.add_to_group(team_name)
 
+func die() -> void:
+	alive = false
+	$Hitbox/CollisionShape2D.disabled = true
+	$CollisionShape2D.disabled = true
+	hide()
+	
 
 func _on_ready() -> void:
 	change_team(team)
