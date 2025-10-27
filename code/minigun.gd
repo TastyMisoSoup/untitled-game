@@ -54,7 +54,6 @@ func projectile_spawn(projectile_data:Dictionary) -> RayCastProjectile:
 	projectile_instance.start_position = projectile_data["start_position"]
 	projectile_instance.target_position = projectile_data["target_position"]
 	projectile_instance.team = projectile_data["team"]
-	#projectile_instance.self_hitbox = projectile_data[4]
 	return projectile_instance
 
 func weapon_spread(target_position_param:Vector2) -> Vector2:

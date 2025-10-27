@@ -12,6 +12,7 @@ var label_name: String;
 
 @export var team: String;
 var dashing: bool = false
+var dash_on_cd: bool = false
 
 
 
@@ -42,9 +43,12 @@ func move(input_direction) -> void:
 	
 @rpc("any_peer","call_local")
 func dash() -> void:
+	if dash_on_cd: return
+	dash_on_cd = true
 	dashing = true
 	set_collision_mask_value(1,false)
 	$DashDuration.start()
+	$DashCooldown.start()
 
 
 func primary_weapon_action(target_position: Vector2) -> void:
@@ -66,7 +70,7 @@ func _on_hitbox_on_raycast_hit(amount) -> void:
 	if is_multiplayer_authority():
 		$HealthPlayer.change_health.rpc(amount)
 	if $HealthPlayer.health <= 0:
-		die()
+		die.rpc()
 
 
 func _on_dash_duration_timeout() -> void:
@@ -85,7 +89,7 @@ func set_mech_body(mech_body_str) -> Resource:
 
 
 func _on_dash_cooldown_timeout() -> void:
-	pass # Replace with function body.
+	dash_on_cd = false
 
 func change_team(team_name:String):
 	team_change.emit(team_name)
@@ -94,12 +98,29 @@ func _on_team_change(team_name: String) -> void:
 	$Body.primary_weapon.team = team_name;
 	$Hitbox.add_to_group(team_name)
 
+@rpc("any_peer","call_local")
 func die() -> void:
 	alive = false
 	$Hitbox/CollisionShape2D.disabled = true
 	$CollisionShape2D.disabled = true
+	$DeathTimer.start()
+	if is_multiplayer_authority():
+		$CanvasLayer.show()
 	hide()
 	
+@rpc("any_peer","call_local")
+func respawn() -> void:
+	alive = true
+	$HealthPlayer.change_health(999)
+	position = $"../../".get_random_spawn_point()
+	$Hitbox/CollisionShape2D.disabled = false
+	$CollisionShape2D.disabled = false
+	if is_multiplayer_authority():
+		$CanvasLayer.hide()
+	show()
 
 func _on_ready() -> void:
 	change_team(team)
+
+func _on_death_timer_timeout() -> void:
+	respawn.rpc()

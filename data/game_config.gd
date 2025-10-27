@@ -1,4 +1,3 @@
 extends Resource
-class_name GameConfig;
 
-var map: Map = Map1.new()
+var map: Map = load("res://scenes/maps/map_2.tscn")

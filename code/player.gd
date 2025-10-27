@@ -49,6 +49,7 @@ func mech_construct(team_param):
 	var mech_instance = MECH_SCENE.instantiate()
 	mech_instance.team = team_param
 	mech_instance.label_name = self.name
+	mech_instance.position = $"../".get_random_spawn_point()
 	mech_instance.set_multiplayer_authority(name.to_int())
 	return mech_instance
 	

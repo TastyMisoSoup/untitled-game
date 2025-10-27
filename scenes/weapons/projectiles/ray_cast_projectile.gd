@@ -11,19 +11,8 @@ var one_shot: bool
 var resource: Resource;
 const PROJECTILE_SCENE = preload("res://scenes/weapons/projectiles/ray_cast_projectile.tscn")
 
-
-static func projectile_construct(deadzone_param: bool,start_position_param:Vector2, target_position_param:Vector2, team_param: String, self_hitbox_param:HurtBox):
-	var projectile_instance = PROJECTILE_SCENE.instantiate()
-	projectile_instance.deadzone = deadzone_param
-	projectile_instance.start_position = start_position_param
-	projectile_instance.target_position = target_position_param
-	projectile_instance.team = team_param
-	projectile_instance.self_hitbox = self_hitbox_param
-	return projectile_instance
-
-
 func _ready() -> void:
-	print(multiplayer.get_unique_id())
+	print(get_multiplayer_authority())
 	one_shot = true
 	$Line2D.position = start_position
 	$RayCast2D.position = start_position
@@ -57,6 +46,6 @@ func _process(_delta: float) -> void:
 func disappear():
 	queue_free()
 
-@rpc("authority","call_local")
+@rpc("any_peer","call_local")
 func reparent_projectile():
 	self.reparent(ProjectileManager)

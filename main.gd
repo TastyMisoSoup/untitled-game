@@ -1,7 +1,4 @@
 extends Node2D
-class_name Main
-
-var map;
 
 func _process(delta: float) -> void:
 	pass

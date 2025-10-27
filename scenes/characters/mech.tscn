@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=15 format=3 uid="uid://bhx5a75jglkyf"]
 
 [ext_resource type="Script" uid="uid://den6bovono7qu" path="res://scenes/characters/mech.gd" id="1_xus5x"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cfybigipdafem" path="res://scenes/characters/body.tscn" id="5_p47bc"]
 [ext_resource type="FontFile" uid="uid://biy0yfoiay85f" path="res://assets/fonts/Tiny5-Regular.ttf" id="6_d77dx"]
 [ext_resource type="PackedScene" uid="uid://bsshhtnxfy1ln" path="res://scenes/game-mechanics/health_player.tscn" id="6_kaelg"]
+[ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="7_d77dx"]
+[ext_resource type="Script" uid="uid://brli4u1iv880p" path="res://scenes/characters/death_timer_ui.gd" id="7_xwdg0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
 
@@ -48,10 +50,10 @@ _data = {
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xus5x"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/replication_mode = 2
+properties/0/replication_mode = 1
 properties/1/path = NodePath(".:team")
 properties/1/spawn = true
-properties/1/replication_mode = 0
+properties/1/replication_mode = 2
 properties/2/path = NodePath("HealthPlayer:health")
 properties/2/spawn = true
 properties/2/replication_mode = 2
@@ -61,6 +63,9 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath(".:alive")
 properties/4/spawn = true
 properties/4/replication_mode = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwdg0"]
+bg_color = Color(0.219608, 0, 0.0117647, 0.866667)
 
 [node name="Mech" type="CharacterBody2D"]
 collision_layer = 3
@@ -89,6 +94,10 @@ position_smoothing_enabled = true
 wait_time = 0.22
 one_shot = true
 
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_xwdg0")
@@ -111,7 +120,62 @@ text = "name"
 horizontal_alignment = 1
 clip_text = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DeathTimerUI" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_xwdg0")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DeathTimerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwdg0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DeathTimerUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -40.0
+offset_right = 171.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathTimerUI/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_d77dx")
+theme_override_font_sizes/font_size = 64
+text = "You are dead
+
+Respawn in:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/DeathTimerUI/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_d77dx")
+theme_override_font_sizes/font_size = 64
+text = "3"
+horizontal_alignment = 1
+
 [connection signal="team_change" from="." to="." method="_on_team_change"]
 [connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
