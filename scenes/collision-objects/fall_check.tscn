@@ -1,12 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb8nef5itan37"]
-
-[ext_resource type="Script" uid="uid://bg22gsux00xtq" path="res://scenes/collision-objects/fall_check.gd" id="1_q6h1f"]
+[gd_scene load_steps=2 format=3 uid="uid://bb8nef5itan37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfm7s"]
 
 [node name="FallCheck" type="Area2D"]
 collision_layer = 0
-script = ExtResource("1_q6h1f")
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tfm7s")

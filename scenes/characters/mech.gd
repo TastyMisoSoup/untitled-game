@@ -13,6 +13,8 @@ var label_name: String;
 @export var team: String;
 var dashing: bool = false
 var dash_on_cd: bool = false
+var falling = false
+var controllable = true
 
 
 
@@ -47,6 +49,7 @@ func dash() -> void:
 	dash_on_cd = true
 	dashing = true
 	set_collision_mask_value(1,false)
+	#$Hitbox.monitorable = false
 	$DashDuration.start()
 	$DashCooldown.start()
 
@@ -76,10 +79,13 @@ func _on_hitbox_on_raycast_hit(amount) -> void:
 func _on_dash_duration_timeout() -> void:
 	set_collision_mask_value(1,true)
 	dashing = false
+	if falling:
+		alive = false
+		$AnimationPlayer.play("fall")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fall":
-		queue_free()
+		die()
 
 func set_mech_body(mech_body_str) -> Resource:
 	if ValidScenePaths.MECH_BODIES.has(mech_body_str):
@@ -110,6 +116,8 @@ func die() -> void:
 	
 @rpc("any_peer","call_local")
 func respawn() -> void:
+	scale = Vector2(1,1)
+	modulate = Color(1,1,1,1)
 	alive = true
 	$HealthPlayer.change_health(999)
 	position = $"../../".get_random_spawn_point()
@@ -124,3 +132,12 @@ func _on_ready() -> void:
 
 func _on_death_timer_timeout() -> void:
 	respawn.rpc()
+
+func _on_fall_check_area_entered(area: Area2D) -> void:
+	if area.is_in_group("death_pit"):
+		falling = true
+
+
+func _on_fall_check_area_exited(area: Area2D) -> void:
+	if area.is_in_group("death_pit") && !$FallCheck.has_overlapping_areas():
+		falling = false

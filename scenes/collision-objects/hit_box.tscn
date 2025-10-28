@@ -11,5 +11,3 @@ script = ExtResource("1_gtb3h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pp501")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
