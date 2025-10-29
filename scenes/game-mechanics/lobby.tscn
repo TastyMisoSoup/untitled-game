@@ -1,6 +1,93 @@
-[gd_scene load_steps=2 format=3 uid="uid://cids42k57yl1g"]
+[gd_scene load_steps=13 format=3 uid="uid://cids42k57yl1g"]
 
 [ext_resource type="Script" uid="uid://bkp6m3rhtv44d" path="res://scenes/game-mechanics/lobby.gd" id="1_su31g"]
+[ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="2_n4rh1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bw6a"]
+bg_color = Color(0.243137, 0.368627, 0.596078, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.105882, 0.156863, 0.258824, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 16.0
+expand_margin_top = 40.0
+expand_margin_right = 16.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ci26a"]
+bg_color = Color(0.243137, 0.368627, 0.596078, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4jcna"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ybp1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kei2m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3865h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4rh1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bw6a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7pj0"]
+bg_color = Color(0.243137, 0.368627, 0.596078, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.105882, 0.156863, 0.258824, 1)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Theme" id="Theme_desj4"]
+default_font = ExtResource("2_n4rh1")
+default_font_size = 20
+AcceptDialog/colors/title_color = Color(1, 1, 1, 1)
+AcceptDialog/colors/title_outline_modulate = Color(1, 1, 1, 1)
+AcceptDialog/styles/embedded_border = SubResource("StyleBoxFlat_0bw6a")
+AcceptDialog/styles/embedded_unfocused_border = SubResource("StyleBoxFlat_0bw6a")
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_ci26a")
+Button/colors/font_outline_color = Color(0.105882, 0.156863, 0.258824, 1)
+Button/colors/font_pressed_color = Color(0.716296, 0.716296, 0.716296, 1)
+Button/constants/outline_size = 20
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("2_n4rh1")
+Button/styles/disabled = SubResource("StyleBoxEmpty_4jcna")
+Button/styles/focus = SubResource("StyleBoxEmpty_2ybp1")
+Button/styles/hover = SubResource("StyleBoxEmpty_kei2m")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_3865h")
+Button/styles/normal = SubResource("StyleBoxEmpty_n4rh1")
+Button/styles/pressed = SubResource("StyleBoxEmpty_0bw6a")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_h7pj0")
 
 [node name="Lobby" type="Node"]
 script = ExtResource("1_su31g")
+
+[node name="ServerDisconnected" type="AcceptDialog" parent="."]
+initial_position = 1
+size = Vector2i(185, 107)
+theme = SubResource("Theme_desj4")
+dialog_text = "Server disconnected!"
+
+[node name="FailedToConnect" type="AcceptDialog" parent="."]
+auto_translate_mode = 1
+mode = 1
+initial_position = 1
+size = Vector2i(185, 107)
+theme = SubResource("Theme_desj4")
+dialog_text = "Failed to connect to server!"
+dialog_autowrap = true
+
+[node name="ServerFull" type="AcceptDialog" parent="."]
+auto_translate_mode = 1
+mode = 1
+initial_position = 1
+size = Vector2i(185, 107)
+theme = SubResource("Theme_desj4")
+dialog_text = "Server is full!"
+dialog_autowrap = true
