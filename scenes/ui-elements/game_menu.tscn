@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxhh1j6q0k44y"]
+[gd_scene load_steps=9 format=3 uid="uid://cxhh1j6q0k44y"]
 
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_miyc0"]
 [ext_resource type="Script" uid="uid://b0yokv1e2ijf4" path="res://scenes/ui-elements/game_menu.gd" id="1_ug53h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug53h"]
+bg_color = Color(0.054902, 0.054902, 0.054902, 0.666667)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqhwi"]
 bg_color = Color(0.245667, 0.278862, 0.340845, 1)
@@ -70,6 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ug53h")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
