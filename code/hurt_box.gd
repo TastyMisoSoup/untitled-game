@@ -12,6 +12,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-@rpc("authority","call_local")
+@rpc("any_peer","call_local")
 func raycast_hit(amount: float) -> void:
 	on_raycast_hit.emit(amount)

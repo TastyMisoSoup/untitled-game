@@ -1,6 +1,6 @@
 extends PrimaryWeapon
 
-const SPREAD_AMOUNT:int = 10;
+const SPREAD_AMOUNT:int = 30;
 const DAMAGE: float = 4
 
 @export var weapon_ready: bool = false
@@ -12,7 +12,7 @@ var self_hitbox: HurtBox
 var deadzone: bool
 	
 func _ready() -> void:
-	set_multiplayer_authority(multiplayer.get_unique_id())
+	set_multiplayer_authority(1)
 	$MultiplayerSpawner.set_multiplayer_authority(1)
 	$MultiplayerSpawner.set_spawn_function(projectile_spawn)
 	
@@ -36,17 +36,24 @@ func _on_timer_timeout() -> void:
 
 @rpc("any_peer","call_local","reliable")
 func shoot(target_position_param):
-	#if !is_multiplayer_authority(): return
 	weapon_ready = false;
+	$RayCast2D.target_position = $RayCast2D.to_local(target_position_param)
 	if(to_local(target_position_param).x<100): #checks if cursor is in the player deadzone - the minimum weapon range
-		target_position_param = Vector2(50,-58);
+		$RayCast2D.target_position = Vector2(50,-58);
 		deadzone = true
 	else:
+		$RayCast2D.target_position = $RayCast2D.to_local(target_position_param)
 		deadzone = false
-
-	target_position_param = weapon_spread(target_position_param);
-	if multiplayer.is_server():
-		$MultiplayerSpawner.spawn({"deadzone":deadzone,"start_position":$Marker2D.position,"target_position":target_position_param,"team":team})
+	$RayCast2D.target_position = weapon_spread($RayCast2D.target_position)
+	if $RayCast2D.is_colliding():	#checks if raycast hits, if so, deals damage
+		var collision_point: Vector2 = $RayCast2D.get_collision_point()
+		var collider = $RayCast2D.get_collider()
+		if collider.is_in_group("hurt_box") && !collider.is_in_group(team):
+			collider.raycast_hit.rpc_id(collider.multiplayer.get_unique_id(),-5)
+		$RayCast2D.target_position = $RayCast2D.to_local(collision_point)
+	#target_position_param = weapon_spread(target_position_param);
+	#if multiplayer.is_server():
+		#$MultiplayerSpawner.spawn({"deadzone":deadzone,"start_position":$Marker2D.position,"target_position":target_position_param,"team":team})
 
 func projectile_spawn(projectile_data:Dictionary) -> RayCastProjectile:
 	var projectile_instance = PROJECTILE_SCENE.instantiate()

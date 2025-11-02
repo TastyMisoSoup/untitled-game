@@ -4,6 +4,10 @@ class_name GameMenu
 var open:bool = false
 signal menu_visibility_change(open:bool)
 
+func _ready() -> void:
+	set_multiplayer_authority(multiplayer.get_unique_id())
+	print(get_multiplayer_authority())
+
 func _on_resume_game_pressed() -> void:
 	hide()
 	open=false

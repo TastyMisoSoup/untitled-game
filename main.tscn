@@ -10,6 +10,7 @@
 script = ExtResource("1_lquwl")
 
 [node name="Map2" parent="." instance=ExtResource("2_lquwl")]
+z_index = -2
 
 [node name="Projectile_Manager" parent="." instance=ExtResource("4_1bvp3")]
 
