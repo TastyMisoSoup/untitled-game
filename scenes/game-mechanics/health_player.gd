@@ -3,7 +3,7 @@ class_name HealthPlayer
 
 @rpc("any_peer","call_local")
 func change_health(amount:float) -> void:
-	#wif !multiplayer.is_server(): return
+	#if !multiplayer.is_server(): return
 	super(amount)
 	$CanvasLayer/HealthBarHUD.change_health(amount)
 	$HealthBar.change_health(amount)

@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmxonrsnn8k1b"]
+
+[ext_resource type="Script" uid="uid://ds7awb4eifesq" path="res://scenes/weapons/projectiles/ray_cast_projectile.gd" id="1_bf68o"]
+[ext_resource type="Texture2D" uid="uid://bylreogawhywq" path="res://assets/sprites/projectiles/bullet.png" id="2_lkiou"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wdvel"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcjl2"]
+radius = 2.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdvel"]
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_bf68o")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_wdvel")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, 0)
+rotation = 1.5708
+scale = Vector2(0.2, 0.242)
+texture = ExtResource("2_lkiou")
+
+[node name="Area2D" type="Area2D" parent="." groups=["projectile"]]
+collision_layer = 4
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_dcjl2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("CircleShape2D_wdvel")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

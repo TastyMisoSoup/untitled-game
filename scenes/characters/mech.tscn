@@ -107,7 +107,7 @@ shape = SubResource("CircleShape2D_bsyqu")
 [node name="FallCheck" parent="." instance=ExtResource("2_cgioa")]
 scale = Vector2(0.8, 0.8)
 
-[node name="Hitbox" parent="." instance=ExtResource("3_buj48")]
+[node name="Hitbox" parent="." groups=["player"] instance=ExtResource("3_buj48")]
 collision_layer = 16
 collision_mask = 12
 
@@ -209,7 +209,7 @@ horizontal_alignment = 1
 [connection signal="team_change" from="." to="." method="_on_team_change"]
 [connection signal="area_entered" from="FallCheck" to="." method="_on_fall_check_area_entered"]
 [connection signal="area_exited" from="FallCheck" to="." method="_on_fall_check_area_exited"]
-[connection signal="on_raycast_hit" from="Hitbox" to="." method="_on_hitbox_on_raycast_hit"]
+[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

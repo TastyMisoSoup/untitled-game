@@ -2,5 +2,9 @@
 
 [ext_resource type="Script" uid="uid://84b3c35474ar" path="res://scenes/game-mechanics/projectile_manager.gd" id="1_jjalt"]
 
-[node name="Projectile_Manager" type="Node"]
+[node name="ProjectileManager" type="Node"]
 script = ExtResource("1_jjalt")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bmxonrsnn8k1b")
+spawn_path = NodePath("..")

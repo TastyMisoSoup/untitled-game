@@ -69,9 +69,8 @@ func mech_look_at(target_position: Vector2) -> void:
 	if !is_multiplayer_authority()||!alive: return
 	$Body.look_at(target_position)
 
-func _on_hitbox_on_raycast_hit(amount) -> void:
-	if is_multiplayer_authority():
-		$HealthPlayer.change_health.rpc(amount)
+func _on_hitbox_on_hit(amount) -> void:
+	$HealthPlayer.change_health.rpc(amount)
 	if $HealthPlayer.health <= 0:
 		die.rpc()
 
