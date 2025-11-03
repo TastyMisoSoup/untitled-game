@@ -137,13 +137,7 @@ alignment = 1
 [node name="CreateGame" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "Create Game"
-
-[node name="JoinGame" type="Button" parent="Control/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-disabled = true
-text = "Join Game"
+text = "Start Game"
 
 [node name="MechBay" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
