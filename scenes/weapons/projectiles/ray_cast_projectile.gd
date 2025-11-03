@@ -11,7 +11,7 @@ const SPEED: int = 600
 func _ready() -> void:
 	print(team)
 	position = start_position
-	look_at(global_position+ direction)
+	look_at(global_position + direction)
 	add_to_group(team)
 	velocity = direction * SPEED
 
@@ -26,4 +26,4 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass
+	queue_free()

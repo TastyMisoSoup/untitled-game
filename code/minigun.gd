@@ -1,7 +1,7 @@
 extends PrimaryWeapon
 
-const SPREAD_AMOUNT:int = 30;
-const DAMAGE: float = 6
+const SPREAD_AMOUNT:float = 0.1;
+const DAMAGE: float = 4
 
 @export var weapon_ready: bool = false
 @export var target_position: Vector2;
@@ -32,11 +32,16 @@ func _on_timer_timeout() -> void:
 func shoot(tar_pos_param):
 	weapon_ready = false
 	
-	var direction = Vector2(tar_pos_param - $Marker2D.global_position).normalized()
+	var direction = Vector2($Direction.global_position - $Muzzle.global_position).normalized()
+	direction = weapon_spread(direction)
 	if multiplayer.is_server():
 		get_node("/root/Main/ProjectileManager/MultiplayerSpawner").spawn({
-			"start_position": $Marker2D.global_position,
+			"start_position": $Muzzle.global_position,
 			"direction": direction,
 			"team": team,
 			"damage": DAMAGE
 		})
+
+func weapon_spread(vector: Vector2) -> Vector2:
+	var offset: float = randf_range(-SPREAD_AMOUNT,SPREAD_AMOUNT)
+	return vector + Vector2(offset,offset)

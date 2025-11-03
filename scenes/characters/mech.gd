@@ -80,6 +80,7 @@ func _on_dash_duration_timeout() -> void:
 	dashing = false
 	if falling:
 		alive = false
+		$Body.primary_weapon.shooting = false
 		$AnimationPlayer.play("fall")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -106,6 +107,7 @@ func _on_team_change(team_name: String) -> void:
 @rpc("any_peer","call_local")
 func die() -> void:
 	alive = false
+	$Body.primary_weapon.shooting = false
 	$Hitbox/CollisionShape2D.disabled = true
 	$CollisionShape2D.disabled = true
 	$DeathTimer.start()

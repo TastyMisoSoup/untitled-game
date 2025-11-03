@@ -15,10 +15,13 @@ rotation = 1.5708
 texture = ExtResource("2_oir7h")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.15
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(63, 8)
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(69, 8)
+
+[node name="Direction" type="Marker2D" parent="."]
+position = Vector2(105, 8)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_oir7h")
