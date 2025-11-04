@@ -108,8 +108,8 @@ func _on_team_change(team_name: String) -> void:
 func die() -> void:
 	alive = false
 	$Body.primary_weapon.shooting = false
-	$Hitbox/CollisionShape2D.disabled = true
-	$CollisionShape2D.disabled = true
+	$Hitbox.set_collision_layer_value(5,false)
+	set_collision_layer_value(5,false)
 	$DeathTimer.start()
 	if is_multiplayer_authority():
 		$CanvasLayer.show()
@@ -122,8 +122,8 @@ func respawn() -> void:
 	alive = true
 	$HealthPlayer.change_health(999)
 	position = $"../../".get_random_spawn_point()
-	$Hitbox/CollisionShape2D.disabled = false
-	$CollisionShape2D.disabled = false
+	$Hitbox.set_collision_layer_value(5,true)
+	set_collision_layer_value(5,true)
 	if is_multiplayer_authority():
 		$CanvasLayer.hide()
 	show()

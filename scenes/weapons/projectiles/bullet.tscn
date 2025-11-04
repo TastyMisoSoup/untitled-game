@@ -1,7 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmxonrsnn8k1b"]
+[gd_scene load_steps=12 format=3 uid="uid://bmxonrsnn8k1b"]
 
 [ext_resource type="Script" uid="uid://ds7awb4eifesq" path="res://scenes/weapons/projectiles/ray_cast_projectile.gd" id="1_bf68o"]
 [ext_resource type="Texture2D" uid="uid://bylreogawhywq" path="res://assets/sprites/projectiles/bullet.png" id="2_lkiou"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf68o"]
+atlas = ExtResource("2_lkiou")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkiou"]
+atlas = ExtResource("2_lkiou")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2v8t"]
+atlas = ExtResource("2_lkiou")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj48b"]
+atlas = ExtResource("2_lkiou")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piil0"]
+atlas = ExtResource("2_lkiou")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m6vup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf68o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkiou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2v8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj48b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piil0")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wdvel"]
 properties/0/path = NodePath(".:position")
@@ -21,15 +69,15 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_bf68o")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_m6vup")
+speed_scale = 3.0
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_wdvel")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-1, 0)
-rotation = 1.5708
-scale = Vector2(0.2, 0.242)
-texture = ExtResource("2_lkiou")
 
 [node name="Area2D" type="Area2D" parent="." groups=["projectile"]]
 collision_layer = 4
@@ -43,5 +91,9 @@ shape = SubResource("CircleShape2D_dcjl2")
 scale = Vector2(1e-05, 1e-05)
 shape = SubResource("CircleShape2D_wdvel")
 
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

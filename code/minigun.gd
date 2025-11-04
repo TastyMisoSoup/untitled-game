@@ -1,7 +1,7 @@
 extends PrimaryWeapon
 
 const SPREAD_AMOUNT:float = 0.1;
-const DAMAGE: float = 4
+const DAMAGE: float = 8
 
 @export var weapon_ready: bool = false
 @export var target_position: Vector2;
