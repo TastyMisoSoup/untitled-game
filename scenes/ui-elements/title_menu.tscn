@@ -170,8 +170,9 @@ offset_right = 278.0
 offset_bottom = -132.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Untitled Game"
+text = "MECH WARS"
 label_settings = SubResource("LabelSettings_1kvwn")
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 visible = false
