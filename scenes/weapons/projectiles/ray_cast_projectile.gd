@@ -11,7 +11,6 @@ const SPEED: int = 450
 
 
 func _ready() -> void:
-	print(team)
 	position = start_position
 	look_at(global_position + direction)
 	add_to_group(team)

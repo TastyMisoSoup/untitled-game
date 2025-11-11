@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmxonrsnn8k1b"]
+[gd_scene load_steps=11 format=3 uid="uid://bmxonrsnn8k1b"]
 
 [ext_resource type="Script" uid="uid://ds7awb4eifesq" path="res://scenes/weapons/projectiles/ray_cast_projectile.gd" id="1_bf68o"]
 [ext_resource type="Texture2D" uid="uid://bylreogawhywq" path="res://assets/sprites/projectiles/bullet.png" id="2_lkiou"]
@@ -51,14 +51,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wdvel"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 2
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcjl2"]
 radius = 2.5
 
@@ -76,9 +68,6 @@ rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_m6vup")
 speed_scale = 4.0
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_wdvel")
 
 [node name="Area2D" type="Area2D" parent="." groups=["projectile"]]
 collision_layer = 4

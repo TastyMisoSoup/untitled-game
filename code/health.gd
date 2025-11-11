@@ -9,4 +9,3 @@ class_name Health
 	
 func change_health(amount: float) -> void:
 	health = health + amount
-	print(health)
