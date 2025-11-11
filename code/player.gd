@@ -52,4 +52,3 @@ func mech_construct(team_param):
 	mech_instance.position = $"../".get_random_spawn_point()
 	mech_instance.set_multiplayer_authority(name.to_int())
 	return mech_instance
-	

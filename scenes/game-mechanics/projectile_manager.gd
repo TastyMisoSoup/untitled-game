@@ -11,4 +11,5 @@ func projectile_spawn(projectile_data:Dictionary) -> Bullet:
 	projectile_instance.start_position = projectile_data["start_position"]
 	projectile_instance.direction = projectile_data["direction"]
 	projectile_instance.team = projectile_data["team"]
+	projectile_instance.timer = projectile_data["timer"]
 	return projectile_instance

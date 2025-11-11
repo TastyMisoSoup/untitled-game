@@ -2,11 +2,12 @@ extends CharacterBody2D
 class_name Bullet
 
 var damage: int
+var timer: float
 var start_position: Vector2
 var direction: Vector2
 var team: String
 var stopped: bool
-const SPEED: int = 400
+const SPEED: int = 450
 
 
 func _ready() -> void:
@@ -15,7 +16,7 @@ func _ready() -> void:
 	look_at(global_position + direction)
 	add_to_group(team)
 	velocity = direction * SPEED
-	$Timer.start(randf_range(0.3,0.5))
+	$Timer.start(timer)
 
 func _physics_process(_delta: float) -> void:
 	if stopped: return

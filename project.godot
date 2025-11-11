@@ -101,6 +101,10 @@ menu={
 2d_physics/layer_4="hazards"
 2d_physics/layer_5="characters"
 
+[physics]
+
+common/physics_ticks_per_second=40
+
 [rendering]
 
 2d/snap/snap_2d_transforms_to_pixel=true

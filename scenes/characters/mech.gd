@@ -121,7 +121,7 @@ func respawn() -> void:
 	modulate = Color(1,1,1,1)
 	alive = true
 	$HealthPlayer.change_health(999)
-	position = $"../../".get_random_spawn_point()
+	position = $"../../../Players".get_random_spawn_point()
 	$Hitbox.set_collision_layer_value(5,true)
 	set_collision_layer_value(5,true)
 	if is_multiplayer_authority():

@@ -65,6 +65,7 @@ radius = 2.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_wdvel"]
 
 [node name="Bullet" type="CharacterBody2D"]
+z_index = 2
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_bf68o")
@@ -74,7 +75,7 @@ texture_filter = 1
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_m6vup")
-speed_scale = 3.0
+speed_scale = 4.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_wdvel")
