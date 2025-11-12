@@ -66,4 +66,6 @@ sprite_frames = SubResource("SpriteFrames_cko2b")
 animation = &"move"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.1
+delta_interval = 0.1
 replication_config = SubResource("SceneReplicationConfig_qcsgs")

@@ -26,6 +26,7 @@ MechConfig="*res://data/mech_config.tscn"
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
