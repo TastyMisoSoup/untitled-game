@@ -28,7 +28,7 @@ func stop_action():
 func _on_timer_timeout() -> void:
 	weapon_ready = true;
 
-@rpc("any_peer","call_local","reliable")
+@rpc("any_peer","call_local","unreliable")
 func shoot(tar_pos_param):
 	weapon_ready = false
 	
