@@ -79,9 +79,7 @@ func _on_dash_duration_timeout() -> void:
 	set_collision_mask_value(1,true)
 	dashing = false
 	if falling:
-		alive = false
-		$Body.primary_weapon.shooting = false
-		$AnimationPlayer.play("fall")
+		fall.rpc()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fall":
@@ -142,3 +140,9 @@ func _on_fall_check_area_entered(area: Area2D) -> void:
 func _on_fall_check_area_exited(area: Area2D) -> void:
 	if area.is_in_group("death_pit") && !$FallCheck.has_overlapping_areas():
 		falling = false
+
+@rpc("any_peer","call_local","reliable")
+func fall() -> void:
+	alive = false
+	$Body.primary_weapon.shooting = false
+	$AnimationPlayer.play("fall")

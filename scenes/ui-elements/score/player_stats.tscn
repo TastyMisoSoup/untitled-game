@@ -4,24 +4,30 @@
 [ext_resource type="Script" uid="uid://w0l3ybwjkjk5" path="res://scenes/ui-elements/score/player_stats.gd" id="1_xdv7t"]
 
 [node name="PlayerStats" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
 theme = ExtResource("1_uywl0")
 script = ExtResource("1_xdv7t")
 
-[node name="Label" type="Label" parent="."]
+[node name="Rank" type="Label" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "1#"
+horizontal_alignment = 1
 
 [node name="PlayerName" type="Label" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "John Doe"
 horizontal_alignment = 1
 
 [node name="Stats" type="Label" parent="."]
 layout_mode = 2
-text = "0 l 0"
-horizontal_alignment = 2
+size_flags_horizontal = 3
+text = "8 l 16"
+horizontal_alignment = 1

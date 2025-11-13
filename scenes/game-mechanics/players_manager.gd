@@ -6,7 +6,8 @@ func get_random_spawn_point() -> Vector2:
 
 
 func _on_child_entered_tree(node: Node) -> void:
-	if node.is_class("Player"):
-		$CanvasLayer/Scoreboard.add_player_stats(node)
-	else:
-		node.queue_free()
+	#if node.is_class("Player"):
+	#	$CanvasLayer/Scoreboard.add_player_stats(node)
+	#else:
+	#	node.queue_free()
+	pass
