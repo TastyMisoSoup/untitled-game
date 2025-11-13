@@ -75,7 +75,7 @@ _data = {
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xus5x"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/replication_mode = 2
+properties/0/replication_mode = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwdg0"]
 bg_color = Color(0.219608, 0, 0.0117647, 0.866667)
@@ -93,7 +93,7 @@ shape = SubResource("CircleShape2D_bsyqu")
 scale = Vector2(0.8, 0.8)
 
 [node name="Hitbox" parent="." groups=["player"] instance=ExtResource("3_buj48")]
-collision_layer = 16
+collision_layer = 32
 collision_mask = 12
 
 [node name="DefaultLegs" parent="." instance=ExtResource("5_dlmw4")]

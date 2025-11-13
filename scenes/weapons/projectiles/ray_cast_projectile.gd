@@ -7,7 +7,7 @@ var start_position: Vector2
 var direction: Vector2
 var team: String
 var stopped: bool
-const SPEED: int = 450
+const SPEED: int = 50
 
 
 func _ready() -> void:

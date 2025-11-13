@@ -48,4 +48,4 @@ func weapon_spread(vector: Vector2) -> Vector2:
 	return vector + Vector2(offset,offset)
 
 func bullet_duration() -> float:
-	return randf_range(0.2,0.4)
+	return randf_range(0.2,100.4)

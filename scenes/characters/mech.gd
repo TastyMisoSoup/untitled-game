@@ -49,6 +49,7 @@ func dash() -> void:
 	dash_on_cd = true
 	dashing = true
 	set_collision_mask_value(1,false)
+	$Hitbox.set_collision_layer_value(6,false)
 	#$Hitbox.monitorable = false
 	$DashDuration.start()
 	$DashCooldown.start()
@@ -77,6 +78,8 @@ func _on_hitbox_on_hit(amount) -> void:
 
 func _on_dash_duration_timeout() -> void:
 	set_collision_mask_value(1,true)
+	$Hitbox.set_collision_layer_value(6,true)
+	set_collision_layer_value(5,true)
 	dashing = false
 	if falling:
 		fall.rpc()
