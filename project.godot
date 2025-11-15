@@ -32,6 +32,10 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="New Game Project"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
@@ -45,7 +49,8 @@ folder_colors={
 "res://scenes/game-mechanics/": "pink",
 "res://scenes/ui-elements/": "teal",
 "res://scenes/weapons/": "orange",
-"res://shaders/": "pink"
+"res://shaders/": "pink",
+"res://test/": "purple"
 }
 
 [global_group]
