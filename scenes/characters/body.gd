@@ -43,3 +43,6 @@ func set_mech_body(mech_body_str) -> Resource:
 		return load("res://resources/stats/mechs/"+mech_body_str+".tres")
 	else: 
 		return load("res://resources/stats/mechs/daemon.tres")
+
+func set_texture(texture:Texture2D) -> void:
+	$Sprite2D.texture = texture
