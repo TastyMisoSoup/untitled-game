@@ -20,5 +20,21 @@ func test_move_ignores_non_authority():
 	mech.move(Vector2(1,0))
 	assert_eq(mech.velocity, Vector2.ZERO)
 
+func test_health_equals_max_health_on_start():
+	var health_node = Health.new()
+	mech.health = health_node
+	mech.health.max_health = 100
+	mech.health.health = mech.health.max_health
+	assert_eq(mech.health.health, mech.health.max_health)
+	health_node.free()
+
+func test_change_health_gets_called():
+	var health_node = Health.new()
+	mech.health = health_node
+	mech.health.max_health = 100
+	mech.health.health = mech.health.max_health
+	mech.change_health(-20)
+	health_node.free()
+
 func after_each():
 	mech.free()

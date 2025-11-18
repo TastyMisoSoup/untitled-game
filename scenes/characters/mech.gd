@@ -88,9 +88,7 @@ func mech_look_at(target_position: Vector2) -> void:
 	body.look_at(target_position)
 
 func _on_hitbox_on_hit(amount) -> void:
-	health.change_health.rpc(amount)
-	if health.health <= 0:
-		die.rpc()
+	change_health(amount)
 
 
 func _on_dash_duration_timeout() -> void:
