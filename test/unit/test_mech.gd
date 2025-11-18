@@ -28,12 +28,13 @@ func test_health_equals_max_health_on_start():
 	assert_eq(mech.health.health, mech.health.max_health)
 	health_node.free()
 
-func test_change_health_gets_called():
+func test_change_health_changes_correctly():
 	var health_node = Health.new()
 	mech.health = health_node
 	mech.health.max_health = 100
 	mech.health.health = mech.health.max_health
-	mech.change_health(-20)
+	mech.health.change_health(-20)
+	assert_eq(health_node.health,health_node.max_health-20)
 	health_node.free()
 
 func after_each():
