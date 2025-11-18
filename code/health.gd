@@ -5,7 +5,9 @@ class_name Health
 
 @export var health: float: 
 	set(value):
-		health = min(value,max_health)
+		health = clamp(value,0,max_health)
 	
-func change_health(amount: float) -> void:
+func change_health(amount: float) -> float:
 	health = health + amount
+	print(health)
+	return health

@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmxonrsnn8k1b"]
+[gd_scene load_steps=11 format=3 uid="uid://bmxonrsnn8k1b"]
 
+[ext_resource type="Script" uid="uid://dugqb2kt2yf6y" path="res://scenes/weapons/projectiles/bullet.gd" id="1_bf68o"]
 [ext_resource type="Texture2D" uid="uid://bylreogawhywq" path="res://assets/sprites/projectiles/bullet.png" id="2_lkiou"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bf68o"]
@@ -59,6 +60,7 @@ radius = 2.5
 z_index = 2
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_bf68o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -3,13 +3,14 @@ class_name Mech
 
 signal team_change(team_name:String);
 
-@export var body: Node = null
-@export var hitbox: Node = null
-@export var health: Node = null
-@export var legs: Node = null
-@export var animation_player: Node = null
+@export var body: Body = null
+@export var hitbox: HurtBox = null
+@export var health: Health = null
+@export var legs: Legs = null
+@export var animation_player: AnimationPlayer = null
 
 const SPEED: int = 200
+var main_path: Node
 
 var speed_modifier: float;
 var label_name: String;
@@ -29,6 +30,7 @@ func _ready() -> void:
 	health = health if health else $HealthPlayer
 	legs = legs if legs else $DefaultLegs
 	animation_player = animation_player if animation_player else $AnimationPlayer
+	main_path = get_node("./../../../Players")
 
 	body.set_primary_weapon(MechConfig.primary_weapon, hitbox, team)
 	body.set_secondary_weapon(MechConfig.secondary_weapon, hitbox)
@@ -124,7 +126,7 @@ func _on_team_change(team_name: String) -> void:
 func die() -> void:
 	alive = false
 	body.primary_weapon.shooting = false
-	hitbox.set_collision_layer_value(5,false)
+	hitbox.set_collision_layer_value(6,false)
 	set_collision_layer_value(5,false)
 	$DeathTimer.start()
 	if is_multiplayer_authority():
@@ -136,9 +138,9 @@ func respawn() -> void:
 	scale = Vector2(1,1)
 	modulate = Color(1,1,1,1)
 	alive = true
-	health.change_health(999)
-	position = $"../../../Players".get_random_spawn_point()
-	hitbox.set_collision_layer_value(5,true)
+	health.change_health(health.max_health)
+	position = main_path.get_random_spawn_point()
+	hitbox.set_collision_layer_value(6,true)
 	set_collision_layer_value(5,true)
 	if is_multiplayer_authority():
 		$CanvasLayer.hide()
@@ -164,3 +166,8 @@ func fall() -> void:
 	alive = false
 	body.primary_weapon.shooting = false
 	animation_player.play("fall")
+
+func change_health(amount: int) -> void:
+	health.change_health.rpc(amount)
+	if health.health <= 0:
+		die.rpc()
