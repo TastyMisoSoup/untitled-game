@@ -15,7 +15,5 @@ func test_health_cant_be_higher_than_max():
 	health_node.health = 999
 	assert_eq(health_node.health, health_node.max_health)
 
-
-
 func after_each():
 	health_node.free()
