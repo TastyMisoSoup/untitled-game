@@ -17,6 +17,7 @@ var label_name: String;
 @export var alive: bool = true
 
 @export var team: String;
+var player_id: int;
 var dashing: bool = false
 var dash_on_cd: bool = false
 var falling = false
@@ -32,7 +33,7 @@ func _ready() -> void:
 	animation_player = animation_player if animation_player else $AnimationPlayer
 	main_path = get_node("./../../../Players")
 
-	body.set_primary_weapon(MechConfig.primary_weapon, hitbox, team)
+	body.set_primary_weapon(MechConfig.primary_weapon, hitbox, team, player_id)
 	body.set_secondary_weapon(MechConfig.secondary_weapon, hitbox)
 	var mech_stats = set_mech_body(MechConfig.mech_body)
 	health.max_health = mech_stats.HEALTH
@@ -87,8 +88,8 @@ func mech_look_at(target_position: Vector2) -> void:
 	if !is_multiplayer_authority()||!alive: return
 	body.look_at(target_position)
 
-func _on_hitbox_on_hit(amount) -> void:
-	change_health(amount)
+func _on_hitbox_on_hit(hit_data) -> void:
+	change_health(hit_data)
 
 
 func _on_dash_duration_timeout() -> void:
@@ -101,7 +102,7 @@ func _on_dash_duration_timeout() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fall":
-		die()
+		die(0)
 
 func set_mech_body(mech_body_str) -> Resource:
 	if ValidScenePaths.MECH_BODIES.has(mech_body_str):
@@ -121,8 +122,9 @@ func _on_team_change(team_name: String) -> void:
 	hitbox.add_to_group(team_name)
 
 @rpc("any_peer","call_local")
-func die() -> void:
+func die(killer:int) -> void:
 	alive = false
+	get_parent().add_death(player_id,killer)
 	body.primary_weapon.shooting = false
 	hitbox.set_collision_layer_value(6,false)
 	set_collision_layer_value(5,false)
@@ -165,7 +167,7 @@ func fall() -> void:
 	body.primary_weapon.shooting = false
 	animation_player.play("fall")
 
-func change_health(amount: int) -> void:
-	health.change_health.rpc(amount)
+func change_health(hit_data:Dictionary) -> void:
+	health.change_health.rpc(hit_data["amount"])
 	if health.health <= 0:
-		die.rpc()
+		die.rpc(hit_data["source"])

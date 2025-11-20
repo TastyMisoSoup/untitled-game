@@ -7,6 +7,7 @@ const DAMAGE: float = 13
 @export var target_position: Vector2;
 var team: String;
 var self_hitbox: HurtBox
+var player_id: int;
 @export var shooting: bool
 var deadzone: bool
 	
@@ -40,7 +41,8 @@ func shoot(tar_pos_param):
 			"direction": direction,
 			"team": team,
 			"damage": DAMAGE,
-			"timer": bullet_duration()
+			"timer": bullet_duration(),
+			"player_id":player_id
 		})
 
 func weapon_spread(vector: Vector2) -> Vector2:

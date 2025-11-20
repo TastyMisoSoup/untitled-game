@@ -5,6 +5,7 @@ const MECH_SCENE = preload("res://scenes/characters/mech.tscn")
 
 var team_number: int = 5;
 var team: String;
+var player_id: int;
 var open_menu: bool = false
 var mech: Mech;
 const SPEED = 200.0
@@ -19,7 +20,8 @@ func _ready() -> void:
 	$MultiplayerSpawner.set_spawn_function(mech_construct)
 	if multiplayer.is_server():
 		$MultiplayerSpawner.spawn({"team":"team"+name,"player_name":"Player"+name})
-	get_parent().add_player_stats("Player"+name,is_multiplayer_authority())
+	get_parent().add_player_stats("Player"+name,is_multiplayer_authority(),player_id)
+	print(player_id)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -47,6 +49,8 @@ func _physics_process(_delta: float) -> void:
 		$Mech.mech_look_at(get_global_mouse_position())
 		$Mech.move(input_direction)
 
+func add_death(death:int,kill:int):
+	get_parent().add_death(death,kill)
 
 func _on_game_menu_menu_visibility_change(open: bool) -> void:
 	open_menu = open
@@ -57,4 +61,5 @@ func mech_construct(player_data:Dictionary):
 	mech_instance.label_name = player_data["player_name"]
 	mech_instance.position = $"../".get_random_spawn_point()
 	mech_instance.set_multiplayer_authority(name.to_int())
+	mech_instance.player_id = player_id
 	return mech_instance

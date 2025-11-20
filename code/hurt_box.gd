@@ -1,6 +1,6 @@
 extends Area2D
 class_name HurtBox
-signal on_hit(amount: float)
+signal on_hit(hit_data: Dictionary)
 signal fall_signal
 
 # Called when the node enters the scene tree for the first time.
@@ -13,5 +13,5 @@ func _process(_delta: float) -> void:
 	pass
 
 @rpc("authority","call_local")
-func hit(amount: float) -> void:
-	on_hit.emit(amount)
+func hit(hit_data:Dictionary) -> void:
+	on_hit.emit(hit_data)

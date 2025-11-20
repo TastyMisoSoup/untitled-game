@@ -7,6 +7,7 @@ var start_position: Vector2
 var direction: Vector2
 var team: String
 var stopped: bool
+var player_id: int;
 const SPEED: int = 450
 
 
@@ -23,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player") && !area.is_in_group(team) && multiplayer.is_server():
-		area.hit.rpc_id(1,-damage)
+		area.hit.rpc_id(1,{"amount":-damage,"source":player_id})
 	explode()
 
 func explode() ->void:
