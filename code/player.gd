@@ -11,21 +11,27 @@ const SPEED = 200.0
 @export var input_direction: Vector2
 
 func _enter_tree() -> void:
-	#set_multiplayer_authority(multiplayer.get_unique_id())
+	set_multiplayer_authority(name.to_int())
+	$MultiplayerSpawner.set_multiplayer_authority(1)
 	pass
 	
 func _ready() -> void:
 	$MultiplayerSpawner.set_spawn_function(mech_construct)
 	if multiplayer.is_server():
-		set_multiplayer_authority(multiplayer.get_unique_id())
-		$MultiplayerSpawner.spawn("team"+name)
+		$MultiplayerSpawner.spawn({"team":"team"+name,"player_name":"Player"+name})
+	get_parent().add_player_stats("Player"+name,is_multiplayer_authority())
 	
 
 func _physics_process(_delta: float) -> void:
 	
-	#if !is_multiplayer_authority(): return
+	if !is_multiplayer_authority(): return
 	
 	if !visible: return
+	
+	if Input.is_action_just_pressed("show_scoreboard") and is_multiplayer_authority():
+		get_parent().hide_show_scoreboard()
+	if Input.is_action_just_released("show_scoreboard") and is_multiplayer_authority():
+		get_parent().hide_show_scoreboard()
 	
 	if open_menu:
 		return
@@ -45,10 +51,10 @@ func _physics_process(_delta: float) -> void:
 func _on_game_menu_menu_visibility_change(open: bool) -> void:
 	open_menu = open
 
-func mech_construct(team_param):
+func mech_construct(player_data:Dictionary):
 	var mech_instance = MECH_SCENE.instantiate()
-	mech_instance.team = team_param
-	mech_instance.label_name = self.name
+	mech_instance.team = player_data["team"]
+	mech_instance.label_name = player_data["player_name"]
 	mech_instance.position = $"../".get_random_spawn_point()
 	mech_instance.set_multiplayer_authority(name.to_int())
 	return mech_instance

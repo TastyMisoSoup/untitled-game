@@ -43,7 +43,7 @@ func _ready() -> void:
 	#body.team = team;
 	hitbox.add_to_group(team)
 	
-	$Label.text = "Player"+str(multiplayer.get_unique_id())
+	$Label.text = label_name
 	if is_multiplayer_authority():
 		$Camera2D.make_current()
 		health.HUD_visible()

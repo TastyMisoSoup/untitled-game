@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bsskqfg37oeji"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_122yp"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_122yp")

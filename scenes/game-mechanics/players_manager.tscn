@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://elrk7ty5ec2h"]
+[gd_scene load_steps=2 format=3 uid="uid://elrk7ty5ec2h"]
 
 [ext_resource type="Script" uid="uid://mu86x54ckvfg" path="res://scenes/game-mechanics/players_manager.gd" id="1_h8vjx"]
-[ext_resource type="Script" uid="uid://cei2dncvf3ab6" path="res://scenes/game-mechanics/scoreboard.gd" id="2_1y7ei"]
-[ext_resource type="PackedScene" uid="uid://boyafib0fxalk" path="res://scenes/ui-elements/score/player_stats.tscn" id="3_cv2fk"]
 
 [node name="Players" type="Node"]
 script = ExtResource("1_h8vjx")
@@ -10,6 +8,8 @@ script = ExtResource("1_h8vjx")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Scoreboard" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,27 +24,31 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("2_1y7ei")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Scoreboard"]
-layout_mode = 2
-offset_right = 500.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -17.0
+offset_right = 230.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Scoreboard/PanelContainer"]
-layout_mode = 2
-
-[node name="PlayerStats" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer" instance=ExtResource("3_cv2fk")]
+[node name="StatsManager" type="VBoxContainer" parent="CanvasLayer/Scoreboard/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="PlayerStats2" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer" instance=ExtResource("3_cv2fk")]
+[node name="Label" type="Label" parent="CanvasLayer/Scoreboard/PanelContainer/StatsManager"]
 layout_mode = 2
-alignment = 1
-
-[node name="PlayerStats3" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer" instance=ExtResource("3_cv2fk")]
-layout_mode = 2
-alignment = 1
+theme_override_font_sizes/font_size = 24
+text = "Scoreboard"
+horizontal_alignment = 1
 
 [node name="KillFeed" type="Control" parent="CanvasLayer"]
 layout_mode = 3
