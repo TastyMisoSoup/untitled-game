@@ -17,6 +17,7 @@ func _ready() -> void:
 	add_to_group(team)
 	velocity = direction * SPEED
 	$Timer.start(timer)
+	print("Player: "+str(multiplayer.get_unique_id())+" | id: "+str(player_id))
 
 func _physics_process(_delta: float) -> void:
 	if stopped: return

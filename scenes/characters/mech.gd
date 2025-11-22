@@ -124,6 +124,7 @@ func _on_team_change(team_name: String) -> void:
 @rpc("any_peer","call_local")
 func die(killer:int) -> void:
 	alive = false
+	print("Killer: "+str(killer)+" | "+str("Death: ")+str(player_id))
 	get_parent().add_death(player_id,killer)
 	body.primary_weapon.shooting = false
 	hitbox.set_collision_layer_value(6,false)
