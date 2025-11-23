@@ -8,6 +8,7 @@ var direction: Vector2
 var team: String
 var stopped: bool
 var player_id: int;
+var player_name:String;
 const SPEED: int = 450
 
 
@@ -17,7 +18,7 @@ func _ready() -> void:
 	add_to_group(team)
 	velocity = direction * SPEED
 	$Timer.start(timer)
-	print("Player: "+str(multiplayer.get_unique_id())+" | id: "+str(player_id))
+	print(player_name)
 
 func _physics_process(_delta: float) -> void:
 	if stopped: return
@@ -25,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player") && !area.is_in_group(team) && multiplayer.is_server():
-		area.hit.rpc_id(1,{"amount":-damage,"source":player_id})
+		area.hit.rpc_id(1,{"amount":-damage,"source_id":player_id,"source_name":player_name})
 	explode()
 
 func explode() ->void:

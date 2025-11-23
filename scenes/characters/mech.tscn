@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3www0d1imvsy" path="res://scenes/characters/default_mech_legs.tscn" id="5_dlmw4"]
 [ext_resource type="PackedScene" uid="uid://cfybigipdafem" path="res://scenes/characters/body.tscn" id="5_p47bc"]
 [ext_resource type="FontFile" uid="uid://biy0yfoiay85f" path="res://assets/fonts/Tiny5-Regular.ttf" id="6_d77dx"]
-[ext_resource type="PackedScene" uid="uid://bsshhtnxfy1ln" path="res://scenes/game-mechanics/health_player.tscn" id="6_kaelg"]
+[ext_resource type="PackedScene" uid="uid://bsshhtnxfy1ln" path="res://scenes/game-mechanics/trackers/health_player.tscn" id="6_kaelg"]
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="7_d77dx"]
 [ext_resource type="Script" uid="uid://brli4u1iv880p" path="res://scenes/characters/death_timer_ui.gd" id="7_xwdg0"]
 
@@ -179,7 +179,8 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_d77dx")
 theme_override_font_sizes/font_size = 64
-text = "You are dead
+text = "You Have Been 
+Defeated
 
 Respawn in:"
 horizontal_alignment = 1

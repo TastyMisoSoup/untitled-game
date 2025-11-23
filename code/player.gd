@@ -49,8 +49,8 @@ func _physics_process(_delta: float) -> void:
 		$Mech.mech_look_at(get_global_mouse_position())
 		$Mech.move(input_direction)
 
-func add_death(death:int,kill:int):
-	get_parent().add_death(death,kill)
+func add_death(death:int,kill:int, death_name:String, kill_name: String):
+	get_parent().add_death(death,kill,death_name,kill_name)
 
 func _on_game_menu_menu_visibility_change(open: bool) -> void:
 	open_menu = open
@@ -58,7 +58,7 @@ func _on_game_menu_menu_visibility_change(open: bool) -> void:
 func mech_construct(player_data:Dictionary):
 	var mech_instance = MECH_SCENE.instantiate()
 	mech_instance.team = player_data["team"]
-	mech_instance.label_name = player_data["player_name"]
+	mech_instance.player_name = player_data["player_name"]
 	mech_instance.position = $"../".get_random_spawn_point()
 	mech_instance.set_multiplayer_authority(name.to_int())
 	mech_instance.player_id = player_id

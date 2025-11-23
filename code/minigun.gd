@@ -8,8 +8,12 @@ const DAMAGE: float = 13
 var team: String;
 var self_hitbox: HurtBox
 var player_id: int;
+var player_name: String;
 @export var shooting: bool
 var deadzone: bool
+
+func _ready() -> void:
+	print(player_name)
 	
 func _process(_delta: float) -> void:
 	if shooting && weapon_ready:
@@ -42,7 +46,8 @@ func shoot(tar_pos_param):
 			"team": team,
 			"damage": DAMAGE,
 			"timer": bullet_duration(),
-			"player_id":player_id
+			"player_id":player_id,
+			"player_name":player_name
 		})
 
 func weapon_spread(vector: Vector2) -> Vector2:

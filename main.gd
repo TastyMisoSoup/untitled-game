@@ -1,10 +1,13 @@
 extends Node2D
 
+const CROSSHAIR = preload("res://assets/icons/cursor.png")
+
 func _process(delta: float) -> void:
 	pass
 
 func _ready() -> void:
 	multiplayer.peer_disconnected.connect(_client_disconnected)
+	Input.set_custom_mouse_cursor(CROSSHAIR,0,Vector2(16,16))
 	pass
 	
 func _client_disconnected(id:int) -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cids42k57yl1g"]
 
-[ext_resource type="Script" uid="uid://bkp6m3rhtv44d" path="res://scenes/game-mechanics/lobby.gd" id="1_su31g"]
+[ext_resource type="Script" uid="uid://bkp6m3rhtv44d" path="res://scenes/game-mechanics/game_managers/lobby.gd" id="1_su31g"]
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="2_n4rh1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bw6a"]

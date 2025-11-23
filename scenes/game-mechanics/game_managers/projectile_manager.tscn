@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpt6p1e2f0sly"]
 
-[ext_resource type="Script" uid="uid://84b3c35474ar" path="res://scenes/game-mechanics/projectile_manager.gd" id="1_jjalt"]
+[ext_resource type="Script" uid="uid://84b3c35474ar" path="res://scenes/game-mechanics/game_managers/projectile_manager.gd" id="1_jjalt"]
 
 [node name="ProjectileManager" type="Node"]
 script = ExtResource("1_jjalt")

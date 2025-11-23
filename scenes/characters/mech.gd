@@ -13,11 +13,12 @@ const SPEED: int = 200
 var main_path: Node
 
 var speed_modifier: float;
-var label_name: String;
 @export var alive: bool = true
 
 @export var team: String;
 var player_id: int;
+var player_name: String;
+
 var dashing: bool = false
 var dash_on_cd: bool = false
 var falling = false
@@ -33,7 +34,7 @@ func _ready() -> void:
 	animation_player = animation_player if animation_player else $AnimationPlayer
 	main_path = get_node("./../../../Players")
 
-	body.set_primary_weapon(MechConfig.primary_weapon, hitbox, team, player_id)
+	body.set_primary_weapon(MechConfig.primary_weapon, hitbox, team, player_id, player_name)
 	body.set_secondary_weapon(MechConfig.secondary_weapon, hitbox)
 	var mech_stats = set_mech_body(MechConfig.mech_body)
 	health.max_health = mech_stats.HEALTH
@@ -44,7 +45,7 @@ func _ready() -> void:
 	#body.team = team;
 	hitbox.add_to_group(team)
 	
-	$Label.text = label_name
+	$Label.text = player_name
 	if is_multiplayer_authority():
 		$Camera2D.make_current()
 		health.HUD_visible()
@@ -102,7 +103,7 @@ func _on_dash_duration_timeout() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fall":
-		die(0)
+		die(0,"Environment")
 
 func set_mech_body(mech_body_str) -> Resource:
 	if ValidScenePaths.MECH_BODIES.has(mech_body_str):
@@ -122,10 +123,9 @@ func _on_team_change(team_name: String) -> void:
 	hitbox.add_to_group(team_name)
 
 @rpc("any_peer","call_local")
-func die(killer:int) -> void:
+func die(kill:int,kill_name:String) -> void:
 	alive = false
-	print("Killer: "+str(killer)+" | "+str("Death: ")+str(player_id))
-	get_parent().add_death(player_id,killer)
+	get_parent().add_death(player_id,kill,player_name,kill_name)
 	body.primary_weapon.shooting = false
 	hitbox.set_collision_layer_value(6,false)
 	set_collision_layer_value(5,false)
@@ -171,4 +171,4 @@ func fall() -> void:
 func change_health(hit_data:Dictionary) -> void:
 	health.change_health.rpc(hit_data["amount"])
 	if health.health <= 0:
-		die.rpc(hit_data["source"])
+		die.rpc(hit_data["source_id"],hit_data["source_name"])
