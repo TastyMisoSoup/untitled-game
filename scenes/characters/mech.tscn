@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=17 format=3 uid="uid://bhx5a75jglkyf"]
 
 [ext_resource type="Script" uid="uid://den6bovono7qu" path="res://scenes/characters/mech.gd" id="1_xus5x"]
 [ext_resource type="PackedScene" uid="uid://bb8nef5itan37" path="res://scenes/collision-objects/fall_check.tscn" id="2_cgioa"]
@@ -66,9 +66,13 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(0.377919, 0.377919, 0.377919, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_cgioa"]
+resource_name = "dash"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xwdg0"]
 _data = {
 &"RESET": SubResource("Animation_d77dx"),
+&"dash": SubResource("Animation_cgioa"),
 &"fall": SubResource("Animation_kaelg")
 }
 

@@ -77,7 +77,6 @@ func dash() -> void:
 func primary_weapon_action(target_position: Vector2) -> void:
 	if !is_multiplayer_authority()||!alive: return
 	#print(target_position)
-	body.primary_weapon.target_position = target_position
 	#print(body.primary_weapon.target_position)
 	body.primary_weapon.action.rpc_id(multiplayer.get_unique_id())
 

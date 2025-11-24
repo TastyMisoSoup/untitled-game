@@ -1,14 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlxwpufodemyy"]
+[gd_scene load_steps=3 format=3 uid="uid://dlxwpufodemyy"]
 
+[ext_resource type="Script" uid="uid://bhn64wtbd77rb" path="res://scenes/weapons/grenade_launcher.gd" id="1_thh8i"]
 [ext_resource type="Texture2D" uid="uid://rklj8mk7kg83" path="res://assets/sprites/characters/weapons/grenade-launcher.png" id="1_wch8v"]
 
 [node name="GrenadeLauncher" type="Node2D"]
+script = ExtResource("1_thh8i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 rotation = 1.5708
 texture = ExtResource("1_wch8v")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(41, -10)
+rotation = 1.5708
+
+[node name="Direction" type="Marker2D" parent="."]
+position = Vector2(174, 0)
 rotation = 1.5708

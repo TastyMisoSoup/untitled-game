@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://37xtnvyxmrdv"]
+
+[ext_resource type="Texture2D" uid="uid://dm7rflqu0cdpo" path="res://assets/sprites/projectiles/grenade.png" id="1_60u53"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj337"]
+atlas = ExtResource("1_60u53")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scrbw"]
+atlas = ExtResource("1_60u53")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnyeh"]
+atlas = ExtResource("1_60u53")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irniq"]
+atlas = ExtResource("1_60u53")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7hay"]
+atlas = ExtResource("1_60u53")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tuxk"]
+atlas = ExtResource("1_60u53")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u476"]
+atlas = ExtResource("1_60u53")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wt0kw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj337")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scrbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnyeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irniq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7hay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tuxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u476")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5sfl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2ryo"]
+
+[node name="Grenade" type="CharacterBody2D"]
+texture_filter = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wt0kw")
+frame_progress = 0.74265
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_q5sfl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_s2ryo")

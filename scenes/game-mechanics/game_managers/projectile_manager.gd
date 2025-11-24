@@ -1,12 +1,11 @@
 extends Node
 
-const PROJECTILE_SCENE = preload("res://scenes/weapons/projectiles/bullet.tscn")
-
 func _ready() -> void:
 	$MultiplayerSpawner.set_spawn_function(projectile_spawn)
 
-func projectile_spawn(projectile_data:Dictionary) -> Bullet:
-	var projectile_instance = PROJECTILE_SCENE.instantiate()
+func projectile_spawn(projectile_data:Dictionary) -> Projectile:
+	var projectile_scene = load(projectile_data["projectile_path"])
+	var projectile_instance = projectile_scene.instantiate()
 	projectile_instance.damage = projectile_data["damage"]
 	projectile_instance.start_position = projectile_data["start_position"]
 	projectile_instance.direction = projectile_data["direction"]
@@ -14,4 +13,5 @@ func projectile_spawn(projectile_data:Dictionary) -> Bullet:
 	projectile_instance.timer = projectile_data["timer"]
 	projectile_instance.player_id = projectile_data["player_id"]
 	projectile_instance.player_name = projectile_data["player_name"]
+	projectile_instance.speed = projectile_data["speed"]
 	return projectile_instance

@@ -1,23 +1,17 @@
 extends PrimaryWeapon
 
+const BULLET_PATH: NodePath = "res://scenes/weapons/projectiles/bullet.tscn"
+
 const SPREAD_AMOUNT:float = 0.1;
 const DAMAGE: float = 13
+const SPEED: int = 450
 
-@export var weapon_ready: bool = false
-@export var target_position: Vector2;
-var team: String;
-var self_hitbox: HurtBox
-var player_id: int;
-var player_name: String;
-@export var shooting: bool
-var deadzone: bool
-
-func _ready() -> void:
-	print(player_name)
+var weapon_ready: bool = false
+var shooting: bool
 	
 func _process(_delta: float) -> void:
 	if shooting && weapon_ready:
-		shoot.rpc(target_position)
+		shoot.rpc()
 
 @rpc("any_peer","call_local","reliable")
 func action():
@@ -34,7 +28,7 @@ func _on_timer_timeout() -> void:
 	weapon_ready = true;
 
 @rpc("any_peer","call_local","unreliable")
-func shoot(tar_pos_param):
+func shoot():
 	weapon_ready = false
 	
 	var direction = Vector2($Direction.global_position - $Muzzle.global_position).normalized()
@@ -47,7 +41,9 @@ func shoot(tar_pos_param):
 			"damage": DAMAGE,
 			"timer": bullet_duration(),
 			"player_id":player_id,
-			"player_name":player_name
+			"player_name":player_name,
+			"speed":SPEED,
+			"projectile_path":BULLET_PATH
 		})
 
 func weapon_spread(vector: Vector2) -> Vector2:

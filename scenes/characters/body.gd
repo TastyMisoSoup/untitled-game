@@ -23,7 +23,6 @@ func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox, team_pa
 		weapon_scene = load("res://scenes/weapons/minigun.tscn")
 	var weapon_instance = weapon_scene.instantiate()
 	weapon_instance.position = $PrimaryWeaponPosMarker.position
-	weapon_instance.self_hitbox = self_hitbox
 	weapon_instance.team = team_param
 	weapon_instance.player_id = player_id
 	weapon_instance.player_name = player_name

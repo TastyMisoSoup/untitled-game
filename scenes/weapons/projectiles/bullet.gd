@@ -1,24 +1,12 @@
-extends CharacterBody2D
+extends Projectile
 class_name Bullet
-
-var damage: int
-var timer: float
-var start_position: Vector2
-var direction: Vector2
-var team: String
-var stopped: bool
-var player_id: int;
-var player_name:String;
-const SPEED: int = 450
-
 
 func _ready() -> void:
 	position = start_position
 	look_at(global_position + direction)
 	add_to_group(team)
-	velocity = direction * SPEED
+	velocity = direction * speed
 	$Timer.start(timer)
-	print(player_name)
 
 func _physics_process(_delta: float) -> void:
 	if stopped: return
@@ -35,7 +23,6 @@ func explode() ->void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	explode()
-
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	queue_free()
