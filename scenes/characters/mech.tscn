@@ -39,6 +39,9 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_cgioa"]
+resource_name = "dash"
+
 [sub_resource type="Animation" id="Animation_kaelg"]
 resource_name = "fall"
 tracks/0/type = "value"
@@ -65,9 +68,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.377919, 0.377919, 0.377919, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_cgioa"]
-resource_name = "dash"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xwdg0"]
 _data = {

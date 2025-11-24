@@ -83,6 +83,9 @@ func primary_weapon_action(target_position: Vector2) -> void:
 func primary_weapon_action_stop() -> void:
 	if !is_multiplayer_authority()||!alive: return
 	body.primary_weapon.stop_action.rpc_id(multiplayer.get_unique_id())
+	
+func secondary_weapon_action(target_position:Vector2) -> void:
+	body.secondary_weapon.action.rpc_id(multiplayer.get_unique_id())
 
 func mech_look_at(target_position: Vector2) -> void:
 	if !is_multiplayer_authority()||!alive: return

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://37xtnvyxmrdv"]
+[gd_scene load_steps=13 format=3 uid="uid://37xtnvyxmrdv"]
 
+[ext_resource type="Script" uid="uid://hmy2rg2c0nfd" path="res://scenes/weapons/projectiles/grenade.gd" id="1_2qaxy"]
 [ext_resource type="Texture2D" uid="uid://dm7rflqu0cdpo" path="res://assets/sprites/projectiles/grenade.png" id="1_60u53"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jj337"]
@@ -65,6 +66,7 @@ animations = [{
 
 [node name="Grenade" type="CharacterBody2D"]
 texture_filter = 1
+script = ExtResource("1_2qaxy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wt0kw")
@@ -80,3 +82,7 @@ shape = SubResource("CircleShape2D_q5sfl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_s2ryo")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

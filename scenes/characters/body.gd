@@ -14,6 +14,9 @@ func primary_weapon_action(target_position) -> void:
 
 func primary_weapon_action_stop() -> void:
 	primary_weapon.stop_action()
+	
+func secondary_weapon_action() -> void:
+	secondary_weapon.action()
 
 func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox, team_param:String, player_id:int, player_name:String) -> void:
 	var weapon_scene;
