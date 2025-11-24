@@ -6,7 +6,7 @@
 [node name="GrenadeLauncher" type="Node2D"]
 script = ExtResource("1_thh8i")
 damage = 35
-speed = 600
+speed = 450
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -14,9 +14,9 @@ rotation = 1.5708
 texture = ExtResource("1_wch8v")
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(41, -10)
+position = Vector2(62, 29)
 rotation = 1.5708
 
 [node name="Direction" type="Marker2D" parent="."]
-position = Vector2(174, 0)
+position = Vector2(174, 29)
 rotation = 1.5708

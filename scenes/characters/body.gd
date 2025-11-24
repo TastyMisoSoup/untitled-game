@@ -18,7 +18,7 @@ func primary_weapon_action_stop() -> void:
 func secondary_weapon_action() -> void:
 	secondary_weapon.action()
 
-func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox, team_param:String, player_id:int, player_name:String) -> void:
+func set_primary_weapon(primary_weapon_str: String, team_param:String, player_id:int, player_name:String) -> void:
 	var weapon_scene;
 	if ValidScenePaths.PRIMARY_WEAPONS.has(primary_weapon_str):
 		weapon_scene = load("res://scenes/weapons/" + primary_weapon_str + ".tscn")
@@ -32,15 +32,19 @@ func set_primary_weapon(primary_weapon_str: String, self_hitbox:HurtBox, team_pa
 	add_child(weapon_instance)
 	primary_weapon = weapon_instance
 
-func set_secondary_weapon(secondary_weapon_str: String, _self_hitbox:HurtBox) -> void:
+func set_secondary_weapon(secondary_weapon_str: String, team_param:String, player_id:int,player_name:String) -> void:
 	var weapon_scene;
 	if ValidScenePaths.SECONDARY_WEAPONS.has(secondary_weapon_str):
 		weapon_scene = load("res://scenes/weapons/" + secondary_weapon_str + ".tscn")
 	else:
-		weapon_scene = load("res://scenes/weapons/grenade-launcher.tscn")
+		weapon_scene = load("res://scenes/weapons/grenade_launcher.tscn")
 	var weapon_instance = weapon_scene.instantiate()
 	weapon_instance.position = $SecondaryWeaponPosMarker.position
+	weapon_instance.team = team_param
+	weapon_instance.player_id = player_id
+	weapon_instance.player_name = player_name
 	add_child(weapon_instance)
+	secondary_weapon = weapon_instance
 
 func set_mech_body(mech_body_str) -> Resource:
 	if ValidScenePaths.MECH_BODIES.has(mech_body_str):
