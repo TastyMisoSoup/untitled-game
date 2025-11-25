@@ -17,7 +17,7 @@ func add_death(death:int,kill:int,death_name:String,kill_name:String):
 		if stats.player_id == death: stats.deaths=stats.deaths+1
 		stats.update()
 	for stats in %StatsManager.get_children():
-		if stats.player_id == kill: stats.kills=stats.kills+1
+		if stats.player_id == kill and death != kill: stats.kills=stats.kills+1
 		stats.update()
 	var kill_notif = get_kill_notif(death_name,kill_name)
 	%KillFeedContainer.add_child(kill_notif)

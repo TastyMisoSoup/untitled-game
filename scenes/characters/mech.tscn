@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=25 format=3 uid="uid://bhx5a75jglkyf"]
 
 [ext_resource type="Script" uid="uid://den6bovono7qu" path="res://scenes/characters/mech.gd" id="1_xus5x"]
 [ext_resource type="PackedScene" uid="uid://bb8nef5itan37" path="res://scenes/collision-objects/fall_check.tscn" id="2_cgioa"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bsshhtnxfy1ln" path="res://scenes/game-mechanics/trackers/health_player.tscn" id="6_kaelg"]
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="7_d77dx"]
 [ext_resource type="Script" uid="uid://brli4u1iv880p" path="res://scenes/characters/death_timer_ui.gd" id="7_xwdg0"]
+[ext_resource type="Texture2D" uid="uid://dk36raso5k3px" path="res://assets/sprites/projectiles/explosion.png" id="10_gxwmr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
 
@@ -83,6 +84,61 @@ properties/0/replication_mode = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwdg0"]
 bg_color = Color(0.219608, 0, 0.0117647, 0.866667)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng04k"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7o8u"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp80g"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nju0s"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjhx6"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htybu"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lb1l"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng04k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7o8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp80g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nju0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjhx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htybu")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}]
 
 [node name="Mech" type="CharacterBody2D"]
 z_index = 1
@@ -196,6 +252,12 @@ theme_override_font_sizes/font_size = 64
 text = "3"
 horizontal_alignment = 1
 
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_4lb1l")
+speed_scale = 4.0
+
 [connection signal="team_change" from="." to="." method="_on_team_change"]
 [connection signal="area_entered" from="FallCheck" to="." method="_on_fall_check_area_entered"]
 [connection signal="area_exited" from="FallCheck" to="." method="_on_fall_check_area_exited"]
@@ -204,3 +266,4 @@ horizontal_alignment = 1
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

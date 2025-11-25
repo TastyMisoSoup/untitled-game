@@ -105,6 +105,7 @@ func _on_dash_duration_timeout() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fall":
+		hide()
 		die(0,"Environment")
 
 func set_mech_body(mech_body_str) -> Resource:
@@ -127,6 +128,7 @@ func _on_team_change(team_name: String) -> void:
 @rpc("any_peer","call_local")
 func die(kill:int,kill_name:String) -> void:
 	alive = false
+	$DefaultLegs.stop_legs()
 	get_parent().add_death(player_id,kill,player_name,kill_name)
 	body.primary_weapon.shooting = false
 	hitbox.set_collision_layer_value(6,false)
@@ -134,7 +136,8 @@ func die(kill:int,kill_name:String) -> void:
 	$DeathTimer.start()
 	if is_multiplayer_authority():
 		$CanvasLayer.show()
-	hide()
+	$Explosion.play("explosion")
+	apply_smoked_texture()
 	
 @rpc("any_peer","call_local")
 func respawn() -> void:
@@ -147,7 +150,9 @@ func respawn() -> void:
 	set_collision_layer_value(5,true)
 	if is_multiplayer_authority():
 		$CanvasLayer.hide()
+	remove_smoked_texture()
 	show()
+	
 
 func _on_ready() -> void:
 	change_team(team)
@@ -174,3 +179,15 @@ func change_health(hit_data:Dictionary) -> void:
 	health.change_health.rpc(hit_data["amount"])
 	if health.health <= 0:
 		die.rpc(hit_data["source_id"],hit_data["source_name"])
+
+func apply_smoked_texture() -> void:
+	$DefaultLegs.modulate = Color(0.2,0.2,0.2,1)
+	$Body.modulate = Color(0.2,0.2,0.2,1)
+
+func remove_smoked_texture() -> void:
+	$Body.modulate = Color(1,1,1,1)
+	$DefaultLegs.modulate = Color(1,1,1,1)
+
+
+func _on_explosion_animation_finished() -> void:
+	$Explosion.animation = "default"

@@ -118,6 +118,10 @@ show_scoreboard={
 2d_physics/layer_5="characters"
 2d_physics/layer_6="character_hitbox"
 
+[physics]
+
+common/physics_ticks_per_second=40
+
 [rendering]
 
 2d/snap/snap_2d_transforms_to_pixel=true

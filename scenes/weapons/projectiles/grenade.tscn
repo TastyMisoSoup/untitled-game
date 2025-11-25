@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dk36raso5k3px" path="res://assets/sprites/projectiles/explosion.png" id="4_24yij"]
 
 [sub_resource type="Gradient" id="Gradient_2qaxy"]
-colors = PackedColorArray(0.962089, 0.197111, 0, 1, 0.833267, 0.283996, 0.145417, 0)
+colors = PackedColorArray(0.846758, 0.264193, 0, 1, 0.488974, 0.130508, 0.00807822, 0.368627)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jj337"]
 atlas = ExtResource("1_60u53")
@@ -163,7 +163,7 @@ shape = SubResource("CircleShape2D_s2ryo")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="ExplosionRadius" type="Area2D" parent="."]
-scale = Vector2(4, 4)
+scale = Vector2(3.8, 3.8)
 collision_layer = 4
 collision_mask = 32
 

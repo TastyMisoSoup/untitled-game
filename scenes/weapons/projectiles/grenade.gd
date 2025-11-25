@@ -23,7 +23,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player") && !area.is_in_group(team) && multiplayer.is_server():
+	if area.is_in_group("player") && !area.is_in_group(team):
 		explode()
 
 func explode() -> void:
