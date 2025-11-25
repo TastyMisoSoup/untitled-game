@@ -4,7 +4,7 @@ class_name Weapon
 var team: String;
 var player_id: int;
 var player_name: String;
-var start_pos: Vector2;
+
 @export var damage:int;
 @export var speed:int;
 @export var spread_amount:float

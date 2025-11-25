@@ -19,10 +19,24 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	explode()
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player") && !area.is_in_group(team) && multiplayer.is_server():
-		area.hit.rpc_id(1,{"amount":-damage,"source_id":player_id,"source_name":player_name})
-		queue_free()
+		explode()
+
+func explode() -> void:
+	velocity = Vector2.ZERO
+	$AnimatedSprite2D.visible = false
+	$CPUParticles2D.emitting = false
+	$Explosion.play("explosion")
+	for player in $ExplosionRadius.get_overlapping_areas():
+		$RayCast2D.target_position = to_local(player.global_position)
+		$RayCast2D.force_raycast_update()
+		if !$RayCast2D.is_colliding():
+			player.hit.rpc_id(1,{"amount":-damage,"source_id":player_id,"source_name":player_name})
+
+
+func _on_explosion_animation_finished() -> void:
+	queue_free()

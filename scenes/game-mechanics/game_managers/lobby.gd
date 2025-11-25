@@ -6,8 +6,6 @@ const DEFAULT_IP_ADDRESS = "127.0.0.1"
 
 var player_count: int = 0;
 
-signal on_connected_to_server()
-
 func _ready() -> void:
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connected_fail)

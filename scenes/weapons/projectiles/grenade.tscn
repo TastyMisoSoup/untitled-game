@@ -1,7 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://37xtnvyxmrdv"]
+[gd_scene load_steps=24 format=3 uid="uid://37xtnvyxmrdv"]
 
 [ext_resource type="Script" uid="uid://hmy2rg2c0nfd" path="res://scenes/weapons/projectiles/grenade.gd" id="1_2qaxy"]
 [ext_resource type="Texture2D" uid="uid://dm7rflqu0cdpo" path="res://assets/sprites/projectiles/grenade.png" id="1_60u53"]
+[ext_resource type="Texture2D" uid="uid://b2kfs6w3hylih" path="res://assets/sprites/projectiles/smoke_ball.png" id="3_isgnr"]
+[ext_resource type="Texture2D" uid="uid://dk36raso5k3px" path="res://assets/sprites/projectiles/explosion.png" id="4_24yij"]
+
+[sub_resource type="Gradient" id="Gradient_2qaxy"]
+colors = PackedColorArray(0.962089, 0.197111, 0, 1, 0.833267, 0.283996, 0.145417, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jj337"]
 atlas = ExtResource("1_60u53")
@@ -64,14 +69,80 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s2ryo"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_isgnr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng04k"]
+atlas = ExtResource("4_24yij")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7o8u"]
+atlas = ExtResource("4_24yij")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp80g"]
+atlas = ExtResource("4_24yij")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nju0s"]
+atlas = ExtResource("4_24yij")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjhx6"]
+atlas = ExtResource("4_24yij")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htybu"]
+atlas = ExtResource("4_24yij")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ijrud"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng04k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7o8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp80g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nju0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjhx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htybu")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}]
+
 [node name="Grenade" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_2qaxy")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 16
+texture = ExtResource("3_isgnr")
+lifetime = 0.1
+gravity = Vector2(0, 0)
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_2qaxy")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_wt0kw")
 frame_progress = 0.74265
 speed_scale = 3.0
@@ -86,9 +157,31 @@ collision_layer = 4
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+scale = Vector2(1.3, 1.3)
 shape = SubResource("CircleShape2D_s2ryo")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="ExplosionRadius" type="Area2D" parent="."]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
+shape = SubResource("CircleShape2D_isgnr")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+z_index = 3
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ijrud")
+speed_scale = 4.0
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

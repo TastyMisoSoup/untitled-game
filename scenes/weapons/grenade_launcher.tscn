@@ -14,9 +14,9 @@ rotation = 1.5708
 texture = ExtResource("1_wch8v")
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(62, 29)
+position = Vector2(71, 15)
 rotation = 1.5708
 
 [node name="Direction" type="Marker2D" parent="."]
-position = Vector2(174, 29)
+position = Vector2(174, 25)
 rotation = 1.5708

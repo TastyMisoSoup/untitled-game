@@ -2,7 +2,7 @@ extends Control
 class_name TitleMenu
 
 func _ready() -> void:
-	Input.set_custom_mouse_cursor(null,0,Vector2.ZERO)
+	Input.set_custom_mouse_cursor(null,Input.CursorShape.CURSOR_ARROW,Vector2.ZERO)
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
