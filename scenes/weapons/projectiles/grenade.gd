@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	explode()
+	$AnimatedSprite2D.play("exploding")
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
@@ -40,3 +40,7 @@ func explode() -> void:
 
 func _on_explosion_animation_finished() -> void:
 	queue_free()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	explode()

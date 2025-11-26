@@ -50,7 +50,7 @@ func _physics_process(_delta: float) -> void:
 			$Mech.secondary_weapon_action()
 		
 		if Input.is_action_just_pressed("dash") && input_direction!=Vector2(0,0):
-			$Mech.dash.rpc_id(multiplayer.get_unique_id())
+			$Mech.dash.rpc()
 		$Mech.mech_look_at(get_global_mouse_position())
 		$Mech.move(input_direction)
 

@@ -9,60 +9,65 @@
 offsets = PackedFloat32Array(0, 0.756401, 1)
 colors = PackedColorArray(0.860299, 0.529074, 7.70092e-07, 1, 0.744895, 0.285569, 0, 0.368627, 0.32549, 0.105882, 0, 0.219608)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jj337"]
-atlas = ExtResource("1_60u53")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_scrbw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_24yij"]
 atlas = ExtResource("1_60u53")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cnyeh"]
-atlas = ExtResource("1_60u53")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_irniq"]
-atlas = ExtResource("1_60u53")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k7hay"]
-atlas = ExtResource("1_60u53")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5tuxk"]
-atlas = ExtResource("1_60u53")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2u476"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijrud"]
 atlas = ExtResource("1_60u53")
 region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hta54"]
+atlas = ExtResource("1_60u53")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpj2q"]
+atlas = ExtResource("1_60u53")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkiwi"]
+atlas = ExtResource("1_60u53")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bfln"]
+atlas = ExtResource("1_60u53")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31g0e"]
+atlas = ExtResource("1_60u53")
+region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wt0kw"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jj337")
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_24yij")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_scrbw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cnyeh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_irniq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k7hay")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5tuxk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2u476")
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ijrud")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hta54")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_hpj2q")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_bkiwi")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_2bfln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31g0e")
+}],
+"loop": false,
+"name": &"exploding",
 "speed": 5.0
 }]
 
@@ -145,7 +150,7 @@ color_ramp = SubResource("Gradient_2qaxy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_wt0kw")
-frame_progress = 0.74265
+animation = &"exploding"
 speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -184,6 +189,7 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ijrud")
 speed_scale = 4.0
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
