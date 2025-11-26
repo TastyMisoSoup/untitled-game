@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://diw44y0a4nm72"]
+[gd_scene load_steps=11 format=3 uid="uid://diw44y0a4nm72"]
 
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_1kvwn"]
 [ext_resource type="Texture2D" uid="uid://bvg8w8r1v3lxv" path="res://assets/media/Screenshot 2025-09-22 202952.png" id="1_7sc1q"]
@@ -23,6 +23,9 @@ bg_color = Color(0.0639728, 0.622742, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r87ng"]
 bg_color = Color(1, 0.344145, 0.268891, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqhwi"]
+bg_color = Color(0, 0.686755, 0.685805, 1)
 
 [node name="TitleMenu" type="Control"]
 layout_mode = 3
@@ -131,6 +134,32 @@ offset_right = 68.0
 offset_bottom = 89.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_r87ng")
 text = "artemis"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 979.0
+offset_top = 107.0
+offset_right = 1117.0
+offset_bottom = 165.0
+text = "Set Name"
+
+[node name="LineEdit" type="LineEdit" parent="Button3"]
+layout_mode = 0
+offset_left = -23.0
+offset_top = -43.0
+offset_right = 162.0
+offset_bottom = -12.0
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gqhwi")
+placeholder_text = "Name"
 
 [connection signal="pressed" from="Control/VBoxContainer/CreateGame" to="." method="_on_create_game_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

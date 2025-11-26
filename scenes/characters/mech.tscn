@@ -160,7 +160,7 @@ emission_shape = 1
 emission_sphere_radius = 9.42
 gravity = Vector2(0, 0)
 scale_amount_min = 0.3
-scale_amount_max = 0.5
+scale_amount_max = 0.3
 color_ramp = SubResource("Gradient_41aba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -50,6 +50,21 @@ func _ready() -> void:
 		$Camera2D.make_current()
 		health.HUD_visible()
 
+#Setters
+func set_mech_body(mech_body_str) -> Resource:
+	if ValidScenePaths.MECH_BODIES.has(mech_body_str):
+		return load("res://resources/stats/mechs/"+mech_body_str+".tres")
+	else: 
+		return load("res://resources/stats/mechs/daemon.tres")
+
+func change_team(team_name:String):
+	team_change.emit(team_name)
+
+func _on_team_change(team_name: String) -> void:
+	body.primary_weapon.team = team_name;
+	hitbox.add_to_group(team_name)
+
+#Movement
 func move(input_direction) -> void:
 	if !is_multiplayer_authority() or !alive: return
 	velocity = compute_velocity(input_direction, speed_modifier, dashing)
@@ -69,16 +84,39 @@ func dash() -> void:
 	dashing = true
 	set_collision_mask_value(1,false)
 	hitbox.set_collision_layer_value(6,false)
-	#hitbox.monitorable = false
 	$DashDuration.start()
 	$DashCooldown.start()
 	$CPUParticles2D.emitting = true
 
+func _on_dash_duration_timeout() -> void:
+	set_collision_mask_value(1,true)
+	hitbox.set_collision_layer_value(6,true)
+	set_collision_layer_value(5,true)
+	$CPUParticles2D.emitting = false
+	dashing = false
+	if falling:
+		fall.rpc()
 
+func _on_dash_cooldown_timeout() -> void:
+	dash_on_cd = false
+
+func _on_fall_check_area_entered(area: Area2D) -> void:
+	if area.is_in_group("death_pit"):
+		falling = true
+
+func _on_fall_check_area_exited(area: Area2D) -> void:
+	if area.is_in_group("death_pit") && !$FallCheck.has_overlapping_areas():
+		falling = false
+
+@rpc("any_peer","call_local","reliable")
+func fall() -> void:
+	alive = false
+	body.primary_weapon.shooting = false
+	animation_player.play("fall")
+
+#Actions
 func primary_weapon_action() -> void:
 	if !is_multiplayer_authority()||!alive: return
-	#print(target_position)
-	#print(body.primary_weapon.target_position)
 	body.primary_weapon.action.rpc_id(multiplayer.get_unique_id())
 
 func primary_weapon_action_stop() -> void:
@@ -92,40 +130,22 @@ func mech_look_at(target_position: Vector2) -> void:
 	if !is_multiplayer_authority()||!alive: return
 	body.look_at(target_position)
 
+#Health
 func _on_hitbox_on_hit(hit_data) -> void:
 	change_health(hit_data)
-
-
-func _on_dash_duration_timeout() -> void:
-	set_collision_mask_value(1,true)
-	hitbox.set_collision_layer_value(6,true)
-	set_collision_layer_value(5,true)
-	$CPUParticles2D.emitting = false
-	dashing = false
-	if falling:
-		fall.rpc()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fall":
 		hide()
 		die(0,"Environment")
 
-func set_mech_body(mech_body_str) -> Resource:
-	if ValidScenePaths.MECH_BODIES.has(mech_body_str):
-		return load("res://resources/stats/mechs/"+mech_body_str+".tres")
-	else: 
-		return load("res://resources/stats/mechs/daemon.tres")
+func _on_death_timer_timeout() -> void:
+	respawn.rpc()
 
-
-func _on_dash_cooldown_timeout() -> void:
-	dash_on_cd = false
-
-func change_team(team_name:String):
-	team_change.emit(team_name)
-
-func _on_team_change(team_name: String) -> void:
-	body.primary_weapon.team = team_name;
-	hitbox.add_to_group(team_name)
+func change_health(hit_data:Dictionary) -> void:
+	health.change_health.rpc(hit_data["amount"])
+	if health.health <= 0:
+		die.rpc(hit_data["source_id"],hit_data["source_name"])
 
 @rpc("any_peer","call_local")
 func die(kill:int,kill_name:String) -> void:
@@ -133,8 +153,7 @@ func die(kill:int,kill_name:String) -> void:
 	$DefaultLegs.stop_legs()
 	get_parent().add_death(player_id,kill,player_name,kill_name)
 	body.primary_weapon.shooting = false
-	hitbox.set_collision_layer_value(6,false)
-	set_collision_layer_value(5,false)
+	toggle_collision()
 	$DeathTimer.start()
 	if is_multiplayer_authority():
 		$CanvasLayer.show()
@@ -148,39 +167,14 @@ func respawn() -> void:
 	alive = true
 	health.change_health(health.max_health)
 	position = main_path.get_random_spawn_point()
-	hitbox.set_collision_layer_value(6,true)
-	set_collision_layer_value(5,true)
+	toggle_collision()
 	if is_multiplayer_authority():
 		$CanvasLayer.hide()
 	remove_smoked_texture()
 	show()
-	
 
-func _on_ready() -> void:
-	change_team(team)
-
-func _on_death_timer_timeout() -> void:
-	respawn.rpc()
-
-func _on_fall_check_area_entered(area: Area2D) -> void:
-	if area.is_in_group("death_pit"):
-		falling = true
-
-
-func _on_fall_check_area_exited(area: Area2D) -> void:
-	if area.is_in_group("death_pit") && !$FallCheck.has_overlapping_areas():
-		falling = false
-
-@rpc("any_peer","call_local","reliable")
-func fall() -> void:
-	alive = false
-	body.primary_weapon.shooting = false
-	animation_player.play("fall")
-
-func change_health(hit_data:Dictionary) -> void:
-	health.change_health.rpc(hit_data["amount"])
-	if health.health <= 0:
-		die.rpc(hit_data["source_id"],hit_data["source_name"])
+func _on_explosion_animation_finished() -> void:
+	$Explosion.animation = "default"
 
 func apply_smoked_texture() -> void:
 	$DefaultLegs.modulate = Color(0.2,0.2,0.2,1)
@@ -190,6 +184,6 @@ func remove_smoked_texture() -> void:
 	$Body.modulate = Color(1,1,1,1)
 	$DefaultLegs.modulate = Color(1,1,1,1)
 
-
-func _on_explosion_animation_finished() -> void:
-	$Explosion.animation = "default"
+func toggle_collision() -> void:
+	hitbox.set_collision_layer_value(6,!hitbox.get_collision_layer_value(6))
+	set_collision_layer_value(5,!get_collision_layer_value(5))

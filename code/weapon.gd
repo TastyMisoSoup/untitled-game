@@ -20,6 +20,9 @@ func weapon_spread(vector: Vector2) -> Vector2:
 func shoot(start_pos,target_pos,timer,projectile_path):
 	var direction = Vector2(target_pos - start_pos).normalized()
 	direction = weapon_spread(direction)
+	spawn_projectile(start_pos,target_pos,timer,projectile_path,direction)
+
+func spawn_projectile(start_pos,target_pos,timer,projectile_path,direction):
 	if multiplayer.is_server():
 		get_node("/root/Main/ProjectileManager/MultiplayerSpawner").spawn({
 			"start_position": start_pos,

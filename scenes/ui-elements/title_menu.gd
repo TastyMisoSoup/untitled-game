@@ -18,3 +18,7 @@ func _on_button_pressed() -> void:
 
 func _on_button_2_pressed() -> void:
 	MechConfig.mech_body = "artemis"
+
+
+func _on_name_btn_pressed() -> void:
+	pass # Replace with function body.
