@@ -15,7 +15,7 @@ func _ready() -> void:
 		$PanelContainer.theme = IS_OWNER
 	$PanelContainer/PlayerName.text = player_name
 	$PanelContainer/Stats.text = str(kills)+" / "+str(deaths)
-	$PanelContainer/Rank.text = str(rank)+"#"
+	$PanelContainer/Rank.text = str(rank+1)+"#"
 
 func sort():
 	pass

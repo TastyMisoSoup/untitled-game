@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://elrk7ty5ec2h"]
 
 [ext_resource type="Script" uid="uid://mu86x54ckvfg" path="res://scenes/game-mechanics/game_managers/players_manager.gd" id="1_h8vjx"]
-[ext_resource type="PackedScene" uid="uid://boyafib0fxalk" path="res://scenes/ui-elements/score/player_stats.tscn" id="2_s7xem"]
+[ext_resource type="Script" uid="uid://cafn3n6m7h2em" path="res://scenes/game-mechanics/game_managers/stats_manager.gd" id="2_s7xem"]
 
 [node name="Players" type="Node"]
 script = ExtResource("1_h8vjx")
@@ -53,39 +53,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
-
-[node name="PlayerStats" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats2" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats3" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats4" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats5" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats6" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats7" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats8" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats9" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats10" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
-
-[node name="PlayerStats11" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer/StatsManager" instance=ExtResource("2_s7xem")]
-layout_mode = 2
+script = ExtResource("2_s7xem")
 
 [node name="KillFeed" type="Control" parent="CanvasLayer"]
 texture_filter = 1

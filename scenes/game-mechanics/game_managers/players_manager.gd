@@ -1,4 +1,5 @@
 extends Node
+class_name PlayerManager
 
 const PLAYER_STATS = preload("res://scenes/ui-elements/score/player_stats.tscn")
 const KILL_NOTIFICATION = preload("res://scenes/ui-elements/score/kill_notification.tscn")
@@ -6,6 +7,7 @@ const KILL_NOTIFICATION = preload("res://scenes/ui-elements/score/kill_notificat
 @export var stats_manager: Node = null
 
 func _ready() -> void:
+	multiplayer.peer_disconnected.connect(client_disconnected)
 	stats_manager = stats_manager if stats_manager else get_node("%StatsManager")
 
 func get_random_spawn_point() -> Vector2:
@@ -38,3 +40,12 @@ func get_kill_notif(death_name:String,kill_name:String) -> Node:
 	notif_inst.death = death_name
 	notif_inst.kill = kill_name
 	return notif_inst
+
+@rpc("any_peer","call_remote")
+func client_disconnected(id:int) -> void:
+	print("hi")
+	var player_node = get_node_or_null(str(id))
+	%StatsManager.remove_player_stats(id)
+	if player_node:
+		player_node.queue_free()
+	

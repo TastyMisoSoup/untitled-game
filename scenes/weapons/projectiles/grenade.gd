@@ -34,7 +34,7 @@ func explode() -> void:
 	for player in $ExplosionRadius.get_overlapping_areas():
 		$RayCast2D.target_position = to_local(player.global_position)
 		$RayCast2D.force_raycast_update()
-		if !$RayCast2D.is_colliding():
+		if !$RayCast2D.is_colliding() and multiplayer.is_server():
 			player.hit.rpc_id(1,{"amount":-damage,"source_id":player_id,"source_name":player_name})
 
 

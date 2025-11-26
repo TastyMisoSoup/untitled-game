@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bhx5a75jglkyf"]
+[gd_scene load_steps=27 format=3 uid="uid://bhx5a75jglkyf"]
 
 [ext_resource type="Script" uid="uid://den6bovono7qu" path="res://scenes/characters/mech.gd" id="1_xus5x"]
+[ext_resource type="Texture2D" uid="uid://b2kfs6w3hylih" path="res://assets/sprites/projectiles/smoke_ball.png" id="2_4lb1l"]
 [ext_resource type="PackedScene" uid="uid://bb8nef5itan37" path="res://scenes/collision-objects/fall_check.tscn" id="2_cgioa"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
 [ext_resource type="PackedScene" uid="uid://c3www0d1imvsy" path="res://scenes/characters/default_mech_legs.tscn" id="5_dlmw4"]
@@ -10,6 +11,10 @@
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="7_d77dx"]
 [ext_resource type="Script" uid="uid://brli4u1iv880p" path="res://scenes/characters/death_timer_ui.gd" id="7_xwdg0"]
 [ext_resource type="Texture2D" uid="uid://dk36raso5k3px" path="res://assets/sprites/projectiles/explosion.png" id="10_gxwmr"]
+
+[sub_resource type="Gradient" id="Gradient_41aba"]
+offsets = PackedFloat32Array(0.0775706, 0.767137, 1)
+colors = PackedColorArray(0.982074, 0.644166, 0, 1, 0.704734, 0.704734, 0.704733, 0.658824, 0.788902, 0.788902, 0.788902, 0.309804)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
 
@@ -145,6 +150,18 @@ z_index = 1
 collision_layer = 16
 collision_mask = 19
 script = ExtResource("1_xus5x")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+texture = ExtResource("2_4lb1l")
+lifetime = 0.3
+speed_scale = 2.0
+emission_shape = 1
+emission_sphere_radius = 9.42
+gravity = Vector2(0, 0)
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_41aba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bsyqu")

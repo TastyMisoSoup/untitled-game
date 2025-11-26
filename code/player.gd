@@ -7,7 +7,7 @@ var team_number: int = 5;
 var team: String;
 var player_id: int;
 var open_menu: bool = false
-var mech: Mech;
+var mech_body:String;
 const SPEED = 200.0
 @export var input_direction: Vector2
 

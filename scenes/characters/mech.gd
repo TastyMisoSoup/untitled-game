@@ -72,6 +72,7 @@ func dash() -> void:
 	#hitbox.monitorable = false
 	$DashDuration.start()
 	$DashCooldown.start()
+	$CPUParticles2D.emitting = true
 
 
 func primary_weapon_action() -> void:
@@ -99,6 +100,7 @@ func _on_dash_duration_timeout() -> void:
 	set_collision_mask_value(1,true)
 	hitbox.set_collision_layer_value(6,true)
 	set_collision_layer_value(5,true)
+	$CPUParticles2D.emitting = false
 	dashing = false
 	if falling:
 		fall.rpc()
