@@ -119,7 +119,6 @@ label_settings = SubResource("LabelSettings_1kvwn")
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
@@ -127,7 +126,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xpoh3")
 text = "daemon"
 
 [node name="Button2" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_top = 58.0
 offset_right = 68.0

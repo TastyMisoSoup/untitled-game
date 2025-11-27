@@ -12,7 +12,7 @@ const SPEED = 200.0
 @export var input_direction: Vector2
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
+	set_multiplayer_authority(player_id)
 	$MultiplayerSpawner.set_multiplayer_authority(1)
 	pass
 	
@@ -21,7 +21,6 @@ func _ready() -> void:
 	if multiplayer.is_server():
 		$MultiplayerSpawner.spawn({"team":"team"+name,"player_name":"Player"+name})
 	get_parent().add_player_stats("Player"+name,is_multiplayer_authority(),player_id)
-	print(player_id)
 	
 
 func _physics_process(_delta: float) -> void:

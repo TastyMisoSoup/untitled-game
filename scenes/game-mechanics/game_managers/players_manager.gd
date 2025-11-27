@@ -6,6 +6,7 @@ const KILL_NOTIFICATION = preload("res://scenes/ui-elements/score/kill_notificat
 
 @export var stats_manager: Node = null
 
+
 func _ready() -> void:
 	multiplayer.peer_disconnected.connect(client_disconnected)
 	stats_manager = stats_manager if stats_manager else get_node("%StatsManager")
@@ -43,7 +44,6 @@ func get_kill_notif(death_name:String,kill_name:String) -> Node:
 
 @rpc("any_peer","call_remote")
 func client_disconnected(id:int) -> void:
-	print("hi")
 	var player_node = get_node_or_null(str(id))
 	%StatsManager.remove_player_stats(id)
 	if player_node:
