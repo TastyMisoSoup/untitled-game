@@ -9,6 +9,8 @@ signal team_change(team_name:String);
 @export var legs: Legs = null
 @export var animation_player: AnimationPlayer = null
 
+var mech_body
+
 const SPEED: int = 200
 var main_path: Node
 
@@ -36,7 +38,7 @@ func _ready() -> void:
 
 	body.set_primary_weapon(MechConfig.primary_weapon, team, player_id, player_name)
 	body.set_secondary_weapon(MechConfig.secondary_weapon, team, player_id, player_name)
-	var mech_stats = set_mech_body(MechConfig.mech_body)
+	var mech_stats = set_mech_body(mech_body)
 	health.max_health = mech_stats.HEALTH
 	health.health = health.max_health
 	health.update()

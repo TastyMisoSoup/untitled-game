@@ -18,6 +18,7 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	$MultiplayerSpawner.set_spawn_function(mech_construct)
+	print(str(multiplayer.get_unique_id())+": "+mech_body)
 	if multiplayer.is_server():
 		$MultiplayerSpawner.spawn({"team":"team"+name,"player_name":"Player"+name})
 	get_parent().add_player_stats("Player"+name,is_multiplayer_authority(),player_id)
@@ -66,4 +67,5 @@ func mech_construct(player_data:Dictionary):
 	mech_instance.position = $"../".get_random_spawn_point()
 	mech_instance.set_multiplayer_authority(name.to_int())
 	mech_instance.player_id = player_id
+	mech_instance.mech_body = mech_body
 	return mech_instance

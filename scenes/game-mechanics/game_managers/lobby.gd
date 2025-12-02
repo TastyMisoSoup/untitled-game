@@ -4,7 +4,7 @@ var peer: ENetMultiplayerPeer
 var max_players: int
 const DEFAULT_IP_ADDRESS = "127.0.0.1"
 
-signal player_connected(player_id, player_info)
+signal player_connected(player_id)
 
 var player_count: int = 0;
 
@@ -49,16 +49,16 @@ func _on_connected_to_server()-> void:
 	load_game()
 	
 func _on_player_connected(id) -> void:
-	_register_player.rpc_id(id)
+	player_info = MechConfig.mech_body
+	_register_player.rpc_id(id, player_info)
 
 @rpc("any_peer", "reliable")
-func _register_player():
+func _register_player(new_player_info):
+	print(str(multiplayer.get_unique_id())+": "+str(true))
 	var new_player_id = multiplayer.get_remote_sender_id()
-	if player_info == null:
-		player_info = "daemon"
-	players[new_player_id] = player_info
-	print(str(multiplayer.get_unique_id())+str(players))
-	player_connected.emit(new_player_id)
+	players[new_player_id] = new_player_info
+	#print(str(multiplayer.get_unique_id())+str(players))
+	player_connected.emit(new_player_id, new_player_info)
 
 func remove_multiplayer_peer():
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
