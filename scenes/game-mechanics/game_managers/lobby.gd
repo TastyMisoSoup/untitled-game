@@ -54,7 +54,6 @@ func _on_player_connected(id) -> void:
 
 @rpc("any_peer", "reliable")
 func _register_player(new_player_info):
-	print(str(multiplayer.get_unique_id())+": "+str(true))
 	var new_player_id = multiplayer.get_remote_sender_id()
 	players[new_player_id] = new_player_info
 	#print(str(multiplayer.get_unique_id())+str(players))
