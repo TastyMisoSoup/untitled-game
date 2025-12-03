@@ -4,7 +4,7 @@ var peer: ENetMultiplayerPeer
 var max_players: int
 const DEFAULT_IP_ADDRESS = "127.0.0.1"
 
-signal player_connected(player_id)
+signal player_connected(player_id, player_info)
 
 var player_count: int = 0;
 
@@ -16,7 +16,7 @@ func _ready() -> void:
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
-	player_info = MechConfig.mech_body
+	player_info = PlayerConfig.get_player_info()
 
 func create_game(port:int, max_players_param:int):
 	peer = ENetMultiplayerPeer.new()
@@ -49,7 +49,7 @@ func _on_connected_to_server()-> void:
 	load_game()
 	
 func _on_player_connected(id) -> void:
-	player_info = MechConfig.mech_body
+	player_info = PlayerConfig.get_player_info()
 	_register_player.rpc_id(id, player_info)
 
 @rpc("any_peer", "reliable")

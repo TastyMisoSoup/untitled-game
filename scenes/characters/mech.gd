@@ -36,8 +36,8 @@ func _ready() -> void:
 	animation_player = animation_player if animation_player else $AnimationPlayer
 	main_path = get_node("./../../../Players")
 
-	body.set_primary_weapon(MechConfig.primary_weapon, team, player_id, player_name)
-	body.set_secondary_weapon(MechConfig.secondary_weapon, team, player_id, player_name)
+	body.set_primary_weapon(PlayerConfig.primary_weapon, team, player_id, player_name)
+	body.set_secondary_weapon(PlayerConfig.secondary_weapon, team, player_id, player_name)
 	var mech_stats = set_mech_body(mech_body)
 	health.max_health = mech_stats.HEALTH
 	health.health = health.max_health

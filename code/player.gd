@@ -20,8 +20,8 @@ func _ready() -> void:
 	$MultiplayerSpawner.set_spawn_function(mech_construct)
 	print(str(multiplayer.get_unique_id())+": "+mech_body)
 	if multiplayer.is_server():
-		$MultiplayerSpawner.spawn({"team":"team"+name,"player_name":"Player"+name})
-	get_parent().add_player_stats("Player"+name,is_multiplayer_authority(),player_id)
+		$MultiplayerSpawner.spawn({"team":player_id,"player_name":name})
+	get_parent().add_player_stats(name,is_multiplayer_authority(),player_id)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -62,10 +62,10 @@ func _on_game_menu_menu_visibility_change(open: bool) -> void:
 
 func mech_construct(player_data:Dictionary):
 	var mech_instance = MECH_SCENE.instantiate()
-	mech_instance.team = player_data["team"]
+	mech_instance.team = str(player_data["team"])
 	mech_instance.player_name = player_data["player_name"]
 	mech_instance.position = $"../".get_random_spawn_point()
-	mech_instance.set_multiplayer_authority(name.to_int())
+	mech_instance.set_multiplayer_authority(player_id)
 	mech_instance.player_id = player_id
 	mech_instance.mech_body = mech_body
 	return mech_instance
