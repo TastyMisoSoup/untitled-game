@@ -5,7 +5,7 @@ signal team_change(team_name:String);
 
 @export var body: Body = null
 @export var hitbox: HurtBox = null
-@export var health: Health = null
+@export var resource_tracker: ResourceTracker = null
 @export var legs: Legs = null
 @export var animation_player: AnimationPlayer = null
 
@@ -31,7 +31,7 @@ var controllable = true
 func _ready() -> void:
 	body = body if body else $Body
 	hitbox = hitbox if hitbox else $Hitbox
-	health = health if health else $HealthPlayer
+	resource_tracker = resource_tracker if resource_tracker else $ResourceTrackerPlayer
 	legs = legs if legs else $DefaultLegs
 	animation_player = animation_player if animation_player else $AnimationPlayer
 	main_path = get_node("./../../../Players")
@@ -39,9 +39,9 @@ func _ready() -> void:
 	body.set_primary_weapon(PlayerConfig.primary_weapon, team, player_id, player_name)
 	body.set_secondary_weapon(PlayerConfig.secondary_weapon, team, player_id, player_name)
 	var mech_stats = set_mech_body(mech_body)
-	health.max_health = mech_stats.HEALTH
-	health.health = health.max_health
-	health.update()
+	resource_tracker.max_health = mech_stats.HEALTH
+	resource_tracker.health = resource_tracker.max_health
+	resource_tracker.update_health()
 	speed_modifier = mech_stats.SPEED_MODIFIER
 	body.set_texture(mech_stats.TEXTURE)
 	#body.team = team;
@@ -50,7 +50,7 @@ func _ready() -> void:
 	$Label.text = player_name
 	if is_multiplayer_authority():
 		$Camera2D.make_current()
-		health.HUD_visible()
+		resource_tracker.HUD_visible()
 
 #Setters
 func set_mech_body(mech_body_str) -> Resource:
@@ -145,8 +145,8 @@ func _on_death_timer_timeout() -> void:
 	respawn.rpc()
 
 func change_health(hit_data:Dictionary) -> void:
-	health.change_health.rpc(hit_data["amount"])
-	if health.health <= 0:
+	resource_tracker.change_health.rpc(hit_data["amount"])
+	if resource_tracker.health <= 0:
 		die.rpc(hit_data["source_id"],hit_data["source_name"])
 
 @rpc("any_peer","call_local")
@@ -167,7 +167,7 @@ func respawn() -> void:
 	scale = Vector2(1,1)
 	modulate = Color(1,1,1,1)
 	alive = true
-	health.change_health(health.max_health)
+	resource_tracker.change_health(resource_tracker.max_health)
 	position = main_path.get_random_spawn_point()
 	toggle_collision()
 	if is_multiplayer_authority():

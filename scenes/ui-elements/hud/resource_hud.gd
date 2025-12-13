@@ -12,7 +12,7 @@ func change_health(amount: float) -> void:
 		$HealthBarLarge/HealthBarLargePercent.theme = THEME_NORMAL
 	
 
-func update(new_max_health: int) -> void:
+func update_health(new_max_health: int) -> void:
 	$HealthBarLarge.max_value = new_max_health
 	$HealthBarLarge/HealthBarLargePercent.max_value = new_max_health
 	$HealthBarLarge.value = new_max_health

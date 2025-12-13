@@ -1,6 +1,8 @@
 extends Node2D
 class_name Weapon
 
+signal weapon_action(energy:int)
+
 var team: String;
 var player_id: int;
 var player_name: String;
@@ -8,6 +10,7 @@ var player_name: String;
 @export var damage:int;
 @export var speed:int;
 @export var spread_amount:float
+@export var energy:int
 
 func action():
 	pass

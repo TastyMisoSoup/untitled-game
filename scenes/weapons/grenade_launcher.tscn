@@ -7,6 +7,7 @@
 script = ExtResource("1_thh8i")
 damage = 35
 speed = 450
+energy = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

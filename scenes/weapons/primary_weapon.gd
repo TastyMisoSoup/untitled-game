@@ -11,3 +11,6 @@ func shoot(start_pos:Vector2,target_pos:Vector2,timer:float,projectile_path:Node
 	weapon_ready = false
 	
 	super(start_pos,target_pos,timer,projectile_path)
+
+func generate_energy(energy:int):
+	weapon_action.emit(energy)

@@ -150,6 +150,8 @@ z_index = 1
 collision_layer = 16
 collision_mask = 19
 script = ExtResource("1_xus5x")
+alive = null
+team = null
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
@@ -198,7 +200,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_xwdg0")
 }
 
-[node name="ResourceTrackerPlayer" parent="." instance=ExtResource("6_kaelg")]
+[node name="ResourceTracker" parent="." instance=ExtResource("6_kaelg")]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_xus5x")

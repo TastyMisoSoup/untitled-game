@@ -198,7 +198,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_xwdg0")
 }
 
-[node name="ResourceTrackerPlayer" parent="." instance=ExtResource("6_kaelg")]
+[node name="ResourceTracker" parent="." instance=ExtResource("6_kaelg")]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_xus5x")
