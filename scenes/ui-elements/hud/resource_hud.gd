@@ -11,6 +11,15 @@ func change_health(amount: float) -> void:
 	else:
 		$HealthBarLarge/HealthBarLargePercent.theme = THEME_NORMAL
 	
+func change_energy(amount: int) -> void:
+	$EnergyBarLarge.value += amount
+	$EnergyBarLarge/EnergyBarLargePercent.value += amount
+
+func update_energy(new_max_energy:int) -> void:
+	$EnergyBarLarge.max_value = new_max_energy
+	$EnergyBarLarge/EnergyBarLargePercent.max_value = new_max_energy
+	$EnergyBarLarge.value = 0
+	$EnergyBarLarge/EnergyBarLargePercent.value = 0
 
 func update_health(new_max_health: int) -> void:
 	$HealthBarLarge.max_value = new_max_health

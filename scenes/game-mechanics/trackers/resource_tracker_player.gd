@@ -8,6 +8,14 @@ func change_health(amount:float) -> float:
 	$CanvasLayer/ResourceTrackerHUD.change_health(amount)
 	$HealthBar.change_health(amount)
 	return health
+	
+func change_energy(amount:int) -> int:
+	super(amount)
+	$CanvasLayer/ResourceTrackerHUD
+	return energy
+
+func update_energy() -> void:
+	$CanvasLayer/ResourceTrackerHUD.update_energy(max_energy)
 
 func update_health() -> void:
 	$HealthBar.max_value = max_health
