@@ -9,4 +9,7 @@ func move_legs(player_direction: Vector2) -> void:
 		$AnimatedSprite2D.play("move")
 		look_at(direction)
 	else:
-		$AnimatedSprite2D.stop()
+		stop_legs()
+
+func stop_legs() -> void:
+	$AnimatedSprite2D.stop()

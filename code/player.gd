@@ -5,50 +5,67 @@ const MECH_SCENE = preload("res://scenes/characters/mech.tscn")
 
 var team_number: int = 5;
 var team: String;
+var player_id: int;
 var open_menu: bool = false
-var mech: Mech;
+var mech_body:String;
 const SPEED = 200.0
 @export var input_direction: Vector2
 
 func _enter_tree() -> void:
-	#set_multiplayer_authority(multiplayer.get_unique_id())
+	set_multiplayer_authority(player_id)
+	$MultiplayerSpawner.set_multiplayer_authority(1)
 	pass
 	
 func _ready() -> void:
 	$MultiplayerSpawner.set_spawn_function(mech_construct)
+	print(str(multiplayer.get_unique_id())+": "+mech_body)
 	if multiplayer.is_server():
-		set_multiplayer_authority(multiplayer.get_unique_id())
-		$MultiplayerSpawner.spawn("team"+name)
+		$MultiplayerSpawner.spawn({"team":player_id,"player_name":name})
+	get_parent().add_player_stats(name,is_multiplayer_authority(),player_id)
 	
 
 func _physics_process(_delta: float) -> void:
 	
-	#if !is_multiplayer_authority(): return
+	if !is_multiplayer_authority(): return
 	
 	if !visible: return
+	
+	if Input.is_action_just_pressed("show_scoreboard") and is_multiplayer_authority():
+		get_parent().hide_show_scoreboard()
+	if Input.is_action_just_released("show_scoreboard") and is_multiplayer_authority():
+		get_parent().hide_show_scoreboard()
 	
 	if open_menu:
 		return
 	
 	if self.has_node("Mech"):
 		input_direction = Input.get_vector("move_left", "move_right","move_up","move_down")
-		if Input.is_action_pressed("attack"):
-			$Mech.primary_weapon_action(get_global_mouse_position())
-		if Input.is_action_just_released("attack"):
+		
+		if Input.is_action_pressed("primary_weapon_action"):
+			$Mech.primary_weapon_action()
+		if Input.is_action_just_released("primary_weapon_action"):
 			$Mech.primary_weapon_action_stop()
+			
+		if Input.is_action_just_pressed("secondary_weapon_action"):
+			$Mech.secondary_weapon_action()
+		
 		if Input.is_action_just_pressed("dash") && input_direction!=Vector2(0,0):
-			$Mech.dash.rpc_id(multiplayer.get_unique_id())
+			$Mech.dash.rpc()
 		$Mech.mech_look_at(get_global_mouse_position())
 		$Mech.move(input_direction)
 
+func add_death(death:int,kill:int, death_name:String, kill_name: String):
+	get_parent().add_death(death,kill,death_name,kill_name)
 
 func _on_game_menu_menu_visibility_change(open: bool) -> void:
 	open_menu = open
 
-func mech_construct(team_param):
+func mech_construct(player_data:Dictionary):
 	var mech_instance = MECH_SCENE.instantiate()
-	mech_instance.team = team_param
-	mech_instance.label_name = self.name
+	mech_instance.team = str(player_data["team"])
+	mech_instance.player_name = player_data["player_name"]
 	mech_instance.position = $"../".get_random_spawn_point()
-	mech_instance.set_multiplayer_authority(name.to_int())
+	mech_instance.set_multiplayer_authority(player_id)
+	mech_instance.player_id = player_id
+	mech_instance.mech_body = mech_body
 	return mech_instance

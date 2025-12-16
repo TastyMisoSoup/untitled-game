@@ -17,19 +17,24 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-ProjectileManager="*res://scenes/game-mechanics/projectile_manager.tscn"
+ProjectileManager="*res://scenes/game-mechanics/game_managers/projectile_manager.tscn"
 ValidScenePaths="*res://resources/singletons/valid_scene_paths.gd"
-Lobby="*res://scenes/game-mechanics/lobby.tscn"
-MechConfig="*res://data/mech_config.tscn"
+Lobby="*res://scenes/game-mechanics/game_managers/lobby.tscn"
+PlayerConfig="*res://data/player_config.gd"
 
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
 project/assembly_name="New Game Project"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 [file_customization]
 
@@ -44,7 +49,8 @@ folder_colors={
 "res://scenes/game-mechanics/": "pink",
 "res://scenes/ui-elements/": "teal",
 "res://scenes/weapons/": "orange",
-"res://shaders/": "pink"
+"res://shaders/": "pink",
+"res://test/": "purple"
 }
 
 [global_group]
@@ -77,9 +83,14 @@ move_right={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194321,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
-attack={
+primary_weapon_action={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+secondary_weapon_action={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 dash={
@@ -92,14 +103,20 @@ menu={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+show_scoreboard={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
 2d_physics/layer_1="floor objects"
 2d_physics/layer_2="walls and high objects"
-2d_physics/layer_3="hitbox"
+2d_physics/layer_3="projectiles"
 2d_physics/layer_4="hazards"
 2d_physics/layer_5="characters"
+2d_physics/layer_6="character_hitbox"
 
 [physics]
 

@@ -1,15 +1,24 @@
 extends MultiplayerSpawner
 
-@export var network_player: PackedScene
+const PLAYER_SCENE = preload("res://scenes/player/player.tscn")
+
+func _enter_tree() -> void:
+	set_spawn_function(get_player_inst)
 
 func _ready() -> void:
-	spawn_player(multiplayer.get_unique_id())
-	multiplayer.peer_connected.connect(spawn_player)
+	if multiplayer.is_server(): spawn_player(1, PlayerConfig.get_player_info())
+	Lobby.player_connected.connect(spawn_player)
 	
-func spawn_player(id:int) -> void:
-	if !multiplayer.is_server(): return
+func spawn_player(id:int, player_info:Dictionary) -> void:
+	#print(str(multiplayer.get_unique_id())+": "+str(Lobby.players))
+	print(player_info)
+	spawn({"id":id,"player_info":player_info})
+
+func get_player_inst(data:Dictionary) -> Node:
+	var player: Player = PLAYER_SCENE.instantiate()
+	var player_info:Dictionary = data["player_info"]
+	player.name = player_info["player_name"]
+	player.player_id = data["id"]
+	player.mech_body = player_info["mech_body"]
+	return player
 	
-	var player: Player = network_player.instantiate()
-	player.name = str(id)
-	
-	get_node(spawn_path).call_deferred("add_child",player, true)

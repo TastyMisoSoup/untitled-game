@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://elrk7ty5ec2h"]
+
+[ext_resource type="Script" uid="uid://mu86x54ckvfg" path="res://scenes/game-mechanics/game_managers/players_manager.gd" id="1_h8vjx"]
+[ext_resource type="FontFile" uid="uid://biy0yfoiay85f" path="res://assets/fonts/Tiny5-Regular.ttf" id="2_f8t5f"]
+[ext_resource type="Script" uid="uid://cafn3n6m7h2em" path="res://scenes/game-mechanics/game_managers/stats_manager.gd" id="2_s7xem"]
+
+[node name="Players" type="Node"]
+script = ExtResource("1_h8vjx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Scoreboard" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -20.0
+offset_right = 250.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Scoreboard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -17.0
+offset_right = 230.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Scoreboard/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_f8t5f")
+theme_override_font_sizes/font_size = 32
+text = "Scoreboard"
+horizontal_alignment = 1
+
+[node name="StatsManager" type="VBoxContainer" parent="CanvasLayer/Scoreboard/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+script = ExtResource("2_s7xem")
+
+[node name="KillFeed" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = 40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_vertical = 0
+
+[node name="KillFeedContainer" type="VBoxContainer" parent="CanvasLayer/KillFeed"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -428.0
+grow_horizontal = 0
+theme_override_constants/separation = 16
+alignment = 2

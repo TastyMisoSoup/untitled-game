@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://j2jpwt8xmab0" path="res://assets/icon.svg" id="1_48jjh"]
 [ext_resource type="Script" uid="uid://blltulex53y5n" path="res://scenes/characters/dummy.gd" id="1_y0810"]
 [ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="2_60gta"]
-[ext_resource type="PackedScene" uid="uid://cp3n5tes2gj7j" path="res://scenes/game-mechanics/health.tscn" id="3_60gta"]
+[ext_resource type="PackedScene" uid="uid://cp3n5tes2gj7j" path="res://scenes/game-mechanics/trackers/resource_tracker.tscn" id="3_60gta"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0810"]
 bg_color = Color(0.187176, 0.187176, 0.187176, 0.529412)

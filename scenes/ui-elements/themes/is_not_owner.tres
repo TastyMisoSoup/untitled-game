@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bsskqfg37oeji"]
+
+[ext_resource type="FontFile" uid="uid://biy0yfoiay85f" path="res://assets/fonts/Tiny5-Regular.ttf" id="1_1v3dc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_122yp"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+
+[resource]
+default_font = ExtResource("1_1v3dc")
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_122yp")

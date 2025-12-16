@@ -1,0 +1,286 @@
+[gd_scene load_steps=27 format=3 uid="uid://bhx5a75jglkyf"]
+
+[ext_resource type="Script" uid="uid://den6bovono7qu" path="res://scenes/characters/mech.gd" id="1_xus5x"]
+[ext_resource type="Texture2D" uid="uid://b2kfs6w3hylih" path="res://assets/sprites/projectiles/smoke_ball.png" id="2_4lb1l"]
+[ext_resource type="PackedScene" uid="uid://bb8nef5itan37" path="res://scenes/collision-objects/fall_check.tscn" id="2_cgioa"]
+[ext_resource type="PackedScene" uid="uid://171a21uw4ano" path="res://scenes/collision-objects/hit_box.tscn" id="3_buj48"]
+[ext_resource type="PackedScene" uid="uid://c3www0d1imvsy" path="res://scenes/characters/default_mech_legs.tscn" id="5_dlmw4"]
+[ext_resource type="PackedScene" uid="uid://cfybigipdafem" path="res://scenes/characters/body.tscn" id="5_p47bc"]
+[ext_resource type="FontFile" uid="uid://biy0yfoiay85f" path="res://assets/fonts/Tiny5-Regular.ttf" id="6_d77dx"]
+[ext_resource type="PackedScene" uid="uid://bsshhtnxfy1ln" path="res://scenes/game-mechanics/trackers/resource_tracker_player.tscn" id="6_kaelg"]
+[ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="7_d77dx"]
+[ext_resource type="Script" uid="uid://brli4u1iv880p" path="res://scenes/characters/death_timer_ui.gd" id="7_xwdg0"]
+[ext_resource type="Texture2D" uid="uid://dk36raso5k3px" path="res://assets/sprites/projectiles/explosion.png" id="10_gxwmr"]
+
+[sub_resource type="Gradient" id="Gradient_41aba"]
+offsets = PackedFloat32Array(0.0775706, 0.767137, 1)
+colors = PackedColorArray(0.982074, 0.644166, 0, 1, 0.704734, 0.704734, 0.704733, 0.658824, 0.788902, 0.788902, 0.788902, 0.309804)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsyqu"]
+
+[sub_resource type="Animation" id="Animation_d77dx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cgioa"]
+resource_name = "dash"
+
+[sub_resource type="Animation" id="Animation_kaelg"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.377919, 0.377919, 0.377919, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xwdg0"]
+_data = {
+&"RESET": SubResource("Animation_d77dx"),
+&"dash": SubResource("Animation_cgioa"),
+&"fall": SubResource("Animation_kaelg")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xus5x"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwdg0"]
+bg_color = Color(0.219608, 0, 0.0117647, 0.866667)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng04k"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7o8u"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp80g"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nju0s"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjhx6"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htybu"]
+atlas = ExtResource("10_gxwmr")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lb1l"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng04k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7o8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp80g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nju0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjhx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htybu")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}]
+
+[node name="Mech" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 16
+collision_mask = 19
+script = ExtResource("1_xus5x")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+texture = ExtResource("2_4lb1l")
+lifetime = 0.3
+speed_scale = 2.0
+emission_shape = 1
+emission_sphere_radius = 9.42
+gravity = Vector2(0, 0)
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+color_ramp = SubResource("Gradient_41aba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bsyqu")
+
+[node name="FallCheck" parent="." instance=ExtResource("2_cgioa")]
+scale = Vector2(0.8, 0.8)
+
+[node name="Hitbox" parent="." groups=["player"] instance=ExtResource("3_buj48")]
+collision_layer = 32
+collision_mask = 12
+
+[node name="DefaultLegs" parent="." instance=ExtResource("5_dlmw4")]
+
+[node name="Body" parent="." instance=ExtResource("5_p47bc")]
+scale = Vector2(0.2, 0.2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="DashCooldown" type="Timer" parent="."]
+
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.22
+one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xwdg0")
+}
+
+[node name="ResourceTracker" parent="." instance=ExtResource("6_kaelg")]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_xus5x")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -40.0
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = -22.0
+theme_override_fonts/font = ExtResource("6_d77dx")
+theme_override_font_sizes/font_size = 8
+text = "name"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DeathTimerUI" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_xwdg0")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DeathTimerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwdg0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DeathTimerUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -40.0
+offset_right = 171.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathTimerUI/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_d77dx")
+theme_override_font_sizes/font_size = 64
+text = "You Have Been 
+Defeated
+
+Respawn in:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/DeathTimerUI/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_d77dx")
+theme_override_font_sizes/font_size = 64
+text = "3"
+horizontal_alignment = 1
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_4lb1l")
+speed_scale = 4.0
+
+[connection signal="team_change" from="." to="." method="_on_team_change"]
+[connection signal="area_entered" from="FallCheck" to="." method="_on_fall_check_area_entered"]
+[connection signal="area_exited" from="FallCheck" to="." method="_on_fall_check_area_exited"]
+[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://boyafib0fxalk"]
+
+[ext_resource type="Script" uid="uid://w0l3ybwjkjk5" path="res://scenes/ui-elements/score/player_stats.gd" id="1_xdv7t"]
+[ext_resource type="Theme" uid="uid://bsskqfg37oeji" path="res://scenes/ui-elements/themes/is_not_owner.tres" id="2_uywl0"]
+[ext_resource type="FontFile" uid="uid://biy0yfoiay85f" path="res://assets/fonts/Tiny5-Regular.ttf" id="3_36582"]
+
+[node name="PlayerStats" type="HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_vertical = 0
+script = ExtResource("1_xdv7t")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_uywl0")
+
+[node name="Rank" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_36582")
+theme_override_font_sizes/font_size = 20
+text = "1#"
+
+[node name="PlayerName" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_36582")
+theme_override_font_sizes/font_size = 20
+text = "John Doe"
+horizontal_alignment = 1
+
+[node name="Stats" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_36582")
+theme_override_font_sizes/font_size = 20
+text = "8 / 16"
+horizontal_alignment = 2

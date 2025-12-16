@@ -1,12 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0ek8dkcbaern"]
+[gd_scene load_steps=3 format=3 uid="uid://c0ek8dkcbaern"]
 
 [ext_resource type="Script" uid="uid://b1bivm2b5rb5a" path="res://code/player.gd" id="1_ch04i"]
 [ext_resource type="PackedScene" uid="uid://cxhh1j6q0k44y" path="res://scenes/ui-elements/game_menu.tscn" id="2_dovo2"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dovo2"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 2
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_ch04i")
@@ -14,9 +9,6 @@ script = ExtResource("1_ch04i")
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bhx5a75jglkyf")
 spawn_path = NodePath("..")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_dovo2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
