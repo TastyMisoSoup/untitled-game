@@ -9,6 +9,7 @@ func _process(_delta: float) -> void:
 		var target_pos = $Direction.global_position
 		var duration = bullet_duration()
 		shoot.rpc(start_pos,target_pos,duration,BULLET_PATH)
+		generate_energy(energy)
 
 @rpc("any_peer","call_local","reliable")
 func action():

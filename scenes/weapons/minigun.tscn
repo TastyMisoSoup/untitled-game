@@ -9,20 +9,22 @@ script = ExtResource("1_lhdf3")
 damage = 12
 speed = 500
 spread_amount = 0.1
+energy = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(21, -7)
 rotation = 1.5708
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_oir7h")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.15
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(69, 8)
+position = Vector2(83, 16)
 
 [node name="Direction" type="Marker2D" parent="."]
-position = Vector2(193, 0)
+position = Vector2(217, 0)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bmxonrsnn8k1b")

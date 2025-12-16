@@ -275,6 +275,10 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4lb1l")
 speed_scale = 4.0
 
+[node name="OverloadTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="team_change" from="." to="." method="_on_team_change"]
 [connection signal="area_entered" from="FallCheck" to="." method="_on_fall_check_area_entered"]
 [connection signal="area_exited" from="FallCheck" to="." method="_on_fall_check_area_exited"]
@@ -284,3 +288,4 @@ speed_scale = 4.0
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
+[connection signal="timeout" from="OverloadTimer" to="." method="_on_overload_timer_timeout"]

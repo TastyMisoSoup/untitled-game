@@ -14,3 +14,10 @@ func shoot(start_pos:Vector2,target_pos:Vector2,timer:float,projectile_path:Node
 
 func generate_energy(energy:int):
 	weapon_action.emit(energy)
+
+#@rpc("any_peer","call_local","reliable")
+#func overload_switch(switch:bool) -> void:
+#	if switch:
+#		self.modulate = Color(1, 0.6, 0.6, 1)
+#	else:
+#		self.modulate = Color(1, 1, 1, 1)

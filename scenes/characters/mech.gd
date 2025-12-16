@@ -25,6 +25,7 @@ var dashing: bool = false
 var dash_on_cd: bool = false
 var falling = false
 var controllable = true
+var overloaded = false
 
 
 
@@ -38,8 +39,10 @@ func _ready() -> void:
 
 	body.set_primary_weapon(PlayerConfig.primary_weapon, team, player_id, player_name)
 	body.set_secondary_weapon(PlayerConfig.secondary_weapon, team, player_id, player_name)
-	var mech_stats = set_mech_body(mech_body)
+	body.primary_weapon.weapon_action.connect(change_energy)
+	body.secondary_weapon.weapon_action.connect(change_energy)
 	
+	var mech_stats = set_mech_body(mech_body)
 	speed_modifier = mech_stats.SPEED_MODIFIER
 	body.set_texture(mech_stats.TEXTURE)
 	hitbox.add_to_group(team)
@@ -142,7 +145,11 @@ func fall() -> void:
 
 #Actions
 func primary_weapon_action() -> void:
-	if resource_tracker.energy == resource_tracker.max_energy: return
+	if overloaded: return
+	if resource_tracker.energy == resource_tracker.max_energy: 
+		body.primary_weapon.stop_action.rpc_id(multiplayer.get_unique_id())
+		overload.rpc()
+		return
 	if !is_multiplayer_authority()||!alive: return
 	body.primary_weapon.action.rpc_id(multiplayer.get_unique_id())
 
@@ -153,6 +160,7 @@ func primary_weapon_action_stop() -> void:
 	
 	
 func secondary_weapon_action() -> void:
+	if resource_tracker.energy < body.secondary_weapon.energy: return
 	body.secondary_weapon.action.rpc_id(multiplayer.get_unique_id())
 
 
@@ -172,6 +180,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		die(0,"Environment")
 
 
+#Energy
+func change_energy(amount:int)->void:
+	print(resource_tracker.energy)
+	resource_tracker.change_energy(amount)
+
+
 func _on_death_timer_timeout() -> void:
 	respawn.rpc()
 
@@ -184,6 +198,7 @@ func change_health(hit_data:Dictionary) -> void:
 
 @rpc("any_peer","call_local")
 func die(kill:int,kill_name:String) -> void:
+	resource_tracker.energy_to_zero()
 	alive = false
 	$DefaultLegs.stop_legs()
 	get_parent().add_death(player_id,kill,player_name,kill_name)
@@ -227,3 +242,17 @@ func remove_smoked_texture() -> void:
 func toggle_collision() -> void:
 	hitbox.set_collision_layer_value(6,!hitbox.get_collision_layer_value(6))
 	set_collision_layer_value(5,!get_collision_layer_value(5))
+
+@rpc("any_peer","call_local","reliable")
+func overload():
+	overloaded = true
+	$OverloadTimer.start()
+	body.modulate = Color(1, 0.5, 0.5, 1)
+	#body.primary_weapon.overload_switch.rpc(overloaded)
+
+
+func _on_overload_timer_timeout() -> void:
+	resource_tracker.energy_to_zero()
+	overloaded = false
+	body.modulate = Color(1, 1, 1, 1)
+	#body.primary_weapon.overload_switch.rpc(overloaded)

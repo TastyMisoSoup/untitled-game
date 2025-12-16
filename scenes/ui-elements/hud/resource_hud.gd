@@ -26,3 +26,7 @@ func update_health(new_max_health: int) -> void:
 	$HealthBarLarge/HealthBarLargePercent.max_value = new_max_health
 	$HealthBarLarge.value = new_max_health
 	$HealthBarLarge/HealthBarLargePercent.value = new_max_health
+
+func energy_to_zero() -> void:
+	$EnergyBarLarge.value = 0
+	$EnergyBarLarge/EnergyBarLargePercent.value = 0
