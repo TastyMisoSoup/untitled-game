@@ -6,6 +6,8 @@ const KILL_NOTIFICATION = preload("res://scenes/ui-elements/score/kill_notificat
 
 @export var stats_manager: Node = null
 
+var player_array: Array = []
+
 
 func _ready() -> void:
 	multiplayer.peer_disconnected.connect(client_disconnected)
@@ -42,10 +44,18 @@ func get_kill_notif(death_name:String,kill_name:String) -> Node:
 	notif_inst.kill = kill_name
 	return notif_inst
 
-@rpc("any_peer","call_remote")
+@rpc("authority","call_remote")
 func client_disconnected(id:int) -> void:
-	var player_node = get_node_or_null(str(id))
+	prints(str(multiplayer.get_unique_id())+" "+str(player_array))
+	var player_node: Player = null
+	for player in player_array:
+		if player!=null and player.player_id == id:
+			player_node = player
+			print("hello")
 	%StatsManager.remove_player_stats(id)
-	if player_node:
+	if player_node != null:
 		player_node.queue_free()
-	
+
+
+func add_player_to_array(player:Node) -> void:
+	player_array.append(player)

@@ -12,8 +12,9 @@ func _ready() -> void:
 func spawn_player(id:int, player_info:Dictionary) -> void:
 	#print(str(multiplayer.get_unique_id())+": "+str(Lobby.players))
 	print(player_info)
-	spawn({"id":id,"player_info":player_info})
-
+	var player_node = spawn({"id":id,"player_info":player_info})
+	get_parent().get_node("Players").add_player_to_array(player_node)
+	
 func get_player_inst(data:Dictionary) -> Node:
 	var player: Player = PLAYER_SCENE.instantiate()
 	var player_info:Dictionary = data["player_info"]

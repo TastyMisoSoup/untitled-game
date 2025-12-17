@@ -20,5 +20,3 @@ z_index = -2
 _spawnable_scenes = PackedStringArray("uid://c0ek8dkcbaern")
 spawn_path = NodePath("../Players")
 script = ExtResource("5_lquwl")
-
-[connection signal="child_entered_tree" from="Players" to="Players" method="_on_child_entered_tree"]
