@@ -85,7 +85,7 @@ _data = {
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xus5x"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/replication_mode = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwdg0"]
 bg_color = Color(0.219608, 0, 0.0117647, 0.866667)
