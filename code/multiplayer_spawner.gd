@@ -21,5 +21,7 @@ func get_player_inst(data:Dictionary) -> Node:
 	player.name = player_info["player_name"]
 	player.player_id = data["id"]
 	player.mech_body = player_info["mech_body"]
+	player.primary_weapon = player_info["primary_weapon"]
+	player.secondary_weapon = player_info["secondary_weapon"]
 	return player
 	

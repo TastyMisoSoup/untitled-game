@@ -8,6 +8,8 @@ var team: String;
 var player_id: int;
 var open_menu: bool = false
 var mech_body:String;
+var primary_weapon:String;
+var secondary_weapon:String
 const SPEED = 200.0
 @export var input_direction: Vector2
 
@@ -41,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 	if self.has_node("Mech"):
 		input_direction = Input.get_vector("move_left", "move_right","move_up","move_down")
 		
-		if Input.is_action_pressed("primary_weapon_action"):
+		if Input.is_action_just_pressed("primary_weapon_action"):
 			$Mech.primary_weapon_action()
 		if Input.is_action_just_released("primary_weapon_action"):
 			$Mech.primary_weapon_action_stop()
@@ -68,4 +70,6 @@ func mech_construct(player_data:Dictionary):
 	mech_instance.set_multiplayer_authority(player_id)
 	mech_instance.player_id = player_id
 	mech_instance.mech_body = mech_body
+	mech_instance.primary_weapon = primary_weapon
+	mech_instance.secondary_weapon = secondary_weapon
 	return mech_instance

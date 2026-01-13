@@ -1,6 +1,6 @@
 extends Node
 
-const PRIMARY_WEAPONS: Array = ["minigun"]
+const PRIMARY_WEAPONS: Array = ["minigun","shotgun"]
 const SECONDARY_WEAPONS: Array = ["grenade_launcher"]
 const MECH_BODIES: Array = ["daemon","artemis"]
 

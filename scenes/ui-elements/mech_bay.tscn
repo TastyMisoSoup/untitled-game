@@ -179,6 +179,7 @@ theme_override_constants/separation = 40
 
 [node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_rj8it")
 theme_override_font_sizes/font_size = 32
 text = "Primary Weapon:"
@@ -204,6 +205,7 @@ theme_override_constants/separation = 40
 
 [node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_rj8it")
 theme_override_font_sizes/font_size = 32
 text = "Secondary Weapon:"
@@ -229,6 +231,7 @@ theme_override_constants/separation = 40
 
 [node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_rj8it")
 theme_override_font_sizes/font_size = 32
 text = "Mech Body:"
@@ -248,6 +251,7 @@ popup/item_1/text = "Artemis"
 popup/item_1/id = 1
 
 [node name="BackToMenuButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 819.0
 offset_top = 93.0
 offset_right = 933.0
@@ -276,3 +280,4 @@ text = "Back to Menu"
 [connection signal="item_selected" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/PWMenu" to="." method="_on_pw_menu_item_selected"]
 [connection signal="item_selected" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/SWMenu" to="." method="_on_sw_menu_item_selected"]
 [connection signal="item_selected" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/BodyMenu" to="." method="_on_body_menu_item_selected"]
+[connection signal="pressed" from="BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

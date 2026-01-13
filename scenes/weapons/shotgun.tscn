@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctl1fxer5sd3a"]
+
+[ext_resource type="Script" uid="uid://fbh500felrch" path="res://scenes/weapons/shotgun.gd" id="1_0frcf"]
+[ext_resource type="Texture2D" uid="uid://bcxhv756mk42d" path="res://assets/sprites/characters/weapons/shotgun.png" id="2_0frcf"]
+
+[node name="Shotgun" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_0frcf")
+damage = 8
+speed = 800
+energy = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(21, -7)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_0frcf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(87, 20)
+
+[node name="Direction" type="Marker2D" parent="."]
+position = Vector2(215, 13)
+
+[node name="Direction4" type="Marker2D" parent="."]
+position = Vector2(215, 33)
+
+[node name="Direction5" type="Marker2D" parent="."]
+position = Vector2(215, 53)
+
+[node name="Direction2" type="Marker2D" parent="."]
+position = Vector2(215, -7)
+
+[node name="Direction3" type="Marker2D" parent="."]
+position = Vector2(215, -27)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bmxonrsnn8k1b")
+spawn_path = NodePath("..")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

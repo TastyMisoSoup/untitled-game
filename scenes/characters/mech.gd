@@ -10,6 +10,8 @@ signal team_change(team_name:String);
 @export var animation_player: AnimationPlayer = null
 
 var mech_body
+var primary_weapon
+var secondary_weapon
 
 const SPEED: int = 200
 var main_path: Node
@@ -37,8 +39,8 @@ func _ready() -> void:
 	animation_player = animation_player if animation_player else $AnimationPlayer
 	main_path = get_node("./../../../Players")
 
-	body.set_primary_weapon(PlayerConfig.primary_weapon, team, player_id, player_name)
-	body.set_secondary_weapon(PlayerConfig.secondary_weapon, team, player_id, player_name)
+	body.set_primary_weapon(primary_weapon, team, player_id, player_name)
+	body.set_secondary_weapon(secondary_weapon, team, player_id, player_name)
 	body.primary_weapon.weapon_action.connect(change_energy)
 	body.secondary_weapon.weapon_action.connect(change_energy)
 	
@@ -147,8 +149,6 @@ func fall() -> void:
 func primary_weapon_action() -> void:
 	if overloaded: return
 	if resource_tracker.energy == resource_tracker.max_energy: 
-		body.primary_weapon.stop_action.rpc_id(multiplayer.get_unique_id())
-		overload.rpc()
 		return
 	if !is_multiplayer_authority()||!alive: return
 	body.primary_weapon.action.rpc_id(multiplayer.get_unique_id())
@@ -184,6 +184,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func change_energy(amount:int)->void:
 	print(resource_tracker.energy)
 	resource_tracker.change_energy(amount)
+	if resource_tracker.energy == resource_tracker.max_energy: 
+		body.primary_weapon.stop_action.rpc_id(multiplayer.get_unique_id())
+		overload.rpc()
+		return
 
 
 func _on_death_timer_timeout() -> void:
@@ -198,6 +202,7 @@ func change_health(hit_data:Dictionary) -> void:
 
 @rpc("any_peer","call_local")
 func die(kill:int,kill_name:String) -> void:
+	if !alive: return
 	resource_tracker.energy_to_zero()
 	alive = false
 	$DefaultLegs.stop_legs()

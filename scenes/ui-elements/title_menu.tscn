@@ -156,7 +156,6 @@ text = "Start Game"
 [node name="MechBay" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-disabled = true
 text = "Mech Bay"
 
 [node name="Settings" type="Button" parent="Control/VBoxContainer"]
@@ -286,6 +285,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_h7pj0")
 text = "SAVE"
 
 [connection signal="pressed" from="Control/VBoxContainer/CreateGame" to="." method="_on_create_game_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MechBay" to="." method="_on_mech_bay_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

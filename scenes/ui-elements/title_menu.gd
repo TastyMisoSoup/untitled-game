@@ -37,3 +37,7 @@ func _on_save_button_pressed() -> void:
 		player_name = %NameEdit.text
 		PlayerConfig.player_name = %NameEdit.text
 		%PlayerNameEditor.visible = false
+
+
+func _on_mech_bay_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/ui-elements/mech_bay.tscn")
