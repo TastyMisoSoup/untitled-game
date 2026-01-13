@@ -1,0 +1,278 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxr2xpak31dwl"]
+
+[ext_resource type="Texture2D" uid="uid://bvg8w8r1v3lxv" path="res://assets/media/Screenshot 2025-09-22 202952.png" id="1_1gf7x"]
+[ext_resource type="Script" uid="uid://cm82ddiwo1duv" path="res://scenes/ui-elements/mech_bay.gd" id="1_rj8it"]
+[ext_resource type="Theme" uid="uid://ba1l0pgpd0u8g" path="res://scenes/ui-elements/themes/main_theme.tres" id="2_eaew8"]
+[ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="3_rj8it"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ijig"]
+texture = ExtResource("1_1gf7x")
+modulate_color = Color(0.262745, 0.262745, 0.262745, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eaew8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eaew8"]
+bg_color = Color(0.309217, 0.309217, 0.309217, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.186476, 0.186476, 0.186476, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 16.0
+expand_margin_top = 4.0
+expand_margin_right = 16.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Theme" id="Theme_rj8it"]
+OptionButton/colors/font_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_focus_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_hover_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0.776471, 0.776471, 0.776471, 1)
+OptionButton/colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+OptionButton/colors/font_pressed_color = Color(0.777656, 0.777656, 0.777656, 1)
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_eaew8")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_eaew8")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_eaew8")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_eaew8")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxFlat_eaew8")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_eaew8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rj8it"]
+bg_color = Color(0.723719, 0.278443, 0.283106, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.462745, 0.223529, 0.247059, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_in1fo"]
+bg_color = Color(0.723719, 0.278443, 0.283106, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.462745, 0.223529, 0.247059, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjalu"]
+bg_color = Color(0.723719, 0.278443, 0.283106, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.462745, 0.223529, 0.247059, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4y5l1"]
+bg_color = Color(0.831373, 0.352941, 0.352941, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.462745, 0.223529, 0.247059, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xj8nt"]
+bg_color = Color(0.927784, 0.549301, 0.534808, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.462745, 0.223529, 0.247059, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[node name="MechBay" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rj8it")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3ijig")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 80
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("2_eaew8")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_eaew8")
+theme_override_constants/outline_size = 32
+theme_override_fonts/font = ExtResource("3_rj8it")
+theme_override_font_sizes/font_size = 48
+text = "Mech  Bay"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rj8it")
+theme_override_font_sizes/font_size = 32
+text = "Primary Weapon:"
+
+[node name="PWMenu" type="OptionButton" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_rj8it")
+theme_override_constants/h_separation = 30
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "Minigun"
+popup/item_0/id = 0
+popup/item_1/text = "Shotgun"
+popup/item_1/id = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rj8it")
+theme_override_font_sizes/font_size = 32
+text = "Secondary Weapon:"
+
+[node name="SWMenu" type="OptionButton" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_rj8it")
+theme_override_constants/h_separation = 30
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "Grenade Launcher"
+popup/item_0/id = 0
+popup/item_1/text = "Rocket Salvo"
+popup/item_1/id = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rj8it")
+theme_override_font_sizes/font_size = 32
+text = "Mech Body:"
+
+[node name="BodyMenu" type="OptionButton" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_rj8it")
+theme_override_constants/h_separation = 30
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "Daemon"
+popup/item_0/id = 0
+popup/item_1/text = "Artemis"
+popup/item_1/id = 1
+
+[node name="BackToMenuButton" type="Button" parent="."]
+offset_left = 819.0
+offset_top = 93.0
+offset_right = 933.0
+offset_bottom = 124.0
+size_flags_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0.462745, 0.223529, 0.247059, 1)
+theme_override_colors/font_hover_color = Color(0.462745, 0.223529, 0.247059, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.462745, 0.223529, 0.247059, 1)
+theme_override_colors/icon_hover_color = Color(0.462745, 0.223529, 0.247059, 1)
+theme_override_colors/font_color = Color(0.462745, 0.223529, 0.247059, 1)
+theme_override_colors/font_focus_color = Color(0.462745, 0.223529, 0.247059, 1)
+theme_override_colors/font_pressed_color = Color(0.462745, 0.223529, 0.247059, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_rj8it")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rj8it")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_in1fo")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_bjalu")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4y5l1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xj8nt")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rj8it")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4y5l1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4y5l1")
+text = "Back to Menu"
+
+[connection signal="item_selected" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/PWMenu" to="." method="_on_pw_menu_item_selected"]
+[connection signal="item_selected" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/SWMenu" to="." method="_on_sw_menu_item_selected"]
+[connection signal="item_selected" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/BodyMenu" to="." method="_on_body_menu_item_selected"]

@@ -6,7 +6,7 @@ var death:String
 func _ready() -> void:
 	%Kill.text = kill
 	%Death.text = death
-	$Timer.start(20)
+	$Timer.start(3)
 
 
 func _on_timer_timeout() -> void:

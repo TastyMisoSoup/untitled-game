@@ -29,9 +29,11 @@ func _on_player_profile_btn_pressed() -> void:
 
 func _on_cancel_button_pressed() -> void:
 	%PlayerNameEditor.visible = false
+	%NameEdit.text = player_name
 
 
 func _on_save_button_pressed() -> void:
 	if %NameEdit.text != "":
+		player_name = %NameEdit.text
 		PlayerConfig.player_name = %NameEdit.text
 		%PlayerNameEditor.visible = false

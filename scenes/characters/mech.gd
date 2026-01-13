@@ -203,7 +203,7 @@ func die(kill:int,kill_name:String) -> void:
 	$DefaultLegs.stop_legs()
 	get_parent().add_death(player_id,kill,player_name,kill_name)
 	body.primary_weapon.shooting = false
-	toggle_collision()
+	turn_off_collision()
 	$DeathTimer.start()
 	if is_multiplayer_authority():
 		$CanvasLayer.show()
@@ -218,7 +218,7 @@ func respawn() -> void:
 	alive = true
 	resource_tracker.change_health(resource_tracker.max_health)
 	position = main_path.get_random_spawn_point()
-	toggle_collision()
+	turn_on_collision()
 	if is_multiplayer_authority():
 		$CanvasLayer.hide()
 	remove_smoked_texture()
@@ -238,10 +238,13 @@ func remove_smoked_texture() -> void:
 	$Body.modulate = Color(1,1,1,1)
 	$DefaultLegs.modulate = Color(1,1,1,1)
 
-
-func toggle_collision() -> void:
-	hitbox.set_collision_layer_value(6,!hitbox.get_collision_layer_value(6))
-	set_collision_layer_value(5,!get_collision_layer_value(5))
+func turn_on_collision() -> void:
+	hitbox.set_collision_layer_value(6,true)
+	set_collision_layer_value(5,true)
+	
+func turn_off_collision() -> void:
+	hitbox.set_collision_layer_value(6,false)
+	set_collision_layer_value(5,false)
 
 @rpc("any_peer","call_local","reliable")
 func overload():

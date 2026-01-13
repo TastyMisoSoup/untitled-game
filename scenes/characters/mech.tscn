@@ -151,6 +151,11 @@ collision_layer = 16
 collision_mask = 19
 script = ExtResource("1_xus5x")
 
+[node name="Hitbox" parent="." groups=["player"] instance=ExtResource("3_buj48")]
+z_index = 4
+collision_layer = 32
+collision_mask = 12
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 texture = ExtResource("2_4lb1l")
@@ -168,10 +173,6 @@ shape = SubResource("CircleShape2D_bsyqu")
 
 [node name="FallCheck" parent="." instance=ExtResource("2_cgioa")]
 scale = Vector2(0.8, 0.8)
-
-[node name="Hitbox" parent="." groups=["player"] instance=ExtResource("3_buj48")]
-collision_layer = 32
-collision_mask = 12
 
 [node name="DefaultLegs" parent="." instance=ExtResource("5_dlmw4")]
 
@@ -280,9 +281,9 @@ wait_time = 2.0
 one_shot = true
 
 [connection signal="team_change" from="." to="." method="_on_team_change"]
+[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]
 [connection signal="area_entered" from="FallCheck" to="." method="_on_fall_check_area_entered"]
 [connection signal="area_exited" from="FallCheck" to="." method="_on_fall_check_area_exited"]
-[connection signal="on_hit" from="Hitbox" to="." method="_on_hitbox_on_hit"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
