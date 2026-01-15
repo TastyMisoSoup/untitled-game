@@ -8,15 +8,15 @@ var secondary_weapon: SecondaryWeapon;
 func _ready() -> void:
 	var _energy
 
-func primary_weapon_action(target_position) -> void:
-	primary_weapon.action()
-	primary_weapon.target_position = target_position
+#func primary_weapon_action(target_position) -> void:
+#	primary_weapon.action()
+#	primary_weapon.target_position = target_position
 
 func primary_weapon_action_stop() -> void:
 	primary_weapon.stop_action()
 	
-func secondary_weapon_action() -> void:
-	secondary_weapon.action()
+#func secondary_weapon_action() -> void:
+#	secondary_weapon.action()
 
 func set_primary_weapon(primary_weapon_str: String, team_param:String, player_id:int, player_name:String) -> void:
 	var weapon_scene;

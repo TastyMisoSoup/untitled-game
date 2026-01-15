@@ -12,7 +12,7 @@ var player_name: String;
 @export var spread_amount:float
 @export var energy:int
 
-func action():
+func action(current_energy:int):
 	pass
 
 func weapon_spread(vector: Vector2) -> Vector2:

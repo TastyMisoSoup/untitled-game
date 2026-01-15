@@ -12,17 +12,14 @@ func _ready() -> void:
 				$Direction4,
 				$Direction5]
 
-func _process(_delta: float) -> void:
-	print($Timer.time_left)
-
 @rpc("any_peer","call_local","reliable")
-func action():
+func action(current_energy:int):
 	if weapon_ready:
 		weapon_ready = false
 		for direction:Marker2D in directions:
 			var start_pos = $Muzzle.global_position
 			var target_pos = direction.global_position
-			var duration = 0.1
+			var duration = 0.15
 			shoot.rpc(start_pos,target_pos,duration,BULLET_PATH)
 		generate_energy(energy)
 	shooting = true

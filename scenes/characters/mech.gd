@@ -56,6 +56,7 @@ func _ready() -> void:
 	if is_multiplayer_authority():
 		$Camera2D.make_current()
 		resource_tracker.HUD_visible()
+		body.secondary_weapon.show_icon()
 
 
 #Setters
@@ -151,7 +152,7 @@ func primary_weapon_action() -> void:
 	if resource_tracker.energy == resource_tracker.max_energy: 
 		return
 	if !is_multiplayer_authority()||!alive: return
-	body.primary_weapon.action.rpc_id(multiplayer.get_unique_id())
+	body.primary_weapon.action.rpc_id(multiplayer.get_unique_id(),resource_tracker.energy)
 
 
 func primary_weapon_action_stop() -> void:
@@ -161,7 +162,7 @@ func primary_weapon_action_stop() -> void:
 	
 func secondary_weapon_action() -> void:
 	if resource_tracker.energy < body.secondary_weapon.energy: return
-	body.secondary_weapon.action.rpc_id(multiplayer.get_unique_id())
+	body.secondary_weapon.action.rpc_id(multiplayer.get_unique_id(),resource_tracker.energy)
 
 
 func mech_look_at(target_position: Vector2) -> void:
@@ -182,7 +183,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 #Energy
 func change_energy(amount:int)->void:
-	print(resource_tracker.energy)
 	resource_tracker.change_energy(amount)
 	if resource_tracker.energy == resource_tracker.max_energy: 
 		body.primary_weapon.stop_action.rpc_id(multiplayer.get_unique_id())

@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlxwpufodemyy"]
+[gd_scene load_steps=6 format=3 uid="uid://dlxwpufodemyy"]
 
 [ext_resource type="Script" uid="uid://bhn64wtbd77rb" path="res://scenes/weapons/grenade_launcher.gd" id="1_thh8i"]
 [ext_resource type="Texture2D" uid="uid://rklj8mk7kg83" path="res://assets/sprites/characters/weapons/grenade-launcher.png" id="1_wch8v"]
+[ext_resource type="Texture2D" uid="uid://dm7rflqu0cdpo" path="res://assets/sprites/projectiles/grenade.png" id="3_epcwo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rauu6"]
+atlas = ExtResource("3_epcwo")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bn50"]
+atlas = ExtResource("3_epcwo")
+region = Rect2(352, 0, 32, 32)
 
 [node name="GrenadeLauncher" type="Node2D"]
 script = ExtResource("1_thh8i")
@@ -22,3 +31,33 @@ rotation = 1.5708
 [node name="Direction" type="Marker2D" parent="."]
 position = Vector2(199, 23)
 rotation = 1.5708
+
+[node name="WeaponCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="WeaponCooldownIcon" type="TextureProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -112.0
+offset_right = -144.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3, 3)
+step = 0.2
+fill_mode = 5
+texture_under = SubResource("AtlasTexture_rauu6")
+texture_progress = SubResource("AtlasTexture_4bn50")
+tint_under = Color(0.226707, 0.226707, 0.226707, 1)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="timeout" from="WeaponCooldown" to="." method="_on_weapon_cooldown_timeout"]

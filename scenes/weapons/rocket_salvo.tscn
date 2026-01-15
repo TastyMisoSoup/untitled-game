@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs6phjf5gjfnn"]
+
+[ext_resource type="Script" uid="uid://cha0b4dkn53vg" path="res://scenes/weapons/rocket_salvo.gd" id="1_2n58i"]
+[ext_resource type="Texture2D" uid="uid://dnvtua64k7oxj" path="res://assets/sprites/characters/weapons/rocket_salvo.png" id="2_2n58i"]
+[ext_resource type="Texture2D" uid="uid://d0fa73ryr1duv" path="res://assets/sprites/projectiles/rocket.png" id="3_c3ckt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdk71"]
+atlas = ExtResource("3_c3ckt")
+region = Rect2(256, 0, 32, 32)
+
+[node name="RocketSalvo" type="Node2D"]
+script = ExtResource("1_2n58i")
+damage = 15
+speed = 300
+spread_amount = 0.3
+energy = 12
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_2n58i")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(74, -24)
+rotation = 1.5708
+
+[node name="Direction" type="Marker2D" parent="."]
+position = Vector2(217, -24)
+rotation = 1.5708
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="WeaponCooldown" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="WeaponCooldownIcon" type="TextureProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -112.0
+offset_right = -144.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3, 3)
+step = 0.2
+fill_mode = 5
+texture_under = SubResource("AtlasTexture_hdk71")
+texture_progress = SubResource("AtlasTexture_hdk71")
+tint_under = Color(0.226707, 0.226707, 0.226707, 1)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="WeaponCooldown" to="." method="_on_weapon_cooldown_timeout"]
