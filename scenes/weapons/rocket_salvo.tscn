@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs6phjf5gjfnn"]
+[gd_scene load_steps=6 format=3 uid="uid://bs6phjf5gjfnn"]
 
 [ext_resource type="Script" uid="uid://cha0b4dkn53vg" path="res://scenes/weapons/rocket_salvo.gd" id="1_2n58i"]
 [ext_resource type="Texture2D" uid="uid://dnvtua64k7oxj" path="res://assets/sprites/characters/weapons/rocket_salvo.png" id="2_2n58i"]
 [ext_resource type="Texture2D" uid="uid://d0fa73ryr1duv" path="res://assets/sprites/projectiles/rocket.png" id="3_c3ckt"]
+[ext_resource type="FontFile" uid="uid://biy0yfoiay85f" path="res://assets/fonts/Tiny5-Regular.ttf" id="4_hdk71"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdk71"]
 atlas = ExtResource("3_c3ckt")
@@ -22,11 +23,11 @@ scale = Vector2(1.3, 1.3)
 texture = ExtResource("2_2n58i")
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(74, -24)
+position = Vector2(90, 19)
 rotation = 1.5708
 
 [node name="Direction" type="Marker2D" parent="."]
-position = Vector2(217, -24)
+position = Vector2(243, 28)
 rotation = 1.5708
 
 [node name="Timer" type="Timer" parent="."]
@@ -61,6 +62,19 @@ texture_under = SubResource("AtlasTexture_hdk71")
 texture_progress = SubResource("AtlasTexture_hdk71")
 tint_under = Color(0.226707, 0.226707, 0.226707, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="CooldownTimer" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+offset_left = 397.0
+offset_top = 552.0
+offset_right = 488.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("4_hdk71")
+theme_override_font_sizes/font_size = 64
+text = "5"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="WeaponCooldown" to="." method="_on_weapon_cooldown_timeout"]

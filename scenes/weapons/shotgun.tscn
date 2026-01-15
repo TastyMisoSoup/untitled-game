@@ -20,22 +20,22 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(87, 20)
+position = Vector2(112, 5)
 
 [node name="Direction" type="Marker2D" parent="."]
-position = Vector2(215, 13)
+position = Vector2(252, -1)
 
 [node name="Direction4" type="Marker2D" parent="."]
-position = Vector2(215, 33)
+position = Vector2(252, 19)
 
 [node name="Direction5" type="Marker2D" parent="."]
-position = Vector2(215, 53)
+position = Vector2(252, 39)
 
 [node name="Direction2" type="Marker2D" parent="."]
-position = Vector2(215, -7)
+position = Vector2(252, -21)
 
 [node name="Direction3" type="Marker2D" parent="."]
-position = Vector2(215, -27)
+position = Vector2(252, -41)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bmxonrsnn8k1b")

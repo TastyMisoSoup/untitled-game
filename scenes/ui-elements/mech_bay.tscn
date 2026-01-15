@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxr2xpak31dwl"]
+[gd_scene load_steps=18 format=3 uid="uid://bxr2xpak31dwl"]
 
 [ext_resource type="Texture2D" uid="uid://bvg8w8r1v3lxv" path="res://assets/media/Screenshot 2025-09-22 202952.png" id="1_1gf7x"]
 [ext_resource type="Script" uid="uid://cm82ddiwo1duv" path="res://scenes/ui-elements/mech_bay.gd" id="1_rj8it"]
@@ -40,6 +40,47 @@ OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_eaew8")
 OptionButton/styles/normal = SubResource("StyleBoxFlat_eaew8")
 OptionButton/styles/normal_mirrored = SubResource("StyleBoxFlat_eaew8")
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_eaew8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rj8it"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evsub"]
+bg_color = Color(0.733333, 0.988235, 0.713726, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.105882, 0.443137, 0.117647, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0v8be"]
+bg_color = Color(0.47451, 1, 0.494118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.105882, 0.443137, 0.117647, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xu6x"]
+bg_color = Color(0.47451, 1, 0.494118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.105882, 0.443137, 0.117647, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rj8it"]
 bg_color = Color(0.723719, 0.278443, 0.283106, 1)
@@ -250,6 +291,20 @@ popup/item_0/id = 0
 popup/item_1/text = "Artemis"
 popup/item_1/id = 1
 
+[node name="SaveButton" type="Button" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.105882, 0.443137, 0.117647, 1)
+theme_override_colors/font_hover_color = Color(0.105882, 0.443137, 0.117647, 1)
+theme_override_colors/font_color = Color(0.105882, 0.443137, 0.117647, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 0.443137, 0.117647, 1)
+theme_override_colors/font_pressed_color = Color(0.105882, 0.443137, 0.117647, 1)
+theme_override_constants/outline_size = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rj8it")
+theme_override_styles/hover = SubResource("StyleBoxFlat_evsub")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0v8be")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0xu6x")
+text = "Save   Loadout"
+
 [node name="BackToMenuButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 819.0
@@ -280,4 +335,5 @@ text = "Back to Menu"
 [connection signal="item_selected" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/PWMenu" to="." method="_on_pw_menu_item_selected"]
 [connection signal="item_selected" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/SWMenu" to="." method="_on_sw_menu_item_selected"]
 [connection signal="item_selected" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/BodyMenu" to="." method="_on_body_menu_item_selected"]
+[connection signal="pressed" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

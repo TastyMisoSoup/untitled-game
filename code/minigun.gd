@@ -27,4 +27,4 @@ func _on_timer_timeout() -> void:
 	weapon_ready = true;
 
 func bullet_duration() -> float:
-	return randf_range(0.2,0.4)
+	return randf_range(0.3,0.4)

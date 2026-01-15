@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlxwpufodemyy"]
+[gd_scene load_steps=7 format=3 uid="uid://dlxwpufodemyy"]
 
 [ext_resource type="Script" uid="uid://bhn64wtbd77rb" path="res://scenes/weapons/grenade_launcher.gd" id="1_thh8i"]
 [ext_resource type="Texture2D" uid="uid://rklj8mk7kg83" path="res://assets/sprites/characters/weapons/grenade-launcher.png" id="1_wch8v"]
 [ext_resource type="Texture2D" uid="uid://dm7rflqu0cdpo" path="res://assets/sprites/projectiles/grenade.png" id="3_epcwo"]
+[ext_resource type="FontFile" uid="uid://biy0yfoiay85f" path="res://assets/fonts/Tiny5-Regular.ttf" id="4_rauu6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rauu6"]
 atlas = ExtResource("3_epcwo")
@@ -25,11 +26,11 @@ scale = Vector2(1.3, 1.3)
 texture = ExtResource("1_wch8v")
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(79, -6)
+position = Vector2(85, 6)
 rotation = 1.5708
 
 [node name="Direction" type="Marker2D" parent="."]
-position = Vector2(199, 23)
+position = Vector2(227, 12)
 rotation = 1.5708
 
 [node name="WeaponCooldown" type="Timer" parent="."]
@@ -59,5 +60,18 @@ texture_under = SubResource("AtlasTexture_rauu6")
 texture_progress = SubResource("AtlasTexture_4bn50")
 tint_under = Color(0.226707, 0.226707, 0.226707, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="CooldownTimer" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+offset_left = 397.0
+offset_top = 552.0
+offset_right = 488.0
+offset_bottom = 633.0
+theme_override_fonts/font = ExtResource("4_rauu6")
+theme_override_font_sizes/font_size = 64
+text = "5"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="WeaponCooldown" to="." method="_on_weapon_cooldown_timeout"]

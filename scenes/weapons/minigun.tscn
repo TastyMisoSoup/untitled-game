@@ -18,13 +18,13 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_oir7h")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.13
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(83, 16)
+position = Vector2(106, 2)
 
 [node name="Direction" type="Marker2D" parent="."]
-position = Vector2(217, 0)
+position = Vector2(236, -2)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bmxonrsnn8k1b")

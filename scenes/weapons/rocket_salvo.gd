@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	%WeaponCooldownIcon.value = %WeaponCooldownIcon.max_value - $WeaponCooldown.time_left
+	%CooldownTimer.text = str($WeaponCooldown.time_left).erase(3,20)
 
 
 func show_icon() -> void:
@@ -28,6 +29,7 @@ func action(current_energy:int) -> void:
 	rocket_count = current_energy / energy
 	print(rocket_count)
 	$WeaponCooldown.start(weapon_cooldown)
+	%CooldownTimer.show()
 	spawn_rocket()
 
 
@@ -47,6 +49,7 @@ func _on_timer_timeout() -> void:
 
 func _on_weapon_cooldown_timeout() -> void:
 	weapon_ready = true
+	%CooldownTimer.hide()
 
 
 func random_lifetime() -> float:

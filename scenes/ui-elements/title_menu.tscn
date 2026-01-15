@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://diw44y0a4nm72"]
+[gd_scene load_steps=14 format=3 uid="uid://diw44y0a4nm72"]
 
 [ext_resource type="FontFile" uid="uid://ikp5rvqml2gx" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_1kvwn"]
 [ext_resource type="Texture2D" uid="uid://bvg8w8r1v3lxv" path="res://assets/media/Screenshot 2025-09-22 202952.png" id="1_7sc1q"]
@@ -18,12 +18,6 @@ font = ExtResource("1_1kvwn")
 font_size = 96
 outline_size = 32
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpoh3"]
-bg_color = Color(0.0639728, 0.622742, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r87ng"]
-bg_color = Color(1, 0.344145, 0.268891, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uxg7"]
 content_margin_left = 9.0
@@ -187,21 +181,6 @@ text = "MECH WARS"
 label_settings = SubResource("LabelSettings_1kvwn")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_xpoh3")
-text = "daemon"
-
-[node name="Button2" type="Button" parent="."]
-layout_mode = 0
-offset_top = 58.0
-offset_right = 68.0
-offset_bottom = 89.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_r87ng")
-text = "artemis"
-
 [node name="PlayerProfileBtn" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
@@ -287,8 +266,6 @@ text = "SAVE"
 [connection signal="pressed" from="Control/VBoxContainer/CreateGame" to="." method="_on_create_game_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MechBay" to="." method="_on_mech_bay_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="PlayerProfileBtn" to="." method="_on_player_profile_btn_pressed"]
 [connection signal="pressed" from="PlayerNameEditor/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="PlayerNameEditor/MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

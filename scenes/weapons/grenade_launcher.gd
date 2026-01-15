@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	%WeaponCooldownIcon.value = %WeaponCooldownIcon.max_value - $WeaponCooldown.time_left
+	%CooldownTimer.text = str($WeaponCooldown.time_left).erase(3,20)
 	
 	
 @rpc("any_peer","call_local","reliable")
@@ -22,6 +23,7 @@ func action(current_energy:int) -> void:
 	shoot.rpc($Muzzle.global_position,$Direction.global_position,0.8,GRENADE_PATH)
 	spend_energy(energy)
 	$WeaponCooldown.start(weapon_cooldown)
+	%CooldownTimer.show()
 
 
 func show_icon() -> void:
@@ -30,3 +32,4 @@ func show_icon() -> void:
 
 func _on_weapon_cooldown_timeout() -> void:
 	weapon_ready = true
+	%CooldownTimer.hide()
