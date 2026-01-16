@@ -1,21 +1,24 @@
 extends Control
 
-var primary_weapon: int = 1
-var secondary_weapon: int = 1
-var body: int = 1
+var primary_weapon: int
+var secondary_weapon: int
+var body: int
 
 func _ready() -> void:
 	for x in %PWMenu.item_count:
 		if %PWMenu.get_item_text(x).to_snake_case() == PlayerConfig.primary_weapon:
 			%PWMenu.select(x)
+			primary_weapon = x
 
 	for y in %SWMenu.item_count:
 		if %SWMenu.get_item_text(y).to_snake_case() == PlayerConfig.secondary_weapon:
 			%SWMenu.select(y)
+			secondary_weapon = y
 
 	for z in %BodyMenu.item_count:
 		if %BodyMenu.get_item_text(z).to_snake_case() == PlayerConfig.mech_body:
 			%BodyMenu.select(z)
+			body = z
 
 
 func _on_pw_menu_item_selected(index: int) -> void:

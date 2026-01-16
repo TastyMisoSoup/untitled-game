@@ -44,7 +44,7 @@ func get_kill_notif(death_name:String,kill_name:String) -> Node:
 	notif_inst.kill = kill_name
 	return notif_inst
 
-@rpc("authority","call_remote")
+@rpc("any_peer","call_remote")
 func client_disconnected(id:int) -> void:
 	prints(str(multiplayer.get_unique_id())+" "+str(player_array))
 	var player_node: Player = null

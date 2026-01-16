@@ -13,7 +13,6 @@ func _process(_delta: float) -> void:
 
 @rpc("any_peer","call_local","reliable")
 func action(current_energy:int):
-	print(current_energy)
 	shooting = true
 	if $Timer.is_stopped():
 		$Timer.start()

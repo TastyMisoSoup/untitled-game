@@ -10,8 +10,6 @@ func _ready() -> void:
 	Lobby.player_connected.connect(spawn_player)
 	
 func spawn_player(id:int, player_info:Dictionary) -> void:
-	#print(str(multiplayer.get_unique_id())+": "+str(Lobby.players))
-	print(player_info)
 	var player_node = spawn({"id":id,"player_info":player_info})
 	get_parent().get_node("Players").add_player_to_array(player_node)
 	
@@ -24,4 +22,3 @@ func get_player_inst(data:Dictionary) -> Node:
 	player.primary_weapon = player_info["primary_weapon"]
 	player.secondary_weapon = player_info["secondary_weapon"]
 	return player
-	

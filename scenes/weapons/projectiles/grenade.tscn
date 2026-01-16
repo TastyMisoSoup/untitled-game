@@ -150,7 +150,6 @@ color_ramp = SubResource("Gradient_2qaxy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_wt0kw")
-animation = &"exploding"
 speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
