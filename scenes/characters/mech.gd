@@ -90,7 +90,7 @@ func _on_team_change(team_name: String) -> void:
 
 #Movement
 func move(input_direction) -> void:
-	if !is_multiplayer_authority() or !alive: return
+	if !is_multiplayer_authority() or !alive or animation_player.current_animation=="fall": return
 	velocity = compute_velocity(input_direction, speed_modifier, dashing)
 	legs.move_legs(input_direction)
 	move_and_slide()
@@ -141,7 +141,6 @@ func _on_fall_check_area_exited(area: Area2D) -> void:
 
 @rpc("any_peer","call_local","reliable")
 func fall() -> void:
-	alive = false
 	body.primary_weapon.shooting = false
 	animation_player.play("fall")
 
