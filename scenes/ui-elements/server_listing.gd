@@ -31,6 +31,7 @@ func update_map() -> void:
 	get_node("%SelectedMapImage").texture = load(map.IMAGE_PATH)
 	get_node("%MapAfter").texture = load("res://assets/media/map_images/"+mapList[1]+".png")
 	get_node("%MapBefore").texture = load("res://assets/media/map_images/"+mapList[-1]+".png")
+	Lobby.map = load("res://scenes/maps/"+mapList[0]+".tscn")
 	
 func next_map() -> void:
 	var temp = mapList.pop_front();

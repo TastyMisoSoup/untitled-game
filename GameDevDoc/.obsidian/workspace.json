@@ -6,7 +6,7 @@
       {
         "id": "fe33420ca4af8767",
         "type": "tabs",
-        "dimension": 17.41721854304636,
+        "dimension": 38.94039735099338,
         "children": [
           {
             "id": "5b2da16713c6dfbd",
@@ -42,7 +42,7 @@
       {
         "id": "f90ce3b7d2fa0ef3",
         "type": "tabs",
-        "dimension": 82.58278145695364,
+        "dimension": 61.05960264900663,
         "children": [
           {
             "id": "8c25be346b8b26c1",
@@ -57,8 +57,21 @@
               "icon": "lucide-file",
               "title": "Project Timeline"
             }
+          },
+          {
+            "id": "a7761b55508514f8",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.3"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.10.3"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -203,7 +216,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "8c25be346b8b26c1",
+  "active": "a7761b55508514f8",
   "lastOpenFiles": [
     "Game Setup Screen.md",
     "Main Menu.md",

@@ -14,7 +14,7 @@ func _ready() -> void:
 	stats_manager = stats_manager if stats_manager else get_node("%StatsManager")
 
 func get_random_spawn_point() -> Vector2:
-	var spawn_point:Marker2D = $"../Map2/TileMapLayer/SpawnPoints".get_children().pick_random()
+	var spawn_point:Marker2D = $"../Map/TileMapLayer/SpawnPoints".get_children().pick_random()
 	return spawn_point.position
 
 func add_death(death:int,kill:int,death_name:String,kill_name:String):

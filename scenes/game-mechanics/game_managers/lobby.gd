@@ -3,10 +3,12 @@ extends Node
 var peer: ENetMultiplayerPeer
 var max_players: int
 const DEFAULT_IP_ADDRESS = "127.0.0.1"
+const GAME_FILE = "res://main.tscn"
 
 signal player_connected(player_id, player_info)
 
 var player_count: int = 0;
+var map: PackedScene = load("res://scenes/maps/map_2.tscn")
 
 var players:Dictionary = {}
 var player_info;
@@ -40,7 +42,7 @@ func join_game(port:int, address:String = ""):
 
 @rpc("call_local", "reliable")
 func load_game():
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file(GAME_FILE)
 
 func back_to_main_menu():
 	get_tree().change_scene_to_file("res://scenes/ui-elements/title_menu.tscn")
