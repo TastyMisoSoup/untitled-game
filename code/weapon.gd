@@ -16,8 +16,9 @@ func action(current_energy:int):
 	pass
 
 func weapon_spread(vector: Vector2) -> Vector2:
-	var offset: float = randf_range(-spread_amount,spread_amount)
-	return vector + Vector2(offset,offset)
+	var offset_x: float = randf_range(-spread_amount,spread_amount)
+	var offset_y: float = randf_range(-spread_amount,spread_amount)
+	return vector + Vector2(offset_x,offset_y)
 
 @rpc("any_peer","call_local","unreliable")
 func shoot(start_pos,target_pos,timer,projectile_path):
