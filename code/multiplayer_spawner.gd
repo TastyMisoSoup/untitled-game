@@ -6,7 +6,7 @@ func _enter_tree() -> void:
 	set_spawn_function(get_player_inst)
 
 func _ready() -> void:
-	if multiplayer.is_server(): spawn_player(1, PlayerConfig.get_player_info())
+	#if multiplayer.is_server(): spawn_player(1, PlayerConfig.get_player_info())
 	Lobby.player_connected.connect(spawn_player)
 	
 func spawn_player(id:int, player_info:Dictionary) -> void:

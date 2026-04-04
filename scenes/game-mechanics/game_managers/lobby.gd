@@ -8,7 +8,7 @@ const GAME_FILE = "res://main.tscn"
 signal player_connected(player_id, player_info)
 
 var player_count: int = 0;
-var map: PackedScene = load("res://scenes/maps/map_2.tscn")
+var map: NodePath = "res://scenes/maps/map_1.tscn"
 
 var players:Dictionary = {}
 var player_info;
@@ -20,6 +20,7 @@ func _ready() -> void:
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 	player_info = PlayerConfig.get_player_info()
 
+
 func create_game(port:int, max_players_param:int):
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(port, max_players_param)
@@ -29,6 +30,7 @@ func create_game(port:int, max_players_param:int):
 		return error
 	multiplayer.multiplayer_peer = peer
 	players[1] = player_info
+
 
 func join_game(port:int, address:String = ""):
 	if address.is_empty():
@@ -40,19 +42,23 @@ func join_game(port:int, address:String = ""):
 		return error
 	multiplayer.multiplayer_peer = peer
 
-@rpc("call_local", "reliable")
+
 func load_game():
 	get_tree().change_scene_to_file(GAME_FILE)
+
 
 func back_to_main_menu():
 	get_tree().change_scene_to_file("res://scenes/ui-elements/title_menu.tscn")
 
+
 func _on_connected_to_server()-> void:
 	load_game()
 	
+
 func _on_player_connected(id) -> void:
 	player_info = PlayerConfig.get_player_info()
 	_register_player.rpc_id(id, player_info)
+
 
 @rpc("any_peer", "reliable")
 func _register_player(new_player_info):
@@ -61,20 +67,25 @@ func _register_player(new_player_info):
 	#print(str(multiplayer.get_unique_id())+str(players))
 	player_connected.emit(new_player_id, new_player_info)
 
+
 func remove_multiplayer_peer():
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
-	
+
+
 func _on_connected_fail():
 	remove_multiplayer_peer()
 	$FailedToConnect.show()
-	
+
+
 func server_full():
 	$ServerFull.show()
-	
+
+
 func _on_server_disconnected():
 	remove_multiplayer_peer()
 	back_to_main_menu()
 	$ServerDisconnected.show()
+
 
 func is_server_full():
 	print(max_players)

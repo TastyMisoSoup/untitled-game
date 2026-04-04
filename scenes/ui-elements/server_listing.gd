@@ -23,6 +23,7 @@ func _on_join_button_pressed() -> void:
 	var address: String = get_node("%IpAddressInput").text
 	var port: int = get_node("%PortInputJoin").value
 	Lobby.join_game(port, address)
+	#Lobby.load_game()
 	
 func update_map() -> void:
 	map = load("res://resources/maps/"+mapList[0]+".tres")
@@ -31,7 +32,6 @@ func update_map() -> void:
 	get_node("%SelectedMapImage").texture = load(map.IMAGE_PATH)
 	get_node("%MapAfter").texture = load("res://assets/media/map_images/"+mapList[1]+".png")
 	get_node("%MapBefore").texture = load("res://assets/media/map_images/"+mapList[-1]+".png")
-	Lobby.map = load("res://scenes/maps/"+mapList[0]+".tscn")
 	
 func next_map() -> void:
 	var temp = mapList.pop_front();
